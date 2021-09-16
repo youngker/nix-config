@@ -1,9 +1,7 @@
 let
   pkgs = import <nixpkgs> {};
+  hm = import <home-manager> {};
 in
 pkgs.mkShell {
-  buildInputs = [
-    pkgs.home-manager
-    pkgs.nixpkgs-fmt
-  ];
+  buildInputs = [ hm.home-manager ];
 }
