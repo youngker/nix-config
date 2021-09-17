@@ -19,6 +19,11 @@ endef
 
 build:
 	$(call announce,nix build)
+	@$(NIX_SHELL) --run "home-manager build"
+	@rm -f result*
+
+switch:
+	$(call announce,nix switch)
 	@$(NIX_SHELL) --run "home-manager switch"
 
 pull:
