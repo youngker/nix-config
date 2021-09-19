@@ -1,11 +1,12 @@
 { pkgs }:
 
 with pkgs; [
+  alacritty
   bat
   codesearch
-  emacs
   exa
   fd
+  nixfmt
   ripgrep
   zsh
 ]

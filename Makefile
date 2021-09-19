@@ -17,6 +17,13 @@ define announce
 	@echo '└────────────────────────────────────────────────────────────────────────────┘'
 endef
 
+all: build
+
+debug:
+	$(call announce,nix debug)
+	@$(NIX_SHELL) --run "home-manager build --show-trace"
+	@rm -f result*
+
 build:
 	$(call announce,nix build)
 	@$(NIX_SHELL) --run "home-manager build"
