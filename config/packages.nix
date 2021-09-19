@@ -1,7 +1,6 @@
 { pkgs }:
 
 with pkgs; [
-  alacritty
   bat
   cachix
   codesearch
@@ -10,6 +9,7 @@ with pkgs; [
   fd
   feh
   findutils
+  fontconfig
   fzf
   global
   gnugrep
