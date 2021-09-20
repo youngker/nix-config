@@ -1,4 +1,5 @@
 { pkgs, lib, config, ... }:
+
 let
   inherit (lib) flatten optionals;
   inherit (pkgs.stdenv) isDarwin isLinux isWindows;
@@ -57,24 +58,41 @@ in {
           {
             key = "Slash";
             mods = "Control";
-            chars = "x1f";
+            chars = "\\x1f";
           }
           {
             key = "V";
             mods = "Alt";
-            chars = "x1bv";
+            chars = "\\x1bv";
           }
           {
-            key = "Equals";
-            mods = "Control";
-            action = "IncreaseFontSize";
+            key = "W";
+            mods = "Alt";
+            chars = "\\x1bw";
           }
           {
-            key = "Minus";
-            mods = "Control";
-            action = "DecreaseFontSize";
+            key = "X";
+            mods = "Alt";
+            chars = "\\x1bx";
           }
+
         ])
+
+        {
+          key = "Equals";
+          mods = "Control";
+          action = "IncreaseFontSize";
+        }
+        {
+          key = "Minus";
+          mods = "Control";
+          action = "DecreaseFontSize";
+        }
+        {
+          key = "Key0";
+          mods = "Control";
+          action = "resetFontSize";
+        }
       ];
     };
   };

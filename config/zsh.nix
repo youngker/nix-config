@@ -1,4 +1,5 @@
 { pkgs, lib, config, ... }:
+
 {
   programs.zsh = rec {
     enable = true;

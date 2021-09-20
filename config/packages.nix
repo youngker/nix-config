@@ -5,12 +5,14 @@ with pkgs; [
   cachix
   codesearch
   coreutils
+  curl
   exa
   fd
   feh
   findutils
   fontconfig
   fzf
+  gawk
   global
   gnugrep
   gnumake
@@ -24,6 +26,9 @@ with pkgs; [
   nixfmt
   nixpkgs-fmt
   p7zip
+  parallel
+  patch
+  patchutils
   pstree
   ripgrep
   stow
@@ -31,6 +36,7 @@ with pkgs; [
   unrar
   unzip
   wget
+  xz
   zip
   zsh
   zsh-syntax-highlighting
