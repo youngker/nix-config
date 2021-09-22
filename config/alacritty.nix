@@ -7,15 +7,15 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
-      env.TERM="xterm-24bit";
-      background_opacity = 0.9;
+      env.TERM = "xterm-24bit";
+      background_opacity = 0.98;
       alt_send_esc = false;
       window = {
         padding = {
           x = 10;
           y = 10;
         };
-        # decorations = "none";
+        decorations = "none";
       };
       scrolling.history = 10000;
       font.normal = {

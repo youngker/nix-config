@@ -1,6 +1,7 @@
 { pkgs }:
 
 with pkgs; [
+  amethyst
   bat
   cachix
   codesearch
@@ -19,6 +20,7 @@ with pkgs; [
   gnuplot
   gnused
   gnutar
+  hub
   killall
   less
   lsof
@@ -29,6 +31,7 @@ with pkgs; [
   parallel
   patch
   patchutils
+  procs
   pstree
   ripgrep
   stow

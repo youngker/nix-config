@@ -7,6 +7,15 @@
     enableAutosuggestions = true;
     dotDir = ".config/zsh";
 
+    initExtra = ''
+      # Make sure that fzf does not override the meaning of ^T
+      bindkey '^X^T' fzf-file-widget
+      bindkey '^T' transpose-chars
+      if [[ -r "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
+         source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+      fi
+    '';
+
     history = {
       size = 50000;
       save = 500000;
@@ -50,10 +59,5 @@
       wipe = "${pkgs.srm}/bin/srm -vfr";
       rehash = "hash -r";
     };
-    initExtra = ''
-      # Make sure that fzf does not override the meaning of ^T
-      bindkey '^X^T' fzf-file-widget
-      bindkey '^T' transpose-chars
-    '';
   };
 }
