@@ -16,9 +16,9 @@ in {
     overlays = let path = ../overlays;
     in with builtins;
     map (n: import (path + ("/" + n))) (filter (n:
-    match ".*\\.nix" n != null
-    || pathExists (path + ("/" + n + "/default.nix")))
-    (attrNames (readDir path)));
+      match ".*\\.nix" n != null
+      || pathExists (path + ("/" + n + "/default.nix")))
+      (attrNames (readDir path)));
   };
 
   home = {
@@ -45,13 +45,20 @@ in {
     };
   };
 
-  imports = [
-    ./alacritty.nix
-    ./fzf.nix
-    ./git.nix
-    ./starship.nix
-    ./zsh.nix
-  ];
+  imports = [ ./alacritty.nix ./fzf.nix ./git.nix ./starship.nix ./zsh.nix ];
 
+  xdg = {
+    enable = true;
+    configFile."terminfo/xterm-24bit.src".text = ''
+      xterm-24bit|xterm with 24-bit direct color mode,
+       use=xterm-256color,
+       setb24=\E[48:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
+       setf24=\E[38:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
+    '';
+
+    configFile."terminfo/xterm-24bit.src".onChange = ''
+      ${pkgs.ncurses}/bin/tic -x -o ${home}/.terminfo ${home}/.config/terminfo/xterm-24bit.src
+    '';
+  };
   news.display = "silent";
 }

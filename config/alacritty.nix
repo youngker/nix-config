@@ -7,6 +7,8 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
+      env.TERM="xterm-24bit";
+      background_opacity = 0.9;
       alt_send_esc = false;
       window = {
         padding = {
