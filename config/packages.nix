@@ -2,6 +2,7 @@
 
 with pkgs; [
   amethyst
+  bash
   bat
   cachix
   codesearch

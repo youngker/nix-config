@@ -5,10 +5,8 @@
     enable = true;
     enableCompletion = false;
     enableAutosuggestions = true;
-    dotDir = ".config/zsh";
 
     initExtra = ''
-      # Make sure that fzf does not override the meaning of ^T
       bindkey '^X^T' fzf-file-widget
       bindkey '^T' transpose-chars
       if [[ -r "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
@@ -19,7 +17,7 @@
     history = {
       size = 50000;
       save = 500000;
-      path = "${dotDir}/history";
+      path = "${config.xdg.configHome}/zsh/history";
       ignoreDups = true;
       share = true;
       extended = true;
@@ -47,6 +45,7 @@
       l = "${pkgs.git}/bin/git l";
       w = "${pkgs.git}/bin/git w";
       g = "${pkgs.gitAndTools.hub}/bin/hub";
+      cat = "${pkgs.bat}/bin/bat";
       git = "${pkgs.gitAndTools.hub}/bin/hub";
       ga = "${pkgs.gitAndTools.git-annex}/bin/git-annex";
       good = "${pkgs.git}/bin/git bisect good";
