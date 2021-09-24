@@ -7,6 +7,7 @@
     enableAutosuggestions = true;
 
     initExtra = ''
+      bindkey '^J' end-of-line
       bindkey '^X^T' fzf-file-widget
       bindkey '^T' transpose-chars
       if [[ -r "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then

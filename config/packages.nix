@@ -1,8 +1,7 @@
-{ pkgs }:
+{ pkgs, lib }:
 
-with pkgs; [
-  amethyst
-  bash
+with pkgs;
+[
   bat
   cachix
   codesearch
@@ -22,6 +21,7 @@ with pkgs; [
   gnused
   gnutar
   hub
+  jq
   killall
   less
   lsof
@@ -44,4 +44,5 @@ with pkgs; [
   zip
   zsh
   zsh-syntax-highlighting
-]
+] ++ lib.optionals pkgs.stdenv.isDarwin [ amethyst ]
+++ lib.optionals pkgs.stdenv.isLinux [ xmobar ]

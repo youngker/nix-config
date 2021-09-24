@@ -4,6 +4,8 @@ let
   user = builtins.getEnv "USER";
   home = builtins.getEnv "HOME";
   tmpdir = "/tmp";
+  inherit (lib) optionals optionalAttrs;
+  inherit (pkgs.stdenv) isDarwin isLinux;
 
 in {
   nixpkgs = {
@@ -25,7 +27,10 @@ in {
     username = "${user}";
     homeDirectory = "${home}";
     stateVersion = "21.05";
-    packages = pkgs.callPackage ./packages.nix { };
+    packages = pkgs.callPackage ./packages.nix { inherit lib; };
+    sessionVariablesExtra = ''
+      . "${pkgs.nix}/etc/profile.d/nix.sh"
+    '';
   };
 
   programs = {
@@ -45,7 +50,15 @@ in {
     };
   };
 
-  imports = [ ./alacritty.nix ./fzf.nix ./git.nix ./starship.nix ./zsh.nix ];
+  imports = [
+    ./alacritty.nix
+    ./fzf.nix
+    ./git.nix
+    ./starship.nix
+    ./zsh.nix
+    ./picom.nix
+    ./rofi.nix
+  ];
 
   xdg = {
     enable = true;
@@ -61,5 +74,17 @@ in {
       '';
     };
   };
+
+  xresources = optionalAttrs isLinux { properties."Xft.dpi" = 150; };
+  xsession = optionalAttrs isLinux {
+    enable = true;
+    #    scriptPath = ".hm-xsession";
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      config = ./xmonad/xmonad.hs;
+    };
+  };
+
   news.display = "silent";
 }

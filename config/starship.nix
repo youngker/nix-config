@@ -1,6 +1,7 @@
 {
   programs.starship = {
     enable = true;
+    enableBashIntegration = false;
     settings = {
       scan_timeout = 30;
       command_timeout = 500;
