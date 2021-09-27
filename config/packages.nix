@@ -29,6 +29,7 @@ with pkgs;
   nixfmt
   nixpkgs-fmt
   p7zip
+  pandoc
   parallel
   patch
   patchutils

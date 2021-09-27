@@ -13,6 +13,10 @@
       if [[ -r "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
          source "$HOME/.nix-profile/etc/profile.d/nix.sh"
       fi
+      function set_win_title(){
+        echo -ne "\033]0; $HOST: $PWD \007"
+      }
+      precmd_functions+=(set_win_title)
     '';
 
     history = {
