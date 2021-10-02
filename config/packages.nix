@@ -4,6 +4,7 @@ with pkgs;
 [
   bat
   cachix
+#  cacert
   codesearch
   coreutils
   curl
@@ -45,5 +46,12 @@ with pkgs;
   zip
   zsh
   zsh-syntax-highlighting
+  rust-analyzer
+  rustc
+  rustfmt
+  cargo
+  clippy
+  bingwallpaper
+  ghc
 ] ++ lib.optionals pkgs.stdenv.isDarwin [ amethyst ]
-++ lib.optionals pkgs.stdenv.isLinux [ xmobar ]
+++ lib.optionals pkgs.stdenv.isLinux [ xmobar google-chrome ]

@@ -4,7 +4,7 @@
     enableBashIntegration = false;
     settings = {
       scan_timeout = 30;
-      command_timeout = 500;
+      command_timeout = 5000;
       format = ''
         $username $hostname $directory $git_branch $git_status
         \$ '';

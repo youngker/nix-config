@@ -56,6 +56,7 @@ with epkgs; [
   helm-rtags
   highlight-symbol
   hindent
+  htmlize
   ido-complete-space-or-hyphen
   ido-vertical-mode
   ido-yes-or-no
