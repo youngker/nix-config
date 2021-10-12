@@ -123,7 +123,6 @@ confShowWName =
 
 startup =
   [ "xrandr --output HDMI-0 --mode 3840x2160 --primary --scale 0.7x0.7",
-    "picom",
     "bingwallpaper -1",
     "emacs --daemon",
     "ibus-daemon",

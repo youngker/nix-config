@@ -7,9 +7,7 @@ self: super: {
         #        buildInputs = [ libsodium pkgconfig ];
         buildInputs = [ pkgconfig ] ++ (lib.optionals pkgs.stdenv.isDarwin
           [ darwin.apple_sdk.frameworks.Security ]);
-        src =
-          self.nix-gitignore.gitignoreSourcePure [ ./bingwallpaper/.gitignore ]
-          ./bingwallpaper;
+        src = ./.;
         sourceRoot = "bingwallpaper";
 
         cargoSha256 = "1pg7273w0pk523f5a6ncn5lm0lnsnkbbb486d6bykcyybwmxsb02";

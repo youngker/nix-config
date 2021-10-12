@@ -4,13 +4,12 @@ with pkgs;
 [
   bat
   cachix
-#  cacert
+  #  cacert
   codesearch
   coreutils
   curl
   exa
   fd
-  feh
   findutils
   fontconfig
   fzf
@@ -51,7 +50,7 @@ with pkgs;
   rustfmt
   cargo
   clippy
-  bingwallpaper
+  #  bingwallpaper
   ghc
 ] ++ lib.optionals pkgs.stdenv.isDarwin [ amethyst ]
-++ lib.optionals pkgs.stdenv.isLinux [ xmobar google-chrome ]
+++ lib.optionals pkgs.stdenv.isLinux [ xmobar google-chrome xdg-utils feh ]

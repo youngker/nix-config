@@ -1,4 +1,8 @@
+{ config, lib, ... }:
+
+with lib;
 {
+config = mkIf config.modules.services.starship.enable {
   programs.starship = {
     enable = true;
     enableBashIntegration = false;
@@ -33,4 +37,5 @@
       git_status = { style = "bold blue"; };
     };
   };
+};
 }

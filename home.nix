@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, nixpkgs, lib, config, ... }:
 
 let
   user = builtins.getEnv "USER";
@@ -6,59 +6,50 @@ let
   tmpdir = "/tmp";
   inherit (lib) optionals optionalAttrs;
   inherit (pkgs.stdenv) isDarwin isLinux;
-
 in {
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowBroken = false;
-      allowInsecure = false;
-      allowUnsupportedSystem = false;
-    };
-    overlays = let path = ../overlays;
-    in with builtins;
-    map (n: import (path + ("/" + n))) (filter (n:
-      match ".*\\.nix" n != null
-      || pathExists (path + ("/" + n + "/default.nix")))
-      (attrNames (readDir path)));
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+    allowInsecure = true;
+    allowUnsupportedSystem = false;
+  };
+
+  imports = [ ./modules ./config ];
+
+  manual.manpages.enable = false;
+
+  modules.dev = {
+    emacs.enable = true;
+    git.enable = true;
+  };
+  modules.services = {
+    picom.enable = false;
+    zsh.enable = true;
+    starship.enable = true;
+    alacritty.enable = true;
+    rofi.enable = false;
+    fzf.enable = true;
+  };
+  modules.apps = { pandoc.enable = true; };
+
+  modules.base = {
+    core.enable = true;
+    utils.enable = true;
+  };
+
+  programs.home-manager = {
+    enable = true;
+    path = "./home-manager";
   };
 
   home = {
     username = "${user}";
     homeDirectory = "${home}";
     stateVersion = "21.05";
-    packages = pkgs.callPackage ./packages.nix { inherit lib; };
     sessionVariablesExtra = ''
       . "${pkgs.nix}/etc/profile.d/nix.sh"
     '';
   };
-
-  programs = {
-    direnv.enable = true;
-    htop.enable = true;
-    info.enable = true;
-    man.enable = false;
-    vim.enable = true;
-    bash.enable = true;
-    home-manager = {
-      enable = true;
-      path = "../home-manager";
-    };
-    emacs = {
-      enable = true;
-      extraPackages = import ./emacs.nix pkgs;
-    };
-  };
-
-  imports = [
-    ./alacritty.nix
-    ./fzf.nix
-    ./git.nix
-    ./starship.nix
-    ./zsh.nix
-    ./picom.nix
-    ./rofi.nix
-  ];
 
   xdg = {
     enable = true;
@@ -74,7 +65,6 @@ in {
       '';
     };
   };
-
   xresources = optionalAttrs isLinux { properties."Xft.dpi" = 150; };
   xsession = optionalAttrs isLinux {
     enable = true;
@@ -82,9 +72,10 @@ in {
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      config = ./xmonad/xmonad.hs;
+      config = ../overlays/xmonad/xmonad.hs;
     };
+    initExtra = ''
+      #rm -f ${home}/.xmonad/xmonad-x86_64-linux
+    '';
   };
-
-  news.display = "silent";
 }
