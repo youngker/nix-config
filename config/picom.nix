@@ -1,20 +1,11 @@
 { pkgs, config, lib, ... }:
 
-with lib;
-let
-  nixGLIntel = (pkgs.callPackage "${
-      builtins.fetchTarball {
-        url =
-          "https://github.com/guibou/nixGL/archive/17c1ec63b969472555514533569004e5f31a921f.tar.gz";
-        sha256 = "0yh8zq746djazjvlspgyy1hvppaynbqrdqpgk447iygkpkp3f5qr";
-      }
-    }/nixGL.nix" { }).nixGLIntel;
-in {
+with lib; {
   config = mkIf config.modules.services.picom.enable {
     services.picom = optionalAttrs pkgs.stdenv.isLinux {
-       package = pkgs.writeShellScriptBin "picom" ''
+      package = pkgs.writeShellScriptBin "picom" ''
         #!/bin/sh
-        ${nixGLIntel}/bin/nixGLIntel ${pkgs.picom}/bin/picom "$@"
+        ${pkgs.nixGL}/bin/nixGL ${pkgs.picom}/bin/picom "$@"
       '';
       experimentalBackends = true;
       blur = true;

@@ -1,8 +1,1 @@
-{ config, ... }:
-
-{
-  imports = [ ./apps ./services ./dev ./base ];
-
-  options = { };
-  config = { };
-}
+{ imports = [ ./apps ./services ./dev ./base ./desktop ]; }

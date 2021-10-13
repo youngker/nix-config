@@ -4,17 +4,25 @@ with lib;
 let
   inherit (lib) optionals optionalAttrs;
   inherit (pkgs.stdenv) isDarwin isLinux;
-  nixGLIntel = (pkgs.callPackage "${
-      builtins.fetchTarball {
-        url =
-          "https://github.com/guibou/nixGL/archive/17c1ec63b969472555514533569004e5f31a921f.tar.gz";
-        sha256 = "0yh8zq746djazjvlspgyy1hvppaynbqrdqpgk447iygkpkp3f5qr";
-      }
-    }/nixGL.nix" { }).nixGLIntel;
+  home = config.home.homeDirectory;
 in {
   config = mkIf config.modules.services.alacritty.enable {
-    programs.alacritty = {
+    xdg = {
+      enable = true;
+      configFile."terminfo/xterm-24bit" = {
+        text = ''
+          xterm-24bit|xterm with 24-bit direct color mode,
+           use=xterm-256color,
+           setb24=\E[48:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
+           setf24=\E[38:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
+        '';
+        onChange = ''
+          ${pkgs.ncurses}/bin/tic -x -o ${home}/.terminfo ${home}/.config/terminfo/xterm-24bit
+        '';
+      };
+    };
 
+    programs.alacritty = {
       settings = {
         env.TERM = "xterm-24bit";
         background_opacity = 0.98;
@@ -371,7 +379,7 @@ in {
     } // optionalAttrs isLinux {
       package = pkgs.writeShellScriptBin "alacritty" ''
         #!/bin/sh
-        ${nixGLIntel}/bin/nixGLIntel ${pkgs.alacritty}/bin/alacritty "$@"
+        ${pkgs.nixGL}/bin/nixGL ${pkgs.alacritty}/bin/alacritty "$@"
       '';
     };
   };

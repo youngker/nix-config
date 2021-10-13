@@ -40,7 +40,7 @@ with epkgs; [
   flycheck-rust
   flymake
   flymake-diagnostic-at-point
-#  geiser
+  geiser
   git-gutter
   go-autocomplete
   go-eldoc

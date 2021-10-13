@@ -1,11 +1,11 @@
 {
   imports = [
-    ./picom.nix
-    ./zsh.nix
-    ./starship.nix
     ./alacritty.nix
-    ./rofi.nix
     ./fzf.nix
+    ./picom.nix
+    ./rofi.nix
+    ./starship.nix
+    ./xmobar.nix
+    ./zsh.nix
   ];
-
 }

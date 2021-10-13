@@ -1,40 +1,56 @@
-{ pkgs, nixpkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 
 let
   user = builtins.getEnv "USER";
   home = builtins.getEnv "HOME";
-  tmpdir = "/tmp";
   inherit (lib) optionals optionalAttrs;
   inherit (pkgs.stdenv) isDarwin isLinux;
+
 in {
   nixpkgs.config = {
-    allowUnfree = true;
     allowBroken = true;
     allowInsecure = true;
+    allowUnfree = true;
     allowUnsupportedSystem = false;
   };
 
-  imports = [ ./modules ./config ];
+  imports = [ ./nix-overlays ./modules ./config ];
 
   manual.manpages.enable = false;
 
-  modules.dev = {
-    emacs.enable = true;
-    git.enable = true;
+  modules.apps = {
+    amethyst.enable = pkgs.stdenv.isDarwin;
+    pandoc.enable = true;
   };
-  modules.services = {
-    picom.enable = false;
-    zsh.enable = true;
-    starship.enable = true;
-    alacritty.enable = true;
-    rofi.enable = false;
-    fzf.enable = true;
-  };
-  modules.apps = { pandoc.enable = true; };
 
   modules.base = {
     core.enable = true;
     utils.enable = true;
+  };
+
+  modules.desktop = {
+    xmonad.enable = pkgs.stdenv.isLinux;
+    xorg.enable = pkgs.stdenv.isLinux;
+  };
+
+  modules.dev = {
+    cpp.enable = true;
+    emacs.enable = true;
+    git.enable = true;
+    go.enable = true;
+    haskell.enable = false;
+    nix.enable = true;
+    rust.enable = true;
+  };
+
+  modules.services = {
+    alacritty.enable = true;
+    fzf.enable = true;
+    picom.enable = pkgs.stdenv.isLinux;
+    rofi.enable = pkgs.stdenv.isLinux;
+    starship.enable = true;
+    xmobar.enable = pkgs.stdenv.isLinux;
+    zsh.enable = true;
   };
 
   programs.home-manager = {
@@ -48,34 +64,6 @@ in {
     stateVersion = "21.05";
     sessionVariablesExtra = ''
       . "${pkgs.nix}/etc/profile.d/nix.sh"
-    '';
-  };
-
-  xdg = {
-    enable = true;
-    configFile."terminfo/xterm-24bit" = {
-      text = ''
-        xterm-24bit|xterm with 24-bit direct color mode,
-         use=xterm-256color,
-         setb24=\E[48:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
-         setf24=\E[38:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
-      '';
-      onChange = ''
-        ${pkgs.ncurses}/bin/tic -x -o ${home}/.terminfo ${home}/.config/terminfo/xterm-24bit
-      '';
-    };
-  };
-  xresources = optionalAttrs isLinux { properties."Xft.dpi" = 150; };
-  xsession = optionalAttrs isLinux {
-    enable = true;
-    #    scriptPath = ".hm-xsession";
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-      config = ../overlays/xmonad/xmonad.hs;
-    };
-    initExtra = ''
-      #rm -f ${home}/.xmonad/xmonad-x86_64-linux
     '';
   };
 }

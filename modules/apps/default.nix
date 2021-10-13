@@ -1,5 +1,1 @@
-{ config, options, ... }:
-{
-  imports = [ ./pandoc.nix ];
-
-}
+{ imports = [ ./pandoc.nix ./amethyst.nix ]; }

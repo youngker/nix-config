@@ -26,7 +26,7 @@ init:
 
 debug:
 	$(call announce,nix debug)
-	@$(NIX_SHELL) --run "home-manager build --show-trace"
+	@$(NIX) build --show-trace
 	@rm -f result*
 
 build:

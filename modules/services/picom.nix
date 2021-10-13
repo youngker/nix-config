@@ -10,6 +10,5 @@ with lib; {
 
   config = mkIf config.modules.services.picom.enable {
     services.picom.enable = true;
-    home.packages = with pkgs; [ picom ];
   };
 }

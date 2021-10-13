@@ -123,7 +123,7 @@ confShowWName =
 
 startup =
   [ "xrandr --output HDMI-0 --mode 3840x2160 --primary --scale 0.7x0.7",
-    "bingwallpaper -1",
+    "bingwallpaper",
     "emacs --daemon",
     "ibus-daemon",
     "xrdb ~/.Xresources",
