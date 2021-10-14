@@ -371,6 +371,11 @@ in {
           }
           {
             key = "Slash";
+            mods = "Alt";
+            chars = "\\x1b/";
+          }
+          {
+            key = "Slash";
             mods = "Control";
             chars = "\\x1f";
           }

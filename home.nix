@@ -3,7 +3,6 @@
 let
   user = builtins.getEnv "USER";
   home = builtins.getEnv "HOME";
-  inherit (lib) optionals optionalAttrs;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
 in {
@@ -20,6 +19,7 @@ in {
 
   modules.apps = {
     amethyst.enable = pkgs.stdenv.isDarwin;
+    bingwallpaper.enable = true;
     pandoc.enable = true;
   };
 

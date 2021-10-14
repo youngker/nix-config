@@ -1,1 +1,1 @@
-{ imports = [ ./pandoc.nix ./amethyst.nix ]; }
+{ imports = [ ./pandoc.nix ./amethyst.nix ./bingwallpaper.nix ]; }

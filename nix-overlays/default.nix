@@ -1,3 +1,4 @@
 {
-  nixpkgs.overlays = [ (import ./amethyst.nix) (import ./nixGL.nix) ];
+  nixpkgs.overlays =
+    [ (import ./amethyst.nix) (import ./nixGL.nix) (import ./bingwallpaper) ];
 }

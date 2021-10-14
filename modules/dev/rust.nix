@@ -9,6 +9,12 @@ with lib; {
   };
 
   config = mkIf config.modules.dev.rust.enable {
-    home.packages = with pkgs; [ rust-analyzer cargo clippy rustc rustfmt ];
+    home.packages = with pkgs; [
+      rust-analyzer
+      cargo
+      clippy
+      rustc
+      rustfmt
+    ];
   };
 }
