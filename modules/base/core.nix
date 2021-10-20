@@ -11,7 +11,6 @@ with lib;
 
   config = mkIf config.modules.base.core.enable {
     home.packages = with pkgs; [
-      binutils
       coreutils
       cacert
     ];
