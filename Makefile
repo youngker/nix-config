@@ -21,8 +21,8 @@ all: build
 
 init:
 	$(call announce,nix init)
-#	@ln -s $(pwd) ~/.config/nixpkgs
-	@$(NIX_SHELL) --run "home-manager build -f ./home.nix"
+	@$(NIX) build
+	@./result/activate
 
 debug:
 	$(call announce,nix debug)
