@@ -3,10 +3,10 @@
 with lib; {
   config = mkIf config.modules.services.picom.enable {
     services.picom = optionalAttrs pkgs.stdenv.isLinux {
-      package = pkgs.writeShellScriptBin "picom" ''
-        #!/bin/sh
-        ${pkgs.nixGL}/bin/nixGL ${pkgs.picom}/bin/picom "$@"
-      '';
+      # package = pkgs.writeShellScriptBin "picom" ''
+      #   #!/bin/sh
+      #   ${pkgs.nixGL}/bin/nixGL ${pkgs.picom}/bin/picom "$@"
+      # '';
       experimentalBackends = true;
       blur = true;
       blurExclude = [ "window_type = 'dock'" "window_type = 'desktop'" ];

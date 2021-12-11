@@ -13,6 +13,9 @@ with lib;
     home.packages = with pkgs; [
       coreutils
       cacert
+      openssl
+      pkg-config
+      firefox
     ];
   };
 }

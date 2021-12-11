@@ -218,7 +218,7 @@ xmobarCmd nScreens screen = do
   xmobarPipe <- spawnPipe cmd
   pure (screen, xmobarPipe)
   where
-    cmd = "xmobar ~/.xmonad/xmobar.hs --screen=" <> show (succ nScreens - screen)
+    cmd = "xmobar --screen=" <> show (succ nScreens - screen)
 
 main :: IO ()
 main = do

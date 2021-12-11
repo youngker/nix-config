@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 
 let
-  user = builtins.getEnv "USER";
-  home = builtins.getEnv "HOME";
+  user = "youngker";#builtins.getEnv "USER";
+  home = "/home/youngker";#builtins.getEnv "HOME";
   inherit (pkgs.stdenv) isDarwin isLinux;
 
 in {
@@ -19,7 +19,7 @@ in {
 
   modules.apps = {
     amethyst.enable = pkgs.stdenv.isDarwin;
-    bingwallpaper.enable = true;
+    bingwallpaper.enable = false;
     pandoc.enable = true;
   };
 
@@ -61,7 +61,7 @@ in {
   home = {
     username = "${user}";
     homeDirectory = "${home}";
-    stateVersion = "21.05";
+    stateVersion = "21.11";
     sessionVariablesExtra = ''
       . "${pkgs.nix}/etc/profile.d/nix.sh"
     '';

@@ -12,11 +12,25 @@ with lib; {
     home.packages = with pkgs; [
       arandr
       brightnessctl
+      fira-code
+      font-awesome_4
+      noto-fonts-cjk
       xorg.xev
       xorg.xfd
       xorg.fontmiscmisc
       xdotool
       xorg.xmessage
+
+      lmms
+      fluidsynth
+      soundfont-fluid
+      vmpk
+      rosegarden
+      hydrogen
+      qsynth
+      qjackctl
+      patchage
+      musescore
     ];
   };
 }

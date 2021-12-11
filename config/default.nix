@@ -8,6 +8,7 @@
     ./picom.nix
     ./rofi.nix
     ./starship.nix
+    ./xmobar.nix
     ./xmonad
     ./zsh.nix
   ];

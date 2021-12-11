@@ -1,4 +1,4 @@
-NIX_PATH = nixpkgs=./nixpkgs:home-manager=./home-manager
+NIX_PATH = nixpkgs=./nixpkgs:home-manager=./home-manager:nixos-config=./hosts/nixos/default.nix
 PRENIX := PATH=$(PATH) NIX_PATH=$(NIX_PATH)
 
 NIX       = $(PRENIX) nix
@@ -21,22 +21,26 @@ all: build
 
 init:
 	$(call announce,nix init)
-	@$(NIX) build
+	@$(NIX) build -f default.nix
 	@./result/activate
 
 debug:
 	$(call announce,nix debug)
-	@$(NIX) build --show-trace
+	@$(NIX) build -f default --show-trace
 	@rm -f result*
 
 build:
 	$(call announce,nix build)
-	@$(NIX) build
+	@$(NIX) build -f default.nix
 	@rm -f result*
 
 switch:
 	$(call announce,home-manager switch)
 	@$(HOME_MANAGER) -f ./home.nix switch
+
+nixos:
+	$(call announce,nixos-rebuild switch)
+	@nixos-rebuild switch
 
 news:
 	$(call announce,home-manager news)

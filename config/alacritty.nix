@@ -36,7 +36,7 @@ in {
         };
         scrolling.history = 10000;
         font.normal = {
-          family = "Operator Mono SSm";
+          family = "Fira Code";
           style = "Book";
         };
         font.size = 11.0;
@@ -384,8 +384,14 @@ in {
     } // optionalAttrs isLinux {
       package = pkgs.writeShellScriptBin "alacritty" ''
         #!/bin/sh
-        ${pkgs.nixGL}/bin/nixGL ${pkgs.alacritty}/bin/alacritty "$@"
+        ${pkgs.alacritty}/bin/alacritty "$@"
       '';
     };
   };
 }
+
+      # package = pkgs.writeShellScriptBin "alacritty" ''
+      #   #!/bin/sh
+      #   ${pkgs.nixGL}/bin/nixGL
+      #   ${pkgs.alacritty}/bin/alacritty "$@"
+      # '';
