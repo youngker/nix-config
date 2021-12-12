@@ -122,9 +122,7 @@ confShowWName =
     }
 
 startup =
-  [ "xrandr --output HDMI-0 --mode 3840x2160 --primary --scale 0.7x0.7",
-    "bingwallpaper",
-    "emacs --daemon",
+  [ "bingwallpaper",
     "ibus-daemon",
     "xrdb ~/.Xresources",
     "setxkbmap -option ctrl:nocaps"
@@ -181,7 +179,7 @@ keyboard conf@XConfig {XMonad.modMask = modm} =
       ++ [ ( (m .|. modm, key),
              screenWorkspace sc >>= flip whenJust (windows . f)
            )
-           | (key, sc) <- zip [xK_bracketleft, xK_bracketright] [0 ..],
+           | (key, sc) <- zip [xK_bracketright, xK_bracketleft] [0 ..],
              (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
          ]
 

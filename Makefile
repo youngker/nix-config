@@ -1,4 +1,4 @@
-NIX_PATH = nixpkgs=./nixpkgs:home-manager=./home-manager:nixos-config=./hosts/nixos/default.nix
+NIX_PATH = nixpkgs=./nixpkgs:home-manager=./home-manager:nixos-config=./nixos/configuration.nix
 PRENIX := PATH=$(PATH) NIX_PATH=$(NIX_PATH)
 
 NIX       = $(PRENIX) nix
@@ -36,15 +36,16 @@ build:
 
 switch:
 	$(call announce,home-manager switch)
-	@$(HOME_MANAGER) -f ./home.nix switch
+	@$(HOME_MANAGER) -f ./nix/home.nix switch
 
+.PHONY: nixos
 nixos:
 	$(call announce,nixos-rebuild switch)
 	@nixos-rebuild switch
 
 news:
 	$(call announce,home-manager news)
-	@$(HOME_MANAGER) -f ./home.nix news
+	@$(HOME_MANAGER) -f ./nix/home.nix news
 
 pull:
 	$(call announce,git pull)

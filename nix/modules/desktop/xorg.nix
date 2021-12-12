@@ -20,17 +20,6 @@ with lib; {
       xorg.fontmiscmisc
       xdotool
       xorg.xmessage
-
-      lmms
-      fluidsynth
-      soundfont-fluid
-      vmpk
-      rosegarden
-      hydrogen
-      qsynth
-      qjackctl
-      patchage
-      musescore
     ];
   };
 }

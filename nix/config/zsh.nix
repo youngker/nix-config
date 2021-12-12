@@ -40,6 +40,7 @@ with lib; {
         TERM = "xterm-24bit";
         TINC_USE_NIX = "yes";
         WORDCHARS = "";
+        QT_QPA_PLATFORMTHEME = "qt5ct";
       };
 
       shellAliases = {

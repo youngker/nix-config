@@ -20,7 +20,7 @@ in {
 
   home-manager = {
     users.${user} = {
-      imports = [../../home.nix];
+      imports = [../nix/home.nix];
     };
   };
 
@@ -64,4 +64,6 @@ in {
       enable = true;
     };
   };
+  services.timesyncd.enable = true;
+  time.timeZone = "Asia/Seoul";
 }

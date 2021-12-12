@@ -17,6 +17,11 @@ in {
 
   manual.manpages.enable = false;
 
+  modules.audio = {
+    apps.enable = true;
+    jack.enable = true;
+  };
+
   modules.apps = {
     amethyst.enable = pkgs.stdenv.isDarwin;
     bingwallpaper.enable = false;
@@ -31,6 +36,7 @@ in {
   modules.desktop = {
     xmonad.enable = pkgs.stdenv.isLinux;
     xorg.enable = pkgs.stdenv.isLinux;
+    font.enable = true;
   };
 
   modules.dev = {
@@ -45,6 +51,7 @@ in {
 
   modules.services = {
     alacritty.enable = true;
+    emacs.enable = true;
     fzf.enable = true;
     picom.enable = pkgs.stdenv.isLinux;
     rofi.enable = pkgs.stdenv.isLinux;
