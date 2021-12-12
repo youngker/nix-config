@@ -17,13 +17,14 @@ in {
   manual.manpages.enable = false;
 
   modules.audio = {
-    apps.enable = true;
-    jack.enable = true;
+    apps.enable = isLinux;
+    jack.enable = isLinux;
   };
 
   modules.apps = {
     amethyst.enable = isDarwin;
     bingwallpaper.enable = false;
+    firefox.enable = isLinux;
     pandoc.enable = true;
   };
 
@@ -39,7 +40,7 @@ in {
   };
 
   modules.dev = {
-    cpp.enable = true;
+    cpp.enable = isLinux;
     emacs.enable = true;
     git.enable = true;
     go.enable = true;
@@ -50,7 +51,7 @@ in {
 
   modules.services = {
     alacritty.enable = true;
-    emacs.enable = true;
+    emacs.enable = isLinux;
     fzf.enable = true;
     picom.enable = isLinux;
     rofi.enable = isLinux;

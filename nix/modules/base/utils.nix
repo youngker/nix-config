@@ -29,7 +29,6 @@ with lib; {
       gnused
       gnutar
       hub
-      ibus
       jq
       killall
       less
@@ -43,7 +42,6 @@ with lib; {
       patchutils
       procs
       pstree
-      qt5ct
       ripgrep
       stow
       tree

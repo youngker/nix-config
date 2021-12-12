@@ -15,7 +15,6 @@ with lib;
       cacert
       openssl
       pkg-config
-      firefox
     ];
   };
 }
