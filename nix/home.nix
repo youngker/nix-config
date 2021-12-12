@@ -1,8 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  user = "youngker";#builtins.getEnv "USER";
-  home = "/home/youngker";#builtins.getEnv "HOME";
+  config = import ../config.nix;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
 in {
@@ -23,7 +22,7 @@ in {
   };
 
   modules.apps = {
-    amethyst.enable = pkgs.stdenv.isDarwin;
+    amethyst.enable = isDarwin;
     bingwallpaper.enable = false;
     pandoc.enable = true;
   };
@@ -34,8 +33,8 @@ in {
   };
 
   modules.desktop = {
-    xmonad.enable = pkgs.stdenv.isLinux;
-    xorg.enable = pkgs.stdenv.isLinux;
+    xmonad.enable = isLinux;
+    xorg.enable = isLinux;
     font.enable = true;
   };
 
@@ -53,10 +52,10 @@ in {
     alacritty.enable = true;
     emacs.enable = true;
     fzf.enable = true;
-    picom.enable = pkgs.stdenv.isLinux;
-    rofi.enable = pkgs.stdenv.isLinux;
+    picom.enable = isLinux;
+    rofi.enable = isLinux;
     starship.enable = true;
-    xmobar.enable = pkgs.stdenv.isLinux;
+    xmobar.enable = isLinux;
     zsh.enable = true;
   };
 
@@ -66,8 +65,11 @@ in {
   };
 
   home = {
-    username = "${user}";
-    homeDirectory = "${home}";
+    username = "${config.username}";
+    homeDirectory = if isDarwin then
+      "/Users/${config.username}"
+    else
+      "/home/${config.username}";
     stateVersion = "21.11";
     sessionVariablesExtra = ''
       . "${pkgs.nix}/etc/profile.d/nix.sh"

@@ -1,13 +1,9 @@
 { pkgs, config, lib, ... }:
 
-let
-  user = "youngker";
+let config = import ../config.nix;
 
 in {
-  imports = [
-    <home-manager/nixos>
-    ./hardware-configuration.nix
-  ];
+  imports = [ <home-manager/nixos> ./hardware-configuration.nix ./modules ];
 
   nixpkgs.config = {
     allowBroken = true;
@@ -16,54 +12,39 @@ in {
     allowUnsupportedSystem = false;
   };
 
-  boot.loader.systemd-boot.enable = true;
-
   home-manager = {
-    users.${user} = {
-      imports = [../nix/home.nix];
-    };
+    users.${config.username} = { imports = [ ../nix/home.nix ]; };
   };
 
-  users.users.${user} = {
+  users.users.${config.username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "audio" "jackaudio" "docker"];
+    extraGroups = [ "wheel" "audio" "jackaudio" "docker" ];
     shell = pkgs.zsh;
   };
 
-  services.openssh.enable = true;
+  modules.boot = { loader.enable = true; };
 
-  services.xserver = {
-    enable = true;
-    desktopManager.xterm.enable = true;
-    videoDrivers = ["nvidia"];
-    layout = "us";
+  modules.hardware = {
+    nvidia.enable = true;
+    opengl.enable = true;
+    pulseaudio.enable = true;
+    video.enable = true;
+  };
+
+  modules.services = {
+    jack.enable = true;
+    openssh.enable = true;
+    timesyncd.enable = true;
+    xserver.enable = true;
   };
 
   programs.ssh.startAgent = true;
-  services.openssh.startWhenNeeded = true;
 
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
-
-  hardware.nvidia.modesetting.enable = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.video.hidpi.enable = true;
 
   sound = {
     enable = true;
     mediaKeys.enable = true;
   };
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudio.override { jackaudioSupport = true; };
-  };
-  services.jack = {
-    jackd.enable = true;
-    alsa.enable = false;
-    loopback = {
-      enable = true;
-    };
-  };
-  services.timesyncd.enable = true;
-  time.timeZone = "Asia/Seoul";
 }
