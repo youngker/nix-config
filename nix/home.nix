@@ -23,7 +23,7 @@ in {
 
   modules.apps = {
     amethyst.enable = isDarwin;
-    bingwallpaper.enable = false;
+    bingwallpaper.enable = true;
     firefox.enable = isLinux;
     pandoc.enable = true;
   };

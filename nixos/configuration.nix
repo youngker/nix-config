@@ -27,13 +27,14 @@ in {
   modules.hardware = {
     nvidia.enable = true;
     opengl.enable = true;
-    pulseaudio.enable = true;
+    pulseaudio.enable = false;
     video.enable = true;
   };
 
   modules.services = {
-    jack.enable = true;
+    jack.enable = false;
     openssh.enable = true;
+    pipewire.enable = true;
     timesyncd.enable = true;
     xserver.enable = true;
   };
@@ -42,9 +43,4 @@ in {
 
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
-
-  sound = {
-    enable = true;
-    mediaKeys.enable = true;
-  };
 }

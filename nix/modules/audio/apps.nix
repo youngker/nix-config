@@ -11,13 +11,19 @@ with lib; {
   config = mkIf config.modules.audio.apps.enable {
     home.packages = with pkgs; [
       ardour
+      calf
       carla
       fluidsynth
+      guitarix
+      helvum
       hydrogen
       lmms
       musescore
       patchage
+      patchage
+      pavucontrol
       qsynth
+      qtractor
       rosegarden
       sfizz
       soundfont-fluid

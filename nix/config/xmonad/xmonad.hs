@@ -77,7 +77,10 @@ myManagementHooks =
     [ className =? "Mail" --> doShift "mail",
       className =? "Google-chrome" --> doShift "web",
       className =? "Firefox" --> doShift "web",
-      className =? "clipboard-google-translate" --> doFloat
+      className =? "clipboard-google-translate" --> doFloat,
+      className =? "QjackCtl" --> doFloat,
+      className =? "lmms" --> doIgnore,
+      className =? "Ardour" --> doFloat
     ]
 
 data Colors
@@ -143,7 +146,7 @@ workspace =
 
 additionalKey :: [(String, X ())]
 additionalKey =
-  [ ("M-<Delete>", kill),
+  [ ("M-q", kill),
     ("M-<Space>", sendMessage NextLayout),
     ("M-<Tab>", windows W.focusDown),
     ("M-j", windows W.focusDown),
@@ -186,7 +189,7 @@ keyboard conf@XConfig {XMonad.modMask = modm} =
 layout = tile ||| mtile ||| grid ||| tab
   where
     spc = spacingWithEdge 4
-    tall = spc $ ResizableTall 1 (1 / 10) (1 / 2) []
+    tall = spc $ ResizableTall 1 (3 / 100) (1 / 2) []
     tile = deco tall
     mtile = deco $ Mirror tile
     grid = deco $ spc Grid
