@@ -8,7 +8,7 @@ NIX_SHELL = $(PRENIX) nix-shell
 NIX_STORE = $(PRENIX) nix-store
 NIX_GC    = $(PRENIX) nix-collect-garbage
 HOME_MANAGER = $(PRENIX) home-manager
-
+BUILD_ARGS = --experimental-features nix-command
 define announce
 	@echo
 	@echo '┌────────────────────────────────────────────────────────────────────────────┐'
@@ -21,17 +21,17 @@ all: build
 
 init:
 	$(call announce,nix init)
-	@$(NIX) build -f default.nix
+	@$(NIX) build $(BUILD_ARGS) -f default.nix
 	@./result/activate
 
 debug:
 	$(call announce,nix debug)
-	@$(NIX) build -f default --show-trace
+	@$(NIX) build $(BUILD_ARGS) -f default --show-trace
 	@rm -f result*
 
 build:
 	$(call announce,nix build)
-	@$(NIX) build -f default.nix
+	@$(NIX) build $(BUILD_ARGS) -f default.nix
 	@rm -f result*
 
 switch:
