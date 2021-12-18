@@ -79,7 +79,7 @@ myManagementHooks =
       className =? "Firefox" --> doShift "web",
       className =? "clipboard-google-translate" --> doFloat,
       className =? "QjackCtl" --> doFloat,
-      className =? "lmms" --> doIgnore,
+      className =? "lmms" --> doFloat,
       className =? "Ardour" --> doFloat
     ]
 

@@ -1,14 +1,14 @@
-{ pkgs, options, config, lib, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
-  options.modules.services.rofi = {
+  options.modules.desktop.rofi = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
   };
 
-  config = mkIf config.modules.services.rofi.enable {
+  config = mkIf config.modules.desktop.rofi.enable {
     home.packages = with pkgs; [ rofi ];
   };
 }

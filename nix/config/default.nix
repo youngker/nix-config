@@ -5,6 +5,7 @@
     ./fzf.nix
     ./git.nix
     ./go.nix
+    ./gtk.nix
     ./picom.nix
     ./rofi.nix
     ./starship.nix

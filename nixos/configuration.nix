@@ -1,10 +1,10 @@
 { pkgs, config, lib, ... }:
 
-let config = import ../config.nix;
+let
+  var = import ../config.nix;
 
 in {
   imports = [ <home-manager/nixos> ./hardware-configuration.nix ./modules ];
-
   nixpkgs.config = {
     allowBroken = true;
     allowInsecure = true;
@@ -13,10 +13,10 @@ in {
   };
 
   home-manager = {
-    users.${config.username} = { imports = [ ../nix/home.nix ]; };
+    users.${var.username} = { imports = [ ../nix/home.nix ]; };
   };
 
-  users.users.${config.username} = {
+  users.users.${var.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "audio" "jackaudio" "docker" ];
     shell = pkgs.zsh;
@@ -43,4 +43,6 @@ in {
 
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
+  services.dbus.packages = with pkgs; [ gnome3.dconf ];
+
 }

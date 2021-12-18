@@ -1,4 +1,4 @@
-{ pkgs, lib, config, options, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   options.modules.base.utils = {
@@ -46,6 +46,8 @@ with lib; {
       stow
       tree
       unrar
+      qt5ct
+      dconf
       unzip
       wget
     ];

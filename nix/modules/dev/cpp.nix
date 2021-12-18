@@ -1,4 +1,4 @@
-{ pkgs, lib, config, options, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   options.modules.dev.cpp = {

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib;
 let
@@ -6,7 +6,7 @@ let
   inherit (pkgs.stdenv) isDarwin isLinux;
   home = config.home.homeDirectory;
 in {
-  config = mkIf config.modules.services.alacritty.enable {
+  config = mkIf config.modules.apps.alacritty.enable {
     xdg = {
       enable = true;
       configFile."terminfo/xterm-24bit" = {
@@ -23,6 +23,7 @@ in {
     };
 
     programs.alacritty = {
+      enable = true;
       settings = {
         env.TERM = "xterm-24bit";
         background_opacity = 0.98;
@@ -36,7 +37,7 @@ in {
         };
         scrolling.history = 10000;
         font.normal = {
-          family = "Fira Code";
+          family = "Monaco";
           style = "Book";
         };
         font.size = 11.0;
@@ -381,17 +382,12 @@ in {
           }
         ];
       };
-    } // optionalAttrs isLinux {
-      package = pkgs.writeShellScriptBin "alacritty" ''
-        #!/bin/sh
-        ${pkgs.alacritty}/bin/alacritty "$@"
-      '';
     };
   };
 }
-
-      # package = pkgs.writeShellScriptBin "alacritty" ''
-      #   #!/bin/sh
-      #   ${pkgs.nixGL}/bin/nixGL
-      #   ${pkgs.alacritty}/bin/alacritty "$@"
-      # '';
+  # // optionalAttrs isLinux {
+  # package = pkgs.writeShellScriptBin "alacritty" ''
+  #   #!/bin/sh
+  #   ${pkgs.nixGL}/bin/nixGL
+  #   ${pkgs.alacritty}/bin/alacritty "$@"
+  # '';

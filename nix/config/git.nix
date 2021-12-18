@@ -1,8 +1,9 @@
-{ pkgs, config, lib, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   config = mkIf config.modules.dev.git.enable {
     programs.git = {
+      enable = true;
 #      package = pkgs.gitFull;
       aliases = {
         amend = "commit --amend -C HEAD";

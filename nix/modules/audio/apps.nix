@@ -1,4 +1,4 @@
-{ config, pkgs, options, lib, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   options.modules.audio.apps = {

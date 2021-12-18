@@ -1,8 +1,9 @@
-{ pkgs, lib, config, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
-  config = mkIf config.modules.services.rofi.enable {
+  config = mkIf config.modules.desktop.rofi.enable {
     programs.rofi = {
+      enable = true;
       theme = builtins.toString (pkgs.writeText "rofi-theme" ''
         configuration {
           display-drun:    "Activate";

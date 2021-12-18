@@ -1,12 +1,7 @@
 {
   imports = [
-    ./alacritty.nix
+    ./dunst.nix
     ./emacs.nix
-    ./fzf.nix
     ./picom.nix
-    ./rofi.nix
-    ./starship.nix
-    ./xmobar.nix
-    ./zsh.nix
   ];
 }

@@ -1,1 +1,12 @@
-{ imports = [ ./pandoc.nix ./amethyst.nix ./bingwallpaper.nix ./firefox.nix ]; }
+{
+  imports = [
+    ./alacritty.nix
+    ./amethyst.nix
+    ./bingwallpaper.nix
+    ./fzf.nix
+    ./firefox.nix
+    ./pandoc.nix
+    ./starship.nix
+    ./zsh.nix
+  ];
+}

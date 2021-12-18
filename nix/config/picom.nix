@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   config = mkIf config.modules.services.picom.enable {

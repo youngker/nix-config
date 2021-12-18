@@ -1,11 +1,12 @@
 {
   imports = [
+    ./clojure.nix
+    ./cpp.nix
     ./emacs.nix
     ./git.nix
-    ./rust.nix
-    ./haskell.nix
-    ./cpp.nix
-    ./nix.nix
     ./go.nix
+    ./haskell.nix
+    ./nix.nix
+    ./rust.nix
   ];
 }

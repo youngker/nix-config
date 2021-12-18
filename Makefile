@@ -38,8 +38,15 @@ switch:
 	$(call announce,home-manager switch)
 	@$(HOME_MANAGER) -f ./nix/home.nix switch
 
-.PHONY: nixos
-nixos:
+os-debug:
+	$(call announce,nixos-rebuild debug)
+	@nixos-rebuild build --show-trace
+
+os-build:
+	$(call announce,nixos-rebuild build)
+	@nixos-rebuild build
+
+os-switch:
 	$(call announce,nixos-rebuild switch)
 	@nixos-rebuild switch
 

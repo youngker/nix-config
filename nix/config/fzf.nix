@@ -1,7 +1,7 @@
-{ pkgs, lib, config, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
-  config = mkIf config.modules.services.fzf.enable {
+  config = mkIf config.modules.apps.fzf.enable {
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;

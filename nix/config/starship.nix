@@ -2,7 +2,7 @@
 
 with lib;
 {
-config = mkIf config.modules.services.starship.enable {
+config = mkIf config.modules.apps.starship.enable {
   programs.starship = {
     enable = true;
     enableBashIntegration = false;

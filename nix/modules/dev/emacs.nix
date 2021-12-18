@@ -1,4 +1,4 @@
-{ pkgs, config, options, lib, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib;
 {
@@ -10,6 +10,6 @@ with lib;
   };
 
   config = mkIf config.modules.dev.emacs.enable {
-    programs.emacs.enable = true;
+    home.packages = with pkgs; [ emacs ];
   };
 }

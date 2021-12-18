@@ -1,4 +1,4 @@
-{ pkgs, lib, options, config, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   options.modules.desktop.font = {

@@ -1,7 +1,7 @@
-{ pkgs, lib, ... }:
+{ lib, pkgs, ... }:
 
 let
-  config = import ../config.nix;
+  var = import ../config.nix;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
 in {
@@ -16,16 +16,20 @@ in {
 
   manual.manpages.enable = false;
 
-  modules.audio = {
-    apps.enable = isLinux;
-    jack.enable = isLinux;
-  };
-
   modules.apps = {
+    alacritty.enable = true;
     amethyst.enable = isDarwin;
     bingwallpaper.enable = true;
     firefox.enable = isLinux;
+    fzf.enable = true;
     pandoc.enable = true;
+    starship.enable = true;
+    zsh.enable = true;
+  };
+
+  modules.audio = {
+    apps.enable = isLinux;
+    jack.enable = isLinux;
   };
 
   modules.base = {
@@ -34,12 +38,16 @@ in {
   };
 
   modules.desktop = {
+    font.enable = true;
+    gtk.enable = isLinux;
+    rofi.enable = isLinux;
+    xmobar.enable = isLinux;
     xmonad.enable = isLinux;
     xorg.enable = isLinux;
-    font.enable = true;
   };
 
   modules.dev = {
+    clojure.enable = true;
     cpp.enable = isLinux;
     emacs.enable = true;
     git.enable = true;
@@ -50,14 +58,9 @@ in {
   };
 
   modules.services = {
-    alacritty.enable = true;
+    dunst.enable = isLinux;
     emacs.enable = isLinux;
-    fzf.enable = true;
     picom.enable = isLinux;
-    rofi.enable = isLinux;
-    starship.enable = true;
-    xmobar.enable = isLinux;
-    zsh.enable = true;
   };
 
   programs.home-manager = {
@@ -66,11 +69,11 @@ in {
   };
 
   home = {
-    username = "${config.username}";
+    username = "${var.username}";
     homeDirectory = if isDarwin then
-      "/Users/${config.username}"
+      "/Users/${var.username}"
     else
-      "/home/${config.username}";
+      "/home/${var.username}";
     stateVersion = "21.11";
     sessionVariablesExtra = ''
       . "${pkgs.nix}/etc/profile.d/nix.sh"

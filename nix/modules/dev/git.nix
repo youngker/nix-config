@@ -1,4 +1,4 @@
-{ pkgs, lib, config, options, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   options.modules.dev.git = {
@@ -9,7 +9,6 @@ with lib; {
   };
 
   config = mkIf config.modules.dev.git.enable {
-    home.packages = with pkgs; [ git cacert ];
-    programs.git.enable = true;
+    home.packages = with pkgs; [ git ];
   };
 }

@@ -1,14 +1,14 @@
-{ pkgs, config, options, lib, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
-  options.modules.services.xmobar = {
+  options.modules.desktop.xmobar = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
   };
 
-  config = mkIf config.modules.services.xmobar.enable {
+  config = mkIf config.modules.desktop.xmobar.enable {
     home.packages = with pkgs; [ xmobar ];
   };
 }

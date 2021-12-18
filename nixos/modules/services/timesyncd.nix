@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
-
-with lib; {
+let var = import ../../../config.nix;
+in with lib; {
   options.modules.services.timesyncd = {
     enable = mkOption {
       type = types.bool;
@@ -9,7 +9,7 @@ with lib; {
   };
 
   config = mkIf config.modules.services.timesyncd.enable {
-    time.timeZone = "Asia/Seoul";
+    time.timeZone = var.timezone;
     services.timesyncd.enable = true;
   };
 }

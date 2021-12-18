@@ -1,7 +1,7 @@
-{ pkgs, lib, config, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
-  config = mkIf config.modules.services.zsh.enable {
+  config = mkIf config.modules.apps.zsh.enable {
     programs.zsh = rec {
       enable = true;
       enableCompletion = false;

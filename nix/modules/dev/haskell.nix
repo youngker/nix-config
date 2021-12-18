@@ -1,4 +1,4 @@
-{ pkgs, options, config, lib, ... }:
+{ lib, pkgs, config, ... }:
 
 with lib; {
   options.modules.dev.haskell = {
