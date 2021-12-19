@@ -10,5 +10,6 @@ with lib; {
 
   config = mkIf config.modules.services.dunst.enable {
     services.dunst.enable = true;
+    home.packages = with pkgs; [ libnotify ];
   };
 }

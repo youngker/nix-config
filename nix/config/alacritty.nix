@@ -38,9 +38,9 @@ in {
         scrolling.history = 10000;
         font.normal = {
           family = "Monaco";
-          style = "Book";
+          style = "Regular";
         };
-        font.size = 11.0;
+        font.size = 13.0;
         colors = {
           primary = {
             background = "#2E3440";

@@ -1,4 +1,11 @@
 {
-  imports =
-    [ ./xmonad.nix ./xorg.nix ./font.nix ./gtk.nix ./xmobar.nix ./rofi.nix ];
+  imports = [
+    ./font.nix
+    ./gtk.nix
+    ./qt.nix
+    ./rofi.nix
+    ./xmobar.nix
+    ./xmonad.nix
+    ./xorg.nix
+  ];
 }

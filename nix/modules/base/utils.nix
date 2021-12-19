@@ -46,7 +46,6 @@ with lib; {
       stow
       tree
       unrar
-      qt5ct
       dconf
       unzip
       wget

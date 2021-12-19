@@ -10,6 +10,6 @@ with lib;
   };
 
   config = mkIf config.modules.dev.emacs.enable {
-    home.packages = with pkgs; [ emacs ];
+#    home.packages = with pkgs; [ emacs ];
   };
 }

@@ -9,9 +9,7 @@ with lib; {
   };
 
   config = mkIf config.modules.dev.clojure.enable {
-    home.packages = with pkgs; [
-      clojure
-      clojure-lsp
-    ];
+    home.packages = with pkgs;
+      [ clojure ] ++ optionals pkgs.stdenv.isLinux [ clojure-lsp ];
   };
 }

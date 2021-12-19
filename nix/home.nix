@@ -40,6 +40,7 @@ in {
   modules.desktop = {
     font.enable = true;
     gtk.enable = isLinux;
+    qt.enable = isLinux;
     rofi.enable = isLinux;
     xmobar.enable = isLinux;
     xmonad.enable = isLinux;

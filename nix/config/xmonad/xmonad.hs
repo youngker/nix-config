@@ -80,6 +80,8 @@ myManagementHooks =
       className =? "clipboard-google-translate" --> doFloat,
       className =? "QjackCtl" --> doFloat,
       className =? "lmms" --> doFloat,
+      className =? "Pavucontrol" --> doFloat,
+      className =? "Carla2" --> doFloat,
       className =? "Ardour" --> doFloat
     ]
 
