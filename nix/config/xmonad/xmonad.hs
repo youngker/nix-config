@@ -31,9 +31,9 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.WorkspaceCompare
 
-myAppLauncherApp = "rofi -show run"
+myAppLauncherApp = "rofi -show drun -modi drun,run -show-icons"
 
-myBrowserApp = "google-chrome --no-sandbox"
+myBrowserApp = "google-chrome-stable --no-sandbox"
 
 myTerminalApp = "alacritty"
 
