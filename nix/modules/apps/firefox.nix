@@ -9,6 +9,6 @@ with lib; {
   };
 
   config = mkIf config.modules.apps.firefox.enable {
-    home.packages = with pkgs; [ firefox ];
+    home.packages = with pkgs; [ firefox google-chrome ];
   };
 }

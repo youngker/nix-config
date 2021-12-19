@@ -128,8 +128,6 @@ confShowWName =
 
 startup =
   [ "bingwallpaper",
-    "ibus-daemon",
-    "xrdb ~/.Xresources",
     "setxkbmap -option ctrl:nocaps"
   ]
 

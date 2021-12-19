@@ -53,9 +53,13 @@ in {
     emacs.enable = true;
     git.enable = true;
     go.enable = true;
-    haskell.enable = false;
+    haskell.enable = isLinux;
     nix.enable = true;
     rust.enable = true;
+  };
+
+  modules.graphic = {
+    apps.enable = isLinux;
   };
 
   modules.services = {
@@ -68,6 +72,13 @@ in {
     enable = true;
     path = "./home-manager";
   };
+
+  # dconf.settings = {
+  #   "org/freedesktop/ibus/engine/hangul" = {
+  #     initial-input-mode = "hangul";
+  #     switch-keys = "Control+space";
+  #   };
+  # };
 
   home = {
     username = "${var.username}";

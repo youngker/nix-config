@@ -43,6 +43,13 @@ in {
 
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
-  services.dbus.packages = with pkgs; [ gnome3.dconf ];
 
+  i18n = {
+    inputMethod = {
+      enabled = "ibus";
+      ibus = {
+        engines = with pkgs.ibus-engines; [ hangul ];
+      };
+    };
+  };
 }

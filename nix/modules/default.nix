@@ -1,1 +1,11 @@
-{ imports = [ ./audio ./apps ./services ./dev ./base ./desktop ]; }
+{
+  imports = [
+    ./apps
+    ./audio
+    ./base
+    ./desktop
+    ./dev
+    ./graphic
+    ./services
+  ];
+}
