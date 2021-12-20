@@ -1,5 +1,6 @@
 module Main where
 
+import Data.Char (toUpper)
 import Data.Foldable
 import qualified Data.Map as M
 import Data.Maybe
@@ -23,9 +24,13 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.ShowWName
 import XMonad.Layout.Spacing
 import XMonad.Layout.Tabbed
+import XMonad.Layout.WorkspaceDir (changeDir)
 import XMonad.Prompt
 import XMonad.Prompt.Input
+import XMonad.Prompt.Man
+import XMonad.Prompt.Shell
 import XMonad.Prompt.RunOrRaise
+import XMonad.Prompt.FuzzyMatch (fuzzyMatch, fuzzySort)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
@@ -59,15 +64,25 @@ _XPConfig :: XPConfig
 _XPConfig =
   def
     { font = "xft:Lucida Grande:bold:size=20",
-      promptBorderWidth = 0,
-      position = CenteredAt 0.1 0.7,
-      height = 50,
+      autoComplete = Nothing,
+      bgColor = "#1E2029",
+      bgHLight = "#cc6666",
+      borderColor = "#282a36",
+      changeModeKey = xK_semicolon,
+      completionKey = (0,xK_Tab),
+      defaultPrompter = id $ map toUpper,
+      defaultText = [],
+      fgColor = "#bbc2cf",
+      fgHLight = "#282a36",
+      height = 80,
+      historyFilter = deleteAllDuplicates,
       historySize = 256,
-      bgColor = color InActiveTabBackground,
-      fgColor = color CurrentTitle,
-      bgHLight = color VisibleWorkspace,
-      defaultText = "",
-      autoComplete = Nothing
+      maxComplRows = Just 10,
+      position = CenteredAt 0.1 0.7,
+      promptBorderWidth = 5,
+      searchPredicate = fuzzyMatch,
+      showCompletionOnTab = False,
+      sorter = fuzzySort
     }
 
 myPlacement = withGaps (0, 0, 0, 0) (smart (0.5, 0.5))
@@ -160,7 +175,6 @@ additionalKey =
     ("M-l", sendMessage Expand),
     ("M-z", sendMessage $ Toggle FULL),
     ("M-t", withFocused $ windows . W.sink),
-    ("M-<Return>", spawn myAppLauncherApp),
     ("M-S-<Return>", spawn myTerminalApp),
     ("M-S-b", spawn myBrowserApp),
     ("<F9>", spawn "xmonad --recompile"),
@@ -170,7 +184,10 @@ additionalKey =
 myComplexKeys :: [((KeyMask, KeySym), X ())]
 myComplexKeys =
   [ ((mod1Mask, xK_F1), commandPrompt _XPConfig "command" commands),
-    ((mod1Mask, xK_F2), runOrRaisePrompt _XPConfig)
+    ((mod1Mask, xK_F2), changeDir _XPConfig),
+    ((mod1Mask, xK_F3), shellPrompt _XPConfig),
+    ((mod1Mask, xK_F4), manPrompt _XPConfig),
+    ((mod1Mask, xK_Return), runOrRaisePrompt _XPConfig)
   ]
 
 keyboard conf@XConfig {XMonad.modMask = modm} =
