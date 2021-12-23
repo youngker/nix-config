@@ -36,17 +36,13 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.WorkspaceCompare
 
-myAppLauncherApp = "rofi -show drun -modi drun,run -show-icons"
-
 myBrowserApp = "google-chrome-stable --no-sandbox"
 
 myTerminalApp = "alacritty"
 
-myEditorApp = "emacsclient -c"
-
 commandPrompt :: XPConfig -> String -> M.Map String (X ()) -> X ()
 commandPrompt c p m =
-  inputPromptWithCompl c p (mkComplFunFromList (M.keys m))
+  inputPromptWithCompl c p (mkComplFunFromList c (M.keys m))
     ?+ (\k -> fromMaybe (return ()) (M.lookup k m))
 
 commands :: M.Map String (X ())
