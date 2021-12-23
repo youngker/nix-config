@@ -11,6 +11,7 @@ with lib; {
   config = mkIf config.modules.audio.apps.enable {
     home.packages = with pkgs; [
       ardour
+      pulseaudio # only pactl
       calf
       carla
       fluidsynth
