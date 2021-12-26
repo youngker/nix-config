@@ -10,6 +10,6 @@ with lib; {
 
   config = mkIf config.modules.dev.clojure.enable {
     home.packages = with pkgs;
-      [ clojure babashka ] ++ optionals pkgs.stdenv.isLinux [ clojure-lsp ];
+      [ clojure ] ++ optionals pkgs.stdenv.isLinux [ babashka clojure-lsp ];
   };
 }

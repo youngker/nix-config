@@ -22,9 +22,19 @@ install nixos
 ```bash
 nix-shell -p git
 git clone --recursive https://github.com/youngker/nix-config /mnt/etc/nixos
+
 edit config.nix
+
 nixos-generate-config --root /mnt --dir /etc/nixos/nixos
-nixos-install --root /mnt
+
+cd /mnt/etc/nixos
+ln -s nixos/configuration configuration
+
+make os-init
+```
+init: nixos-install
+```bash
+make os-init
 ```
 build: nixos-rebuild build
 ```bash

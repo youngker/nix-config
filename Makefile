@@ -20,11 +20,6 @@ init:
 	@$(NIX) build $(BUILD_ARGS) -f default.nix
 	@./result/activate
 
-debug:
-	$(call announce,nix debug)
-	@$(NIX) build $(BUILD_ARGS) -f default.nix --show-trace
-	@rm -f result*
-
 build:
 	$(call announce,nix build)
 	@$(NIX) build $(BUILD_ARGS) -f default.nix
@@ -34,9 +29,14 @@ switch:
 	$(call announce,home-manager switch)
 	@$(HOME_MANAGER) -f ./nix/home.nix switch
 
-os-debug:
-	$(call announce,nixos-rebuild debug)
-	@nixos-rebuild build --show-trace
+debug:
+	$(call announce,nix debug)
+	@$(NIX) build $(BUILD_ARGS) -f default.nix --show-trace
+	@rm -f result*
+
+os-init:
+	$(call announce,nixos-install)
+	@nixos-install
 
 os-build:
 	$(call announce,nixos-rebuild build)
@@ -45,6 +45,10 @@ os-build:
 os-switch:
 	$(call announce,nixos-rebuild switch)
 	@nixos-rebuild switch
+
+os-debug:
+	$(call announce,nixos-rebuild debug)
+	@nixos-rebuild build --show-trace
 
 news:
 	$(call announce,home-manager news)
