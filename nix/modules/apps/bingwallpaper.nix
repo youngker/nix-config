@@ -10,6 +10,6 @@ with lib;
   };
 
   config = mkIf config.modules.apps.bingwallpaper.enable {
-    home.packages = with pkgs; [ bingwallpaper ];
+    home.packages = with pkgs; [ my.bingwallpaper ];
   };
 }

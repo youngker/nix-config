@@ -5,11 +5,16 @@ let
   inherit (pkgs.stdenv) isDarwin isLinux;
 
 in {
-  nixpkgs.config = {
-    allowBroken = true;
-    allowInsecure = true;
-    allowUnfree = true;
-    allowUnsupportedSystem = false;
+  nixpkgs = {
+    overlays = lib.singleton (self: lib.const {
+      inherit (import ./packages {pkgs = self;}) my;
+    });
+    config = {
+      allowBroken = true;
+      allowInsecure = true;
+      allowUnfree = true;
+      allowUnsupportedSystem = false;
+    };
   };
 
   imports = [ ./nix-overlays ./modules ./config ];
@@ -18,7 +23,6 @@ in {
 
   modules.apps = {
     alacritty.enable = true;
-    amethyst.enable = isDarwin;
     bingwallpaper.enable = true;
     firefox.enable = isLinux;
     fzf.enable = true;
@@ -60,6 +64,11 @@ in {
 
   modules.graphic = {
     apps.enable = isLinux;
+  };
+
+  modules.macos = {
+    amethyst.enable = isDarwin;
+    rectangle.enable = isDarwin;
   };
 
   modules.services = {

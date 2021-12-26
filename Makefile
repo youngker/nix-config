@@ -1,14 +1,10 @@
 NIX_PATH = nixpkgs=./nixpkgs:home-manager=./home-manager:nixos-config=./nixos/configuration.nix
 PRENIX := PATH=$(PATH) NIX_PATH=$(NIX_PATH)
 
-NIX       = $(PRENIX) nix
-NIX_BUILD = $(PRENIX) nix-build
-NIX_ENV   = $(PRENIX) nix-env
-NIX_SHELL = $(PRENIX) nix-shell
-NIX_STORE = $(PRENIX) nix-store
-NIX_GC    = $(PRENIX) nix-collect-garbage
+NIX          = $(PRENIX) nix
+BUILD_ARGS   = --experimental-features nix-command
 HOME_MANAGER = $(PRENIX) home-manager
-BUILD_ARGS = --experimental-features nix-command
+
 define announce
 	@echo
 	@echo '┌────────────────────────────────────────────────────────────────────────────┐'
@@ -26,7 +22,7 @@ init:
 
 debug:
 	$(call announce,nix debug)
-	@$(NIX) build $(BUILD_ARGS) -f default --show-trace
+	@$(NIX) build $(BUILD_ARGS) -f default.nix --show-trace
 	@rm -f result*
 
 build:

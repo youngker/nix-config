@@ -6,6 +6,7 @@
     ./desktop
     ./dev
     ./graphic
+    ./macos
     ./services
   ];
 }
