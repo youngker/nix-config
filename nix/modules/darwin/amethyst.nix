@@ -2,14 +2,14 @@
 
 with lib;
 {
-  options.modules.macos.amethyst = {
+  options.modules.darwin.amethyst = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
   };
 
-  config = mkIf config.modules.macos.amethyst.enable {
+  config = mkIf config.modules.darwin.amethyst.enable {
     home.packages = with pkgs; [ my.amethyst ];
   };
 }

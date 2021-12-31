@@ -2,14 +2,14 @@
 
 with lib;
 {
-  options.modules.macos.rectangle = {
+  options.modules.darwin.rectangle = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
   };
 
-  config = mkIf config.modules.macos.rectangle.enable {
+  config = mkIf config.modules.darwin.rectangle.enable {
     home.packages = with pkgs; [ my.rectangle ];
   };
 }

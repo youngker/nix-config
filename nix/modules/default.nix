@@ -6,7 +6,7 @@
     ./desktop
     ./dev
     ./graphic
-    ./macos
+    ./darwin
     ./services
   ];
 }

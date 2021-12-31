@@ -1,6 +1,8 @@
 {
   imports = [
     ./alacritty.nix
+    ./amethyst.nix
+    ./darwin-settings.nix
     ./emacs.nix
     ./fzf.nix
     ./git.nix

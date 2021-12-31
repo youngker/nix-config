@@ -66,9 +66,10 @@ in {
     apps.enable = isLinux;
   };
 
-  modules.macos = {
+  modules.darwin = {
     amethyst.enable = isDarwin;
     rectangle.enable = isDarwin;
+    darwin-settings.enable = isDarwin;
   };
 
   modules.services = {
