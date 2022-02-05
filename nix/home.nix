@@ -57,7 +57,7 @@ in {
     emacs.enable = true;
     git.enable = true;
     go.enable = true;
-    haskell.enable = isLinux;
+    haskell.enable = true;
     nix.enable = true;
     rust.enable = true;
   };

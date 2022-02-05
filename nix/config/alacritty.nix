@@ -26,7 +26,6 @@ in {
       enable = true;
       settings = {
         env.TERM = "xterm-24bit";
-        background_opacity = 0.98;
         # alt_send_esc = false;
         window = {
           padding = {
@@ -34,6 +33,7 @@ in {
             y = 10;
           };
           decorations = "none";
+          opacity = 0.98;
         };
         scrolling.history = 10000;
         font.normal = {
