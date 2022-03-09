@@ -352,13 +352,18 @@ in {
           }
           {
             key = "Period";
+            mods = "Alt";
+            chars = "\\x1b.";
+          }
+          {
+            key = "Period";
             mods = "Alt|Shift";
             chars = "\\x1b>";
           }
           {
             key = "Comma";
             mods = "Alt";
-            chars = "\\x1b.";
+            chars = "\\x1b,";
           }
           {
             key = "Comma";
@@ -379,6 +384,11 @@ in {
             key = "Slash";
             mods = "Control";
             chars = "\\x1f";
+          }
+          {
+            key = "Space";
+            mods = "Control";
+            chars = "\\x00";
           }
         ];
       };
