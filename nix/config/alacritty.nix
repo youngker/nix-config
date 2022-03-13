@@ -11,11 +11,17 @@ in {
       enable = true;
       configFile."terminfo/xterm-24bit" = {
         text = ''
+          # Use colon separators.
           xterm-24bit|xterm with 24-bit direct color mode,
-           use=xterm-256color,
-           setb24=\E[48:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
-           setf24=\E[38:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
-        '';
+              use=xterm-256color,
+              setb24=\E[48:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
+              setf24=\E[38:2:%p1%{65536}%/%d:%p1%{256}%/%{255}%&%d:%p1%{255}%&%dm,
+          # Use semicolon separators.
+          xterm-24bits|xterm with 24-bit direct color mode,
+              use=xterm-256color,
+              setb24=\E[48;2;%p1%{65536}%/%d;%p1%{256}%/%{255}%&%d;%p1%{255}%&%dm,
+              setf24=\E[38;2;%p1%{65536}%/%d;%p1%{256}%/%{255}%&%d;%p1%{255}%&%dm,
+                  '';
         onChange = ''
           ${pkgs.ncurses}/bin/tic -x -o ${home}/.terminfo ${home}/.config/terminfo/xterm-24bit
         '';
@@ -390,14 +396,19 @@ in {
             mods = "Control";
             chars = "\\x00";
           }
+          {
+            key = "Key9";
+            mods = "Alt|Shift";
+            chars = "\\x1b{";
+          }
         ];
       };
     };
   };
 }
-  # // optionalAttrs isLinux {
-  # package = pkgs.writeShellScriptBin "alacritty" ''
-  #   #!/bin/sh
-  #   ${pkgs.nixGL}/bin/nixGL
-  #   ${pkgs.alacritty}/bin/alacritty "$@"
-  # '';
+# // optionalAttrs isLinux {
+# package = pkgs.writeShellScriptBin "alacritty" ''
+#   #!/bin/sh
+#   ${pkgs.nixGL}/bin/nixGL
+#   ${pkgs.alacritty}/bin/alacritty "$@"
+# '';

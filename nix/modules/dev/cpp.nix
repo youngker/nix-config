@@ -10,7 +10,7 @@ with lib; {
 
   config = mkIf config.modules.dev.cpp.enable {
     home.packages = with pkgs; [
-      clang_12
+      clang_13
       clang-analyzer
       clang-tools
     ];

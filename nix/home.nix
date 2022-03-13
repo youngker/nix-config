@@ -6,9 +6,8 @@ let
 
 in {
   nixpkgs = {
-    overlays = lib.singleton (self: lib.const {
-      inherit (import ./packages {pkgs = self;}) my;
-    });
+    overlays = lib.singleton
+      (self: lib.const { inherit (import ./packages { pkgs = self; }) my; });
     config = {
       allowBroken = true;
       allowInsecure = true;
@@ -53,7 +52,7 @@ in {
 
   modules.dev = {
     clojure.enable = true;
-    cpp.enable = isLinux;
+    cpp.enable = true;
     emacs.enable = true;
     git.enable = true;
     go.enable = true;
@@ -62,9 +61,7 @@ in {
     rust.enable = true;
   };
 
-  modules.graphic = {
-    apps.enable = isLinux;
-  };
+  modules.graphic = { apps.enable = isLinux; };
 
   modules.darwin = {
     amethyst.enable = isDarwin;
@@ -92,12 +89,15 @@ in {
 
   home = {
     username = "${var.username}";
-    homeDirectory = if isDarwin then
-      "/Users/${var.username}"
-    else
-      "/home/${var.username}";
+    homeDirectory =
+      if isDarwin then "/Users/${var.username}" else "/home/${var.username}";
     stateVersion = "21.11";
-    sessionVariablesExtra = ''
+    sessionVariables = {
+      TERMINFO_DIRS = "~/.config/terminfo";
+    };
+    sessionVariablesExtra = if isDarwin then ''
+      . "${pkgs.nix}/etc/profile.d/nix-daemon.sh"
+    '' else ''
       . "${pkgs.nix}/etc/profile.d/nix.sh"
     '';
   };
