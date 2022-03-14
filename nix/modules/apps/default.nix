@@ -7,5 +7,6 @@
     ./pandoc.nix
     ./starship.nix
     ./zsh.nix
+    ./xterm-24bit.nix
   ];
 }

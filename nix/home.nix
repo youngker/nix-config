@@ -28,6 +28,7 @@ in {
     pandoc.enable = true;
     starship.enable = true;
     zsh.enable = true;
+    xterm-24bit.enable = true;
   };
 
   modules.audio = {
@@ -93,7 +94,7 @@ in {
       if isDarwin then "/Users/${var.username}" else "/home/${var.username}";
     stateVersion = "21.11";
     sessionVariables = {
-      TERMINFO_DIRS = "~/.config/terminfo";
+      TERMINFO = "~/.nix-profile/share/terminfo";
     };
     sessionVariablesExtra = if isDarwin then ''
       . "${pkgs.nix}/etc/profile.d/nix-daemon.sh"

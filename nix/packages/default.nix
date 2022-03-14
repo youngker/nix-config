@@ -10,5 +10,6 @@ let
     karabiner = callPackage ./karabiner.nix { };
     nixGL = callPackage ./nixGL.nix { };
     rectangle = callPackage ./rectangle.nix { };
+    xterm-24bit = callPackage ./xterm-24bit { };
   };
 in pkgs // { inherit my; }

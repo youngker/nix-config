@@ -10,6 +10,7 @@ with lib; {
 
   config = mkIf config.modules.base.utils.enable {
     home.packages = with pkgs; [
+      ncurses
       bat
       cachix
       codesearch
