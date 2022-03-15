@@ -93,9 +93,6 @@ in {
     homeDirectory =
       if isDarwin then "/Users/${var.username}" else "/home/${var.username}";
     stateVersion = "21.11";
-    sessionVariables = {
-      TERMINFO = "~/.nix-profile/share/terminfo";
-    };
     sessionVariablesExtra = if isDarwin then ''
       . "${pkgs.nix}/etc/profile.d/nix-daemon.sh"
     '' else ''

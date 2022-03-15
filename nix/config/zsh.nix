@@ -37,7 +37,7 @@ with lib; {
         PROMPT = "%m %~ $ ";
         PROMPT_DIRTRIM = "2";
         RPROMPT = "";
-        TERM = "xterm-24bit";
+        TERMINFO_DIRS = "$HOME/.nix-profile/share/terminfo";
         TINC_USE_NIX = "yes";
         WORDCHARS = "";
         QT_QPA_PLATFORMTHEME = "qt5ct";
