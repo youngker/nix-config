@@ -99,4 +99,8 @@ in {
       . "${pkgs.nix}/etc/profile.d/nix.sh"
     '';
   };
+
+  xdg.configFile."nix/nix.conf".text = ''
+    experimental-features = nix-command flakes
+  '';
 }

@@ -378,7 +378,12 @@ in {
           {
             key = "Key9";
             mods = "Alt|Shift";
-            chars = "\\x1b{";
+            chars = "\\x1b(";
+          }
+          {
+            key = "Key0";
+            mods = "Alt|Shift";
+            chars = "\\x1b)";
           }
         ];
       };

@@ -33,14 +33,15 @@ with lib; {
         LEDGER_COLOR = "true";
         LESS = "-FRSXM";
         LESSCHARSET = "utf-8";
+        NIX_PATH = "nixpkgs=${toString <nixpkgs>}";
         PAGER = "less";
         PROMPT = "%m %~ $ ";
         PROMPT_DIRTRIM = "2";
+        QT_QPA_PLATFORMTHEME = "qt5ct";
         RPROMPT = "";
         TERMINFO_DIRS = "$HOME/.nix-profile/share/terminfo";
         TINC_USE_NIX = "yes";
         WORDCHARS = "";
-        QT_QPA_PLATFORMTHEME = "qt5ct";
       };
 
       shellAliases = {
