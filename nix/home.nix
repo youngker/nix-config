@@ -92,7 +92,7 @@ in {
     username = "${var.username}";
     homeDirectory =
       if isDarwin then "/Users/${var.username}" else "/home/${var.username}";
-    stateVersion = "21.11";
+    stateVersion = "22.05";
     sessionVariablesExtra = if isDarwin then ''
       . "${pkgs.nix}/etc/profile.d/nix-daemon.sh"
     '' else ''
