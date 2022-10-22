@@ -42,7 +42,7 @@ in {
   };
 
   modules.desktop = {
-    font.enable = true;
+    font.enable = isLinux;
     gtk.enable = isLinux;
     qt.enable = isLinux;
     rofi.enable = isLinux;

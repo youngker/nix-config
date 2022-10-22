@@ -10,11 +10,12 @@ with lib; {
 
   config = mkIf config.modules.base.utils.enable {
     home.packages = with pkgs; [
-      ncurses
       bat
       cachix
+      cmake
       codesearch
       curl
+      dconf
       exa
       fd
       feh
@@ -35,6 +36,7 @@ with lib; {
       less
       lsof
       more
+      ncurses
       nixfmt
       nixpkgs-fmt
       p7zip
@@ -47,7 +49,6 @@ with lib; {
       stow
       tree
       unrar
-      dconf
       unzip
       wget
     ];
