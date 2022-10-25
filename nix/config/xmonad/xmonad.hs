@@ -173,8 +173,8 @@ additionalKey =
     ("M-t", withFocused $ windows . W.sink),
     ("M-S-<Return>", spawn myTerminalApp),
     ("M-S-b", spawn myBrowserApp),
-    ("M-<Down>", spawn "pactl set-sink-volume 45 -5%"),
-    ("M-<Up>", spawn "pactl set-sink-volume 45 +5%"),
+    ("M-<Down>", spawn "pactl set-sink-volume 50 -5%"),
+    ("M-<Up>", spawn "pactl set-sink-volume 50 +5%"),
     ("<F9>", spawn "xmonad --recompile"),
     ("<F10>", spawn "xmonad --recompile; xmonad --restart")
   ]
