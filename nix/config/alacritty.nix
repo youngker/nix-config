@@ -5,7 +5,8 @@ let
   inherit (lib) optionals optionalAttrs;
   inherit (pkgs.stdenv) isDarwin isLinux;
   home = config.home.homeDirectory;
-in {
+in
+{
   config = mkIf config.modules.apps.alacritty.enable {
     programs.alacritty = {
       enable = true;

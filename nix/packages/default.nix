@@ -12,4 +12,5 @@ let
     rectangle = callPackage ./rectangle.nix { };
     xterm-24bit = callPackage ./xterm-24bit { };
   };
-in pkgs // { inherit my; }
+in
+pkgs // { inherit my; }

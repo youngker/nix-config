@@ -12,8 +12,9 @@ with lib; {
     services.xserver = {
       enable = true;
       desktopManager.xterm.enable = true;
-      videoDrivers = [ "nvidia" ];
+      displayManager.gdm.enable = true;
       layout = "us";
+      videoDrivers = [ "nvidia" ];
     };
   };
 }

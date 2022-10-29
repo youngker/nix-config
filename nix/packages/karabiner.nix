@@ -13,7 +13,7 @@ self: super: {
       };
       nativeBuildInputs = [ undmg unzip ];
       phases = [ "unpackPhase" "installPhase" ];
-      sourceRoot = ".";#Karabiner-Elements.app";
+      sourceRoot = "."; #Karabiner-Elements.app";
       installPhase = ''
         mkdir -p "$out/Applications/${name}.app"
         cp -pR * "$out/Applications/${name}.app"

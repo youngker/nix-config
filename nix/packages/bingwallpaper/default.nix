@@ -1,4 +1,4 @@
-{lib, pkgs, rustPlatform, pkg-config, openssl, darwin, ...}:
+{ lib, pkgs, rustPlatform, pkg-config, openssl, darwin, ... }:
 rustPlatform.buildRustPackage rec {
   pname = "bingwallpaper-${version}";
   version = "0.1.0";

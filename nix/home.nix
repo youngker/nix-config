@@ -4,7 +4,8 @@ let
   var = import ../config.nix;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
-in {
+in
+{
   nixpkgs = {
     overlays = lib.singleton
       (self: lib.const { inherit (import ./packages { pkgs = self; }) my; });
@@ -93,11 +94,12 @@ in {
     homeDirectory =
       if isDarwin then "/Users/${var.username}" else "/home/${var.username}";
     stateVersion = "22.11";
-    sessionVariablesExtra = if isDarwin then ''
-      . "${pkgs.nix}/etc/profile.d/nix-daemon.sh"
-    '' else ''
-      . "${pkgs.nix}/etc/profile.d/nix.sh"
-    '';
+    sessionVariablesExtra =
+      if isDarwin then ''
+        . "${pkgs.nix}/etc/profile.d/nix-daemon.sh"
+      '' else ''
+        . "${pkgs.nix}/etc/profile.d/nix.sh"
+      '';
   };
 
   xdg.configFile."nix/nix.conf".text = ''

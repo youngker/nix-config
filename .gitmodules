@@ -1,6 +1,0 @@
-[submodule "nixpkgs"]
-	path = nixpkgs
-	url = https://github.com/youngker/nixpkgs.git
-[submodule "home-manager"]
-	path = home-manager
-	url = https://github.com/youngker/home-manager.git

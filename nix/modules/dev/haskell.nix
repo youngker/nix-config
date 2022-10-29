@@ -13,7 +13,7 @@ with lib; {
       cabal-install
       cachix
       ghc
-#      haskellPackages.haskell-language-server
+      #      haskellPackages.haskell-language-server
       haskellPackages.hoogle
       stack
     ];

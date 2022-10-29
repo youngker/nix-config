@@ -4,7 +4,8 @@ let
   terminfo = "${name}.terminfo";
   terminfoFile = ./. + "/${terminfo}";
   terminfoDir = "$out/share/terminfo";
-in runCommand name { } ''
+in
+runCommand name { } ''
   mkdir -p "${terminfoDir}"
   echo '${builtins.readFile terminfoFile}' > ${terminfo}
   ${ncurses}/bin/tic -x -o "${terminfoDir}" ${terminfo}

@@ -9,7 +9,5 @@ with lib;
     };
   };
 
-  config = mkIf config.modules.darwin.darwin-settings.enable {
-
-  };
+  config = mkIf config.modules.darwin.darwin-settings.enable { };
 }

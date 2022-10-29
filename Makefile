@@ -1,9 +1,13 @@
-NIX_PATH = nixpkgs=./nixpkgs:home-manager=./home-manager:nixos-config=./nixos/configuration.nix
-PRENIX := PATH=$(PATH) NIX_PATH=$(NIX_PATH)
-
-NIX          = $(PRENIX) nix
-BUILD_ARGS   = --experimental-features nix-command
-HOME_MANAGER = $(PRENIX) home-manager
+NIXPKGS_REV       = 6428fc1a54986d2da12c669877497159df3085dd
+NIX_PATH          = nixpkgs=https://github.com/NixOS/nixpkgs/archive/${NIXPKGS_REV}.tar.gz
+HOME_MANAGER_PATH = home-manager=https://github.com/nix-community/home-manager/archive/master.tar.gz
+NIXOS_CONFIG      = nixos-config=./nixos/configuration.nix
+PRENIX            = NIX_PATH=$(NIX_PATH):$(HOME_MANAGER_PATH):$(NIXOS_CONFIG)
+BUILD_ARGS        = --experimental-features nix-command
+NIX               = $(PRENIX) nix $(BUILD_ARGS)
+HOME_MANAGER      = $(PRENIX) home-manager
+NIXOS_INSTALL     = $(PRENIX) nixos-install
+NIXOS_REBUILD     = $(PRENIX) nixos-rebuild
 
 define announce
 	@echo
@@ -17,44 +21,47 @@ all: build
 
 init:
 	$(call announce,nix init)
-	@$(NIX) build $(BUILD_ARGS) -f default.nix
+	@$(NIX) build -f default.nix
 	@./result/activate
 
 build:
 	$(call announce,nix build)
-	@$(NIX) build $(BUILD_ARGS) -f default.nix
+	@$(NIX) build -f default.nix
+	@rm -f result*
+
+debug:
+	$(call announce,nix debug)
+	@$(NIX) build -f default.nix --show-trace
 	@rm -f result*
 
 switch:
 	$(call announce,home-manager switch)
 	@$(HOME_MANAGER) -f ./nix/home.nix switch
 
-debug:
-	$(call announce,nix debug)
-	@$(NIX) build $(BUILD_ARGS) -f default.nix --show-trace
-	@rm -f result*
-
-os-init:
-	$(call announce,nixos-install)
-	@nixos-install
-
-os-build:
-	$(call announce,nixos-rebuild build)
-	@nixos-rebuild build
-
-os-switch:
-	$(call announce,nixos-rebuild switch)
-	@nixos-rebuild switch
-
-os-debug:
-	$(call announce,nixos-rebuild debug)
-	@nixos-rebuild build --show-trace
-
 news:
 	$(call announce,home-manager news)
 	@$(HOME_MANAGER) -f ./nix/home.nix news
 
-pull:
-	$(call announce,git pull)
-	(cd nixpkgs      && git pull --rebase)
-	(cd home-manager && git pull --rebase)
+format:
+	$(call announce,nixpkgs-fmt)
+	@find . -name "*.nix" -type f | xargs nixpkgs-fmt
+
+os-init:
+	$(call announce,nixos-install)
+	@$(NIXOS_INSTALL)
+
+os-build:
+	$(call announce,nixos-rebuild build)
+	@$(NIXOS_REBUILD) build
+
+os-debug:
+	$(call announce,nixos-rebuild debug)
+	@$(NIXOS_REBUILD) build --show-trace
+
+os-switch:
+	$(call announce,nixos-rebuild switch)
+	@$(NIXOS_REBUILD) switch
+
+os-boot:
+	$(call announce,nixos-rebuild boot)
+	@$(NIXOS_REBUILD) boot
