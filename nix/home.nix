@@ -81,12 +81,12 @@ in
     enable = true;
   };
 
-  dconf.settings = {
-    "org/freedesktop/ibus/engine/hangul" = {
-      initial-input-mode = "hangul";
-      switch-keys = "Shift+space";
-    };
-  };
+  # dconf.settings = {
+  #   "org/freedesktop/ibus/engine/hangul" = {
+  #     initial-input-mode = "hangul";
+  #     switch-keys = "Shift+space";
+  #   };
+  # };
 
   home = {
     username = "${var.username}";
