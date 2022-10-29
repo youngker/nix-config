@@ -1,7 +1,7 @@
 # youngker's nix-config
 
 ## Clone
-git clone --recursive https://github.com/youngker/nix-config
+git clone https://github.com/youngker/nix-config
 
 ## Non NIXOS (Linux distribution, MacOS)
 init: install home-manager
@@ -18,20 +18,22 @@ make switch
 ```
 
 ## NIXOS
-install nixos
+1.install Minimal ISO image
+
+2.reboot
+
+3.useradd -m user_id
+
 ```bash
 nix-shell -p git
-git clone --recursive https://github.com/youngker/nix-config /mnt/etc/nixos
-
+git clone https://github.com/youngker/nix-config
+cd nix-config
 edit config.nix
-
-nixos-generate-config --root /mnt --dir /etc/nixos/nixos
-
-cd /mnt/etc/nixos
-ln -s nixos/configuration configuration
-
-make os-init
+ln -s /etc/nixos/hardware-configuration.nix nixos
+make os-build
+make os-switch
 ```
+
 init: nixos-install
 ```bash
 make os-init

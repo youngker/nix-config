@@ -79,15 +79,14 @@ in
 
   programs.home-manager = {
     enable = true;
-    path = "./home-manager";
   };
 
-  # dconf.settings = {
-  #   "org/freedesktop/ibus/engine/hangul" = {
-  #     initial-input-mode = "hangul";
-  #     switch-keys = "Control+space";
-  #   };
-  # };
+  dconf.settings = {
+    "org/freedesktop/ibus/engine/hangul" = {
+      initial-input-mode = "hangul";
+      switch-keys = "Shift+space";
+    };
+  };
 
   home = {
     username = "${var.username}";
