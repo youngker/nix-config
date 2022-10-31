@@ -47,10 +47,15 @@ in {
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" "ko_KR.UTF-8/UTF-8" ];
     inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ hangul ];
+      enabled = "kime";
+      kime.config = {
+        indicator.icon_color = "White";
+        engine.global_hotkeys.S-Space = {
+          behavior.Toggle = ["Hangul" "Latin"];
+          result = "Consume";
+        };
+      };
     };
   };
 }
