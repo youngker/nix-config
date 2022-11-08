@@ -52,7 +52,7 @@ in {
       kime.config = {
         indicator.icon_color = "White";
         engine.global_hotkeys.S-Space = {
-          behavior.Toggle = ["Hangul" "Latin"];
+          behavior.Toggle = [ "Hangul" "Latin" ];
           result = "Consume";
         };
       };
