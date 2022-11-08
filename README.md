@@ -29,9 +29,8 @@ nix-shell -p git
 git clone https://github.com/youngker/nix-config
 cd nix-config
 edit config.nix
-ln -s /etc/nixos/hardware-configuration.nix nixos
 make os-build
-make os-switch
+sudo make os-switch
 ```
 
 init: nixos-install
