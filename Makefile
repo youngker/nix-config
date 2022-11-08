@@ -42,11 +42,14 @@ os-init:
 
 os-build:
 	@$(NIXOS_REBUILD) build
+	@rm -f result*
 
 os-debug:
 	@$(NIXOS_REBUILD) build --show-trace
+	@rm -f result*
 
 os-switch:
+	@echo $(PRENIX)
 	@$(NIXOS_REBUILD) switch
 
 os-boot:

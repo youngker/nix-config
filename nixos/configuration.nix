@@ -3,7 +3,7 @@
 let var = import ../config.nix;
 
 in {
-  imports = [ <home-manager/nixos> ./hardware-configuration.nix ./modules ];
+  imports = [ <home-manager/nixos> /etc/nixos/hardware-configuration.nix ./modules ];
   nixpkgs.config = {
     allowBroken = true;
     allowInsecure = true;
@@ -19,6 +19,7 @@ in {
 
   users.users.${var.username} = {
     isNormalUser = true;
+    home = "/home/${var.username}";
     extraGroups = [ "wheel" "audio" "jackaudio" "docker" ];
     shell = pkgs.zsh;
   };
