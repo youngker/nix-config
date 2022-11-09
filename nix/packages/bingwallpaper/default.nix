@@ -1,6 +1,6 @@
 { lib, pkgs, rustPlatform, pkg-config, openssl, darwin, ... }:
 rustPlatform.buildRustPackage rec {
-  pname = "bingwallpaper-${version}";
+  pname = "bingwallpaper";
   version = "0.1.0";
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ openssl ] ++ (lib.optionals pkgs.stdenv.isDarwin
@@ -8,5 +8,5 @@ rustPlatform.buildRustPackage rec {
   PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkg-config";
   src = ./.;
   sourceRoot = "bingwallpaper";
-  cargoSha256 = "PhoUFKx3LpULsqNs3k3UYLP5rm68kgLkU2z8p5756NM=";
+  cargoSha256 = "sha256-urpTGmtYYR6HXGt/VFrHiYmlkXyBvJ5ba/X+t6Uv9VM=";
 }
