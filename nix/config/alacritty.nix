@@ -391,9 +391,3 @@ in
     };
   };
 }
-# // optionalAttrs isLinux {
-# package = pkgs.writeShellScriptBin "alacritty" ''
-#   #!/bin/sh
-#   ${pkgs.nixGL}/bin/nixGL
-#   ${pkgs.alacritty}/bin/alacritty "$@"
-# '';

@@ -8,7 +8,6 @@ let
     amethyst = callPackage ./amethyst.nix { };
     bingwallpaper = callPackage ./bingwallpaper { };
     karabiner = callPackage ./karabiner.nix { };
-    nixGL = callPackage ./nixGL.nix { };
     rectangle = callPackage ./rectangle.nix { };
     xterm-24bit = callPackage ./xterm-24bit { };
   };

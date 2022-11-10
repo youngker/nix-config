@@ -49,7 +49,6 @@ os-debug:
 	@rm -f result*
 
 os-switch:
-	@echo $(PRENIX)
 	@$(NIXOS_REBUILD) switch
 
 os-boot:
