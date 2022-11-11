@@ -11,7 +11,7 @@ in {
     allowUnsupportedSystem = false;
   };
 
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.11";
 
   home-manager = {
     users.${var.username} = { imports = [ ../nix/home.nix ]; };
