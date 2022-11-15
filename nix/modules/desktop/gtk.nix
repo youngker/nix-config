@@ -9,6 +9,6 @@ with lib; {
   };
 
   config = mkIf config.modules.desktop.gtk.enable {
-    home.packages = with pkgs; [ gnome.gnome-terminal gnome.gedit ];
+    home.packages = with pkgs; [ gnome.gnome-terminal gnome.gedit dconf flameshot ];
   };
 }

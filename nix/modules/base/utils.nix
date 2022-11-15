@@ -15,7 +15,7 @@ with lib; {
       cmake
       codesearch
       curl
-      dconf
+      du-dust
       exa
       fd
       feh
