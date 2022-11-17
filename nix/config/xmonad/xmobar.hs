@@ -1,9 +1,9 @@
 Config
-  { font = "xft:Lucida Grande:Bold:size=11:bold:antialias=true, Noto Sans CJK KR:size=11:bold:antialias=true",
-    additionalFonts = ["xft:Font Awesome:size=11:antialias=true"],
+  { font = "Lucida Grande Bold 13, Noto Sans CJK KR Bold 13",
+    additionalFonts = ["Font Awesome 15"],
     bgColor = "#2E3440",
     fgColor = "#ECEFF4",
-    position = BottomSize C 100 25,
+    position = BottomSize C 100 40,
     sepChar = "%",
     alignSep = "}{",
     template = " %StdinReader%  }{ %multicpu% %memory% %dynnetwork% %date% ",
