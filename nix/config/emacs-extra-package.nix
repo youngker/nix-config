@@ -26,6 +26,7 @@ with epkgs; [
   diff-hl
   diminish
   dired-git-info
+  eglot
   eldoc
   elein
   elisp-slime-nav

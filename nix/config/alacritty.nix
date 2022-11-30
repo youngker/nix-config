@@ -372,6 +372,11 @@ in
             chars = "\\x1f";
           }
           {
+            key = "Slash";
+            mods = "Alt|Shift";
+            chars = "\\x1b?";
+          }
+          {
             key = "Space";
             mods = "Control";
             chars = "\\x00";
