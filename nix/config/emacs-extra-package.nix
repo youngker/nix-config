@@ -18,6 +18,7 @@ with epkgs; [
   cmake-mode
   cmake-project
   company
+  consult
   counsel
   counsel-projectile
   crm-custom
@@ -73,6 +74,7 @@ with epkgs; [
   modern-cpp-font-lock
   multiple-cursors
   nix-mode
+  orderless
   org
   org-bullets
   org-journal
@@ -101,6 +103,7 @@ with epkgs; [
   typescript-mode
   undo-tree
   use-package
+  vertico
   visual-regexp
   volatile-highlights
   vterm
