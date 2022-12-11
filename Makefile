@@ -1,4 +1,4 @@
-NIXPKGS_REV       = 10fecbc54525d4c5bd09174231e252abe98b722b
+NIXPKGS_REV       = 068e7cb3409852b18ff9eceac7932dba4d1e1fb2
 NIX_PATH          = nixpkgs=https://github.com/NixOS/nixpkgs/archive/${NIXPKGS_REV}.tar.gz
 HOME_MANAGER_PATH = home-manager=https://github.com/nix-community/home-manager/archive/master.tar.gz
 NIXOS_CONFIG      = nixos-config=./nixos/configuration.nix
