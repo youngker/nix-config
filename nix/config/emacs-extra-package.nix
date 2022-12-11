@@ -1,28 +1,19 @@
 pkgs: epkgs:
 with epkgs; [
-  ac-cider
   ace-window
   aggressive-indent
   auto-compile
-  auto-complete
   avy
   bind-key
   cargo
-  cider
-  cider-eval-sexp-fu
   clang-format
-  clj-refactor
   cljsbuild-mode
   clojure-mode
-  cmake-font-lock
   cmake-mode
   cmake-project
   company
   consult
-  counsel
-  counsel-projectile
   crm-custom
-  dante
   default-text-scale
   diff-hl
   diminish
@@ -32,42 +23,21 @@ with epkgs; [
   elein
   elisp-slime-nav
   eopengrok
-  eshell-prompt-extras
-  eval-sexp-fu
   exec-path-from-shell
   expand-region
   flx-ido
-  flycheck
-  flycheck-clojure
-  flycheck-rust
   flymake
   flymake-diagnostic-at-point
   geiser
-  git-gutter
-  go-autocomplete
   go-eldoc
   go-mode
   google-c-style
   google-translate
   haskell-mode
-  helm
-  helm-codesearch
-  helm-descbinds
-  helm-lsp
-  helm-projectile
-  helm-rtags
   highlight-symbol
-  hindent
+  helm-codesearch
   htmlize
-  ido-complete-space-or-hyphen
-  ido-vertical-mode
-  ido-yes-or-no
   inf-clojure
-  ivy
-  lsp-haskell
-  lsp-mode
-  lsp-treemacs
-  lsp-ui
   magit
   markdown-mode
   mic-paren
@@ -84,20 +54,13 @@ with epkgs; [
   paredit-everywhere
   pdf-tools
   plantuml-mode
-  popwin
-  projectile
   qml-mode
-  racer
   rainbow-delimiters
   rainbow-mode
-  redshank
-  rtags
   rust-mode
   shackle
   slime
   slime-company
-  smex
-  smooth-scrolling
   swift-mode
   swiper
   typescript-mode
@@ -109,8 +72,6 @@ with epkgs; [
   vterm
   which-key
   whitespace-cleanup-mode
-  win-switch
-  window-number
   xref
   yasnippet
   yasnippet-snippets
