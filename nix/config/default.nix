@@ -8,6 +8,7 @@
     ./git.nix
     ./go.nix
     ./gtk.nix
+    ./kime.nix
     ./picom.nix
     ./rofi.nix
     ./starship.nix

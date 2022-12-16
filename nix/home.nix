@@ -77,16 +77,13 @@ in
     picom.enable = isLinux;
   };
 
+  modules.i18n.inputMethod = {
+    kime.enable = isLinux;
+  };
+
   programs.home-manager = {
     enable = true;
   };
-
-  # dconf.settings = {
-  #   "org/freedesktop/ibus/engine/hangul" = {
-  #     initial-input-mode = "hangul";
-  #     switch-keys = "Shift+space";
-  #   };
-  # };
 
   home = {
     username = "${var.username}";

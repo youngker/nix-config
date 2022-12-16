@@ -8,5 +8,6 @@
     ./graphic
     ./darwin
     ./services
+    ./i18n/input-method
   ];
 }
