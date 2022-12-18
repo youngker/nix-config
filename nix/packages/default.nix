@@ -6,7 +6,7 @@ let
 
   my = rec {
     amethyst = callPackage ./amethyst.nix { };
-    bingwallpaper = callPackage ./bingwallpaper { };
+    bingwallpaper = callPackage ./bingwallpaper.nix { };
     karabiner = callPackage ./karabiner.nix { };
     rectangle = callPackage ./rectangle.nix { };
     xterm-24bit = callPackage ./xterm-24bit { };
