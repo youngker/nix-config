@@ -1,16 +1,13 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, user, ... }:
 
 with lib;
-let
-  var = import ../../config.nix;
-in
 {
   config = mkIf config.modules.dev.git.enable {
     programs.git = {
       enable = true;
       # package = pkgs.gitFull;
-      userName = var.userFullName;
-      userEmail = var.userEmail;
+      userName = user.userFullName;
+      userEmail = user.userEmail;
       aliases = {
         amend = "commit --amend -C HEAD";
         authors = ''!"${pkgs.git}/bin/git log --pretty=format:%aN''

@@ -11,6 +11,7 @@ with epkgs; [
   clojure-mode
   cmake-mode
   cmake-project
+  codesearch
   company
   consult
   crm-custom
@@ -22,6 +23,8 @@ with epkgs; [
   eldoc
   elein
   elisp-slime-nav
+  embark
+  embark-consult
   eopengrok
   exec-path-from-shell
   expand-region
@@ -38,6 +41,7 @@ with epkgs; [
   helm-codesearch
   htmlize
   inf-clojure
+  log4e
   magit
   markdown-mode
   mic-paren
@@ -63,6 +67,7 @@ with epkgs; [
   slime-company
   swift-mode
   swiper
+  toml-mode
   typescript-mode
   undo-tree
   use-package

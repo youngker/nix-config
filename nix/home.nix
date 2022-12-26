@@ -1,9 +1,7 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, user, ... }:
 
 let
-  var = import ../config.nix;
   inherit (pkgs.stdenv) isDarwin isLinux;
-
 in
 {
   nixpkgs = {
@@ -86,9 +84,9 @@ in
   };
 
   home = {
-    username = "${var.username}";
+    username = "${user.username}";
     homeDirectory =
-      if isDarwin then "/Users/${var.username}" else "/home/${var.username}";
+      if isDarwin then "/Users/${user.username}" else "/home/${user.username}";
     stateVersion = "22.11";
     sessionVariablesExtra =
       if isDarwin then ''

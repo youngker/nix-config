@@ -33,7 +33,7 @@ with lib; {
         LEDGER_COLOR = "true";
         LESS = "-FRSXM";
         LESSCHARSET = "utf-8";
-        NIX_PATH = "nixpkgs=${toString <nixpkgs>}:home-manager=${toString <home-manager>}:nixos-config=${toString <nixos-config>}";
+        # NIX_PATH = "nixpkgs=${toString <nixpkgs>}:home-manager=${toString <home-manager>}:nixos-config=${toString <nixos-config>}";
         PAGER = "less";
         PROMPT = "%m %~ $ ";
         PROMPT_DIRTRIM = "2";
