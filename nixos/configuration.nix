@@ -1,25 +1,13 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, user, ... }:
 
-let var = import ../config.nix;
-
-in {
-  imports = [ <home-manager/nixos> /etc/nixos/hardware-configuration.nix ./modules ];
-  nixpkgs.config = {
-    allowBroken = true;
-    allowInsecure = true;
-    allowUnfree = true;
-    allowUnsupportedSystem = false;
-  };
+{
+  imports = [ /etc/nixos/hardware-configuration.nix ./modules ];
 
   system.stateVersion = "22.11";
 
-  home-manager = {
-    users.${var.username} = { imports = [ ../nix/home.nix ]; };
-  };
-
-  users.users.${var.username} = {
+  users.users.${user.name} = {
     isNormalUser = true;
-    home = "/home/${var.username}";
+    home = "/home/${user.name}";
     extraGroups = [ "wheel" "audio" "jackaudio" "docker" ];
     shell = pkgs.zsh;
   };

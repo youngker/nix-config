@@ -7,12 +7,6 @@ in
   nixpkgs = {
     overlays = lib.singleton
       (self: lib.const { inherit (import ./packages { pkgs = self; }) my; });
-    config = {
-      allowBroken = true;
-      allowInsecure = true;
-      allowUnfree = true;
-      allowUnsupportedSystem = false;
-    };
   };
 
   imports = [ ./nix-overlays ./modules ./config ];
@@ -21,13 +15,13 @@ in
 
   modules.apps = {
     alacritty.enable = true;
-    bingwallpaper.enable = true;
+    bingwallpaper.enable = false;
     firefox.enable = isLinux;
     fzf.enable = true;
     pandoc.enable = true;
     starship.enable = true;
     zsh.enable = true;
-    xterm-24bit.enable = true;
+    xterm-24bit.enable = false;
   };
 
   modules.audio = {
@@ -64,9 +58,9 @@ in
   modules.graphic = { apps.enable = isLinux; };
 
   modules.darwin = {
-    amethyst.enable = isDarwin;
-    rectangle.enable = isDarwin;
-    darwin-settings.enable = isDarwin;
+    # amethyst.enable = isDarwin;
+    # rectangle.enable = isDarwin;
+    # darwin-settings.enable = isDarwin;
   };
 
   modules.services = {
@@ -84,9 +78,9 @@ in
   };
 
   home = {
-    username = "${user.username}";
+    username = "${user.name}";
     homeDirectory =
-      if isDarwin then "/Users/${user.username}" else "/home/${user.username}";
+      if isDarwin then "/Users/${user.name}" else "/home/${user.name}";
     stateVersion = "22.11";
     sessionVariablesExtra =
       if isDarwin then ''

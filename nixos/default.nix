@@ -1,20 +1,19 @@
-{ inputs, nixpkgs, home, darwin, user, ... }:
-
+{ inputs, nixpkgs, home, user, ... }:
 let
-  system = "aarch64-darwin";
+  system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
   };
 in
 {
-  macbook = darwin.lib.darwinSystem {
+  desktop = nixpkgs.lib.nixosSystem {
     inherit system;
     inherit pkgs;
-    specialArgs = { inherit user inputs; };
+    specialArgs = { inherit user; };
     modules = [
       ./configuration.nix
-      home.darwinModules.home-manager
+      home.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;

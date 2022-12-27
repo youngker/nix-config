@@ -6,8 +6,8 @@ with lib;
     programs.git = {
       enable = true;
       # package = pkgs.gitFull;
-      userName = user.userFullName;
-      userEmail = user.userEmail;
+      userName = user.full;
+      userEmail = user.email;
       aliases = {
         amend = "commit --amend -C HEAD";
         authors = ''!"${pkgs.git}/bin/git log --pretty=format:%aN''

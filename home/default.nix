@@ -12,8 +12,6 @@ let
   };
 in
 {
-  nixpkgs.config.allowUnfree = true;
-
   nix = home.lib.homeManagerConfiguration {
     inherit pkgs;
     extraSpecialArgs = { inherit user; };

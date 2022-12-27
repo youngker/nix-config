@@ -1,7 +1,7 @@
 { pkgs, user, ... }:
 {
-  users.users.${user.username} = {
-    home = "/Users/${user.username}";
+  users.users.${user.name} = {
+    home = "/Users/${user.name}";
     shell = pkgs.zsh;
   };
 

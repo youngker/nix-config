@@ -20,16 +20,22 @@
     let
       user =
         {
-          hostname = "nixos";
-          username = "youngker";
-          userFullName = "YoungJoo Lee";
-          userEmail = "youngker@gmail.com";
+          host = "nixos";
+          name = "youngker";
+          full = "YoungJoo Lee";
+          email = "youngker@gmail.com";
           timezone = "Asia/Seoul";
         };
+      perSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" ];
     in
     {
-      nixosConfigurations = (import ./hosts { inherit inputs nixpkgs home user; });
-      darwinConfigurations = (import ./darwin { inherit inputs home darwin user; });
-      homeConfigurations = (import ./nix { inherit inputs nixpkgs home user; });
+      nixosConfigurations =
+        (import ./nixos { inherit inputs nixpkgs home user; });
+      darwinConfigurations =
+        (import ./darwin { inherit inputs nixpkgs home darwin user; });
+      homeConfigurations =
+        (import ./home { inherit inputs nixpkgs home user; });
+      formatter =
+        perSystem (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 }
