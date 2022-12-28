@@ -55,7 +55,7 @@ in
   modules.darwin = {
     amethyst.enable = isDarwin;
     rectangle.enable = isDarwin;
-    #    darwin-settings.enable = isDarwin;
+    darwin-settings.enable = isDarwin;
   };
 
   modules.services = {
