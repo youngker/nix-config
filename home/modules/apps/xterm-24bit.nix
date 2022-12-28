@@ -10,6 +10,6 @@ with lib;
   };
 
   config = mkIf config.modules.apps.xterm-24bit.enable {
-    home.packages = with pkgs; [ my.xterm-24bit ];
+    home.packages = with pkgs; [ xterm-24bit ];
   };
 }

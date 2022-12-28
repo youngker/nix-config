@@ -1,18 +1,12 @@
 { inputs
-, nixpkgs
 , home
 , user
+, pkgs
 , ...
 }:
-let
-  system = "aarch64-darwin";
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
-in
+
 {
-  nix = home.lib.homeManagerConfiguration {
+  ${user.name} = home.lib.homeManagerConfiguration {
     inherit pkgs;
     extraSpecialArgs = { inherit user; };
     modules = [

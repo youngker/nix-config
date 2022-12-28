@@ -1,14 +1,13 @@
-{ inputs, nixpkgs, home, user, ... }:
-let
-  system = "x86_64-linux";
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
-in
+{ inputs
+, nixpkgs
+, home
+, user
+, pkgs
+, ...
+}:
+
 {
-  desktop = nixpkgs.lib.nixosSystem {
-    inherit system;
+  ${user.host} = nixpkgs.lib.nixosSystem {
     inherit pkgs;
     specialArgs = { inherit user; };
     modules = [

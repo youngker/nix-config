@@ -10,6 +10,6 @@ with lib;
   };
 
   config = mkIf config.modules.darwin.rectangle.enable {
-    home.packages = with pkgs; [ my.rectangle ];
+    home.packages = with pkgs; [ rectangle ];
   };
 }

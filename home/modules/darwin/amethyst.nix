@@ -10,6 +10,6 @@ with lib;
   };
 
   config = mkIf config.modules.darwin.amethyst.enable {
-    home.packages = with pkgs; [ my.amethyst ];
+    home.packages = with pkgs; [ amethyst ];
   };
 }

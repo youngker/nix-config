@@ -1,7 +1,7 @@
 { pkgs, config, lib, user, ... }:
 
 {
-  imports = [ /etc/nixos/hardware-configuration.nix ./modules ];
+  imports = [ ./hardware-configuration.nix ./modules ];
 
   system.stateVersion = "22.11";
 
@@ -33,18 +33,4 @@
 
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
-
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    inputMethod = {
-      enabled = "kime";
-      kime.config = {
-        indicator.icon_color = "White";
-        engine.global_hotkeys.S-Space = {
-          behavior.Toggle = [ "Hangul" "Latin" ];
-          result = "Consume";
-        };
-      };
-    };
-  };
 }

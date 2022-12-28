@@ -1,15 +1,13 @@
-{ inputs, nixpkgs, home, darwin, user, ... }:
+{ inputs
+, pkgs
+, home
+, darwin
+, user
+, ...
+}:
 
-let
-  system = "aarch64-darwin";
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
-in
 {
-  macbook = darwin.lib.darwinSystem {
-    inherit system;
+  ${user.host} = darwin.lib.darwinSystem {
     inherit pkgs;
     specialArgs = { inherit user inputs; };
     modules = [

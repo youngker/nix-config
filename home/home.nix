@@ -4,24 +4,19 @@ let
   inherit (pkgs.stdenv) isDarwin isLinux;
 in
 {
-  nixpkgs = {
-    overlays = lib.singleton
-      (self: lib.const { inherit (import ./packages { pkgs = self; }) my; });
-  };
-
-  imports = [ ./nix-overlays ./modules ./config ];
+  imports = [ ./modules ./config ];
 
   manual.manpages.enable = false;
 
   modules.apps = {
     alacritty.enable = true;
-    bingwallpaper.enable = false;
+    bingwallpaper.enable = true;
     firefox.enable = isLinux;
     fzf.enable = true;
     pandoc.enable = true;
     starship.enable = true;
     zsh.enable = true;
-    xterm-24bit.enable = false;
+    xterm-24bit.enable = true;
   };
 
   modules.audio = {
@@ -58,9 +53,9 @@ in
   modules.graphic = { apps.enable = isLinux; };
 
   modules.darwin = {
-    # amethyst.enable = isDarwin;
-    # rectangle.enable = isDarwin;
-    # darwin-settings.enable = isDarwin;
+    amethyst.enable = isDarwin;
+    rectangle.enable = isDarwin;
+    #    darwin-settings.enable = isDarwin;
   };
 
   modules.services = {
