@@ -1,12 +1,18 @@
 { pkgs, user, ... }:
 
 {
+  imports = [ ./modules ./config ];
+
   users.users.${user.name} = {
     home = "/Users/${user.name}";
     shell = pkgs.zsh;
   };
 
   programs.zsh.enable = true;
+
+  modules.services = {
+    skhd.enable = true;
+  };
 
   environment.systemPath = [
     "/run/current-system/sw/bin"
@@ -15,7 +21,6 @@
   services = {
     nix-daemon.enable = true;
     activate-system.enable = true;
-    skhd.enable = true;
   };
 
   system = {
