@@ -8,6 +8,7 @@
 
 {
   ${user.host} = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
     inherit pkgs;
     specialArgs = { inherit user; };
     modules = [

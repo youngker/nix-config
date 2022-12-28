@@ -8,6 +8,7 @@
 
 {
   ${user.host} = darwin.lib.darwinSystem {
+    system = "aarch64-darwin";
     inherit pkgs;
     specialArgs = { inherit user inputs; };
     modules = [
