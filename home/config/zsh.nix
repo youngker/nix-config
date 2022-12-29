@@ -38,7 +38,7 @@ with lib; {
         PROMPT_DIRTRIM = "2";
         QT_QPA_PLATFORMTHEME = "qt5ct";
         RPROMPT = "";
-        TERMINFO_DIRS = "$HOME/.nix-profile/share/terminfo";
+        TERMINFO_DIRS = "${config.home.profileDirectory}/share/terminfo";
         TINC_USE_NIX = "yes";
         WORDCHARS = "";
       };
