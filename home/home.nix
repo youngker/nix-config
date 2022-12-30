@@ -8,64 +8,68 @@ in
 
   manual.manpages.enable = false;
 
-  modules.apps = {
-    alacritty.enable = true;
-    bingwallpaper.enable = true;
-    firefox.enable = isLinux;
-    fzf.enable = true;
-    pandoc.enable = true;
-    starship.enable = true;
-    zsh.enable = true;
-    xterm-24bit.enable = true;
-  };
+  modules = {
+    apps = {
+      alacritty.enable = true;
+      bingwallpaper.enable = true;
+      firefox.enable = isLinux;
+      fzf.enable = true;
+      pandoc.enable = true;
+      starship.enable = true;
+      zsh.enable = true;
+      xterm-24bit.enable = true;
+    };
 
-  modules.audio = {
-    apps.enable = isLinux;
-    jack.enable = isLinux;
-  };
+    audio = {
+      apps.enable = isLinux;
+      jack.enable = isLinux;
+    };
 
-  modules.base = {
-    core.enable = true;
-    utils.enable = true;
-  };
+    base = {
+      core.enable = true;
+      utils.enable = true;
+    };
 
-  modules.desktop = {
-    font.enable = isLinux;
-    gtk.enable = isLinux;
-    qt.enable = isLinux;
-    rofi.enable = isLinux;
-    xmobar.enable = isLinux;
-    xmonad.enable = isLinux;
-    xorg.enable = isLinux;
-  };
+    desktop = {
+      font.enable = isLinux;
+      gtk.enable = isLinux;
+      qt.enable = isLinux;
+      rofi.enable = isLinux;
+      xmobar.enable = isLinux;
+      xmonad.enable = isLinux;
+      xorg.enable = isLinux;
+    };
 
-  modules.dev = {
-    clojure.enable = true;
-    cpp.enable = true;
-    emacs.enable = true;
-    git.enable = true;
-    go.enable = true;
-    haskell.enable = true;
-    nix.enable = true;
-    rust.enable = true;
-  };
+    dev = {
+      clojure.enable = true;
+      cpp.enable = true;
+      emacs.enable = true;
+      git.enable = true;
+      go.enable = true;
+      haskell.enable = true;
+      nix.enable = true;
+      rust.enable = true;
+    };
 
-  modules.graphic = { apps.enable = isLinux; };
+    graphic = {
+      apps.enable = isLinux;
+    };
 
-  modules.darwin = {
-    amethyst.enable = isDarwin;
-    rectangle.enable = isDarwin;
-    darwin-settings.enable = isDarwin;
-  };
+    darwin = {
+      amethyst.enable = isDarwin;
+      rectangle.enable = isDarwin;
+      darwin-settings.enable = isDarwin;
+    };
 
-  modules.services = {
-    dunst.enable = isLinux;
-    emacs.enable = isLinux;
-    picom.enable = isLinux;
-  };
+    services = {
+      dunst.enable = isLinux;
+      emacs.enable = isLinux;
+      picom.enable = isLinux;
+    };
 
-  modules.i18n.inputMethod = {
-    kime.enable = isLinux;
+    i18n.inputMethod = {
+      kime.enable = isLinux;
+    };
   };
 
   programs.home-manager = {

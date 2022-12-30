@@ -10,8 +10,10 @@
 
   programs.zsh.enable = true;
 
-  modules.services = {
-    skhd.enable = true;
+  modules = {
+    services = {
+      skhd.enable = true;
+    };
   };
 
   environment.systemPath = [

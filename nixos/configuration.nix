@@ -12,21 +12,25 @@
     shell = pkgs.zsh;
   };
 
-  modules.boot = { loader.enable = true; };
+  modules = {
+    boot = {
+      loader.enable = true;
+    };
 
-  modules.hardware = {
-    nvidia.enable = true;
-    opengl.enable = true;
-    pulseaudio.enable = false;
-    video.enable = true;
-  };
+    hardware = {
+      nvidia.enable = true;
+      opengl.enable = true;
+      pulseaudio.enable = false;
+      video.enable = true;
+    };
 
-  modules.services = {
-    jack.enable = false;
-    openssh.enable = true;
-    pipewire.enable = true;
-    timesyncd.enable = true;
-    xserver.enable = true;
+    services = {
+      jack.enable = false;
+      openssh.enable = true;
+      pipewire.enable = true;
+      timesyncd.enable = true;
+      xserver.enable = true;
+    };
   };
 
   programs.ssh.startAgent = true;
