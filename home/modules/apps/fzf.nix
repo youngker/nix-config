@@ -8,6 +8,18 @@ with lib; {
     };
   };
 
-  config =
-    mkIf config.modules.apps.fzf.enable { home.packages = with pkgs; [ fzf ]; };
+  config = mkIf config.modules.apps.fzf.enable {
+    home.packages = with pkgs; [ fzf ];
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      defaultOptions = [
+        "--height 40%"
+        "--layout=reverse"
+        "--info=inline"
+        "--border"
+        "--exact"
+      ];
+    };
+  };
 }

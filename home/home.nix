@@ -4,7 +4,7 @@ let
   inherit (pkgs.stdenv) isDarwin isLinux;
 in
 {
-  imports = [ ./modules ./config ];
+  imports = [ ./modules ];
 
   manual.manpages.enable = false;
 

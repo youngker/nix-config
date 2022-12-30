@@ -11,5 +11,7 @@ with lib;
 
   config = mkIf config.modules.darwin.amethyst.enable {
     home.packages = with pkgs; [ amethyst ];
+    home.file.amethyst.target = ".amethyst.yml";
+    home.file.amethyst.text = readFile ./amethyst/amethyst.yml;
   };
 }

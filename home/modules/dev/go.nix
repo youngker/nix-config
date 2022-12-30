@@ -10,5 +10,10 @@ with lib; {
 
   config = mkIf config.modules.dev.go.enable {
     home.packages = with pkgs; [ go ];
+    programs.go = {
+      enable = true;
+      goPath = ".go";
+      goBin = ".go/bin";
+    };
   };
 }

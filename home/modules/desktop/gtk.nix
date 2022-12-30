@@ -10,5 +10,13 @@ with lib; {
 
   config = mkIf config.modules.desktop.gtk.enable {
     home.packages = with pkgs; [ gnome.gnome-terminal gnome.gedit dconf flameshot ];
+    gtk = {
+      enable = true;
+      font.name = "Lucida Grande";
+      theme = {
+        name = "Nordic";
+        package = pkgs.nordic;
+      };
+    };
   };
 }

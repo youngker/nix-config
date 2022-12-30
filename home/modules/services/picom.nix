@@ -9,6 +9,12 @@ with lib; {
   };
 
   config = mkIf config.modules.services.picom.enable {
-    services.picom.enable = true;
+    services.picom = optionalAttrs pkgs.stdenv.isLinux {
+      enable = true;
+      fade = true;
+      fadeDelta = 5;
+      shadow = true;
+      backend = "glx";
+    };
   };
 }

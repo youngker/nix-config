@@ -10,6 +10,9 @@ with lib;
   };
 
   config = mkIf config.modules.dev.emacs.enable {
-    #    home.packages = with pkgs; [ emacs ];
+    programs.emacs = {
+      enable = true;
+      extraPackages = import ./emacs-extra-package.nix pkgs;
+    };
   };
 }

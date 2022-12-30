@@ -1,7 +1,7 @@
 { pkgs, user, ... }:
 
 {
-  imports = [ ./modules ./config ];
+  imports = [ ./modules ];
 
   users.users.${user.name} = {
     home = "/Users/${user.name}";
