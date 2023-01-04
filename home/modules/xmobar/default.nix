@@ -12,7 +12,7 @@ with lib; {
     home.packages = with pkgs; [ xmobar ];
     programs.xmobar = {
       enable = true;
-      extraConfig = builtins.readFile ./xmonad/xmobar.hs;
+      extraConfig = builtins.readFile ./xmobar.hs;
     };
   };
 }
