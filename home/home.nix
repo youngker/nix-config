@@ -4,8 +4,6 @@ let
   inherit (pkgs.stdenv) isDarwin isLinux;
 in
 {
-  imports = [ ./modules ];
-
   manual.manpages.enable = false;
 
   modules = {
@@ -72,9 +70,7 @@ in
     };
   };
 
-  programs.home-manager = {
-    enable = true;
-  };
+  programs.home-manager.enable = true;
 
   home = {
     username = "${user.name}";

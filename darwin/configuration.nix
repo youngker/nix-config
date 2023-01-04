@@ -1,8 +1,6 @@
 { pkgs, user, ... }:
 
 {
-  imports = [ ./modules ];
-
   users.users.${user.name} = {
     home = "/Users/${user.name}";
     shell = pkgs.zsh;

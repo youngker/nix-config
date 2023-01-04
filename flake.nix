@@ -7,8 +7,7 @@
     home.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    devshell.url = "github:numtide/devshell";
-    flake-utils.url = "github:numtide/flake-utils";
+    utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -16,6 +15,7 @@
     , nixpkgs
     , home
     , darwin
+    , utils
     , ...
     } @ inputs:
     let
@@ -26,52 +26,100 @@
         email = "youngker@gmail.com";
         timezone = "Asia/Seoul";
       };
-
-      overlays.default = import ./packages inputs;
-
-      perSystem = inputs.flake-utils.lib.eachSystemMap
-        [ "x86_64-linux" "aarch64-darwin" ];
     in
     {
-      pkgs = perSystem (system:
-        import nixpkgs {
-          inherit system;
-          overlays = [
-            overlays.default
-            inputs.devshell.overlay
-          ];
-          config.allowUnfree = true;
-        });
+      overlays.default = final: prev: (import ./overlays inputs) final prev;
+
+      nixosModules = builtins.listToAttrs (map
+        (name: {
+          inherit name;
+          value = import (./modules + "/${name}");
+        })
+        (builtins.attrNames (builtins.readDir ./modules)));
+
+      darwinModules = builtins.listToAttrs (map
+        (name: {
+          inherit name;
+          value = import (./darwin/modules + "/${name}");
+        })
+        (builtins.attrNames (builtins.readDir ./darwin/modules)));
+
+      homeModules = builtins.listToAttrs (map
+        (name: {
+          inherit name;
+          value = import (./home/modules + "/${name}");
+        })
+        (builtins.attrNames (builtins.readDir ./home/modules)));
 
       nixosConfigurations = import ./nixos {
         inherit inputs nixpkgs home user;
         pkgs = self.pkgs."x86_64-linux";
       };
-      darwinConfigurations = import ./darwin {
-        inherit inputs home darwin user;
-        pkgs = self.pkgs."aarch64-darwin";
-      };
-      homeConfigurations = perSystem (system:
-        import ./home {
-          inherit inputs home user;
-          pkgs = self.pkgs.${system};
-        });
 
-      formatter = perSystem (system:
-        nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
-
-      devShell = perSystem (system:
-        self.pkgs.${system}.devshell.mkShell {
-          packages = with self.pkgs.${system}; [
-            nixfmt
-            rnix-lsp
-            git
+      darwinConfigurations = {
+        ${user.host} = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
+            overlays = [ self.overlays.default ];
+            config.allowUnfree = true;
+          };
+          specialArgs = { inherit user inputs; };
+          modules = [
+            ./darwin/configuration.nix
+            { imports = builtins.attrValues self.homeModules; }
+            { imports = builtins.attrValues self.darwinModules; }
+            home.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit user; };
+              home-manager.users.${user.name} = import ./home/home.nix;
+            }
           ];
-          name = "dev";
-        });
+        };
+      };
 
       defaultTemplate = self.templates.full;
       templates.full.path = ./.;
       templates.full.description = "default template";
-    };
+    } //
+    (utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ])
+      (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.default ];
+          config.allowUnfree = true;
+        };
+      in
+      {
+        homeConfigurations = {
+          ${user.name} = home.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = { inherit user; };
+            modules = [
+              ./home/home.nix
+              { imports = builtins.attrValues self.homeModules; }
+            ];
+          };
+        };
+
+        packages = utils.lib.flattenTree {
+          amethyst = pkgs.amethyst;
+          bingwallpaper = pkgs.bingwallpaper;
+          rectangle = pkgs.rectangle;
+          xterm-24bit = pkgs.xterm-24bit;
+        };
+
+        devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs;
+            [
+              nixpkgs-fmt
+              rnix-lsp
+            ];
+        };
+
+        formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+      });
 }

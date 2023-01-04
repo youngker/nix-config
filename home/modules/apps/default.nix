@@ -1,12 +1,34 @@
-{
-  imports = [
-    ./alacritty.nix
-    ./bingwallpaper.nix
-    ./fzf.nix
-    ./firefox.nix
-    ./pandoc.nix
-    ./starship.nix
-    ./zsh.nix
-    ./xterm-24bit.nix
-  ];
+{ lib, pkgs, config, ... }:
+
+with lib; {
+  options.modules.audio.apps = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+    };
+  };
+
+  config = mkIf config.modules.audio.apps.enable {
+    home.packages = with pkgs; [
+      ardour
+      pulseaudio # only pactl
+      calf
+      carla
+      fluidsynth
+      guitarix
+      helvum
+      hydrogen
+      lmms
+      musescore
+      patchage
+      patchage
+      pavucontrol
+      qsynth
+      qtractor
+      rosegarden
+      sfizz
+      soundfont-fluid
+      vmpk
+    ];
+  };
 }
