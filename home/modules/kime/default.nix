@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.i18n.inputMethod.kime;
+in {
   options.modules.i18n.inputMethod.kime = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.i18n.inputMethod.kime.enable {
+  config = mkIf cfg.enable {
     i18n.inputMethod.enabled = "kime";
     i18n.inputMethod.kime.config = {
       engine = {

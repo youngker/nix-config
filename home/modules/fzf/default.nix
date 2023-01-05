@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.apps.fzf;
+in {
   options.modules.apps.fzf = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.apps.fzf.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [ fzf ];
     programs.fzf = {
       enable = true;

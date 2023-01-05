@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.dev.clojure;
+in {
   options.modules.dev.clojure = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.dev.clojure.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs;
       [ babashka clojure clojure-lsp leiningen ];
   };

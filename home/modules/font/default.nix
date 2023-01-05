@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.desktop.font;
+in {
   options.modules.desktop.font = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.desktop.font.enable {
+  config = mkIf cfg.enable {
     fonts.fontconfig.enable =
       if builtins.pathExists /etc/NIXOS then false else true;
     home.packages = with pkgs; [

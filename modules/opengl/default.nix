@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.hardware.opengl;
+in {
   options.modules.hardware.opengl = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.hardware.opengl.enable {
+  config = mkIf cfg.enable {
     hardware.opengl = {
       driSupport32Bit = true;
     };

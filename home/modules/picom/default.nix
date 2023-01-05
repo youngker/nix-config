@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.services.picom;
+in {
   options.modules.services.picom = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.services.picom.enable {
+  config = mkIf cfg.enable {
     services.picom = optionalAttrs pkgs.stdenv.isLinux {
       enable = true;
       fade = true;

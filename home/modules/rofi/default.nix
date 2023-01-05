@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.desktop.rofi;
+in {
   options.modules.desktop.rofi = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.desktop.rofi.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [ rofi ];
     programs.rofi = {
       enable = true;

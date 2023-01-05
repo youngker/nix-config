@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.apps.starship;
+in {
   options.modules.apps.starship = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.apps.starship.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [ starship ];
     programs.starship = {
       enable = true;

@@ -1,6 +1,8 @@
-{ lib, pkgs, config, user, ... }:
+{ config, lib, pkgs, user, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.dev.git;
+in {
   options.modules.dev.git = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.dev.git.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [ git ];
     programs.git = {
       enable = true;

@@ -1,13 +1,15 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.apps.zsh;
+in {
   options.modules.apps.zsh = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
   };
-  config = mkIf config.modules.apps.zsh.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [ zsh ];
     programs.zsh = rec {
       enable = true;

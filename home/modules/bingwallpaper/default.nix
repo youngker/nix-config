@@ -1,7 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
-{
+let cfg = config.modules.apps.bingwallpaper;
+in {
   options.modules.apps.bingwallpaper = {
     enable = mkOption {
       type = types.bool;
@@ -9,7 +10,7 @@ with lib;
     };
   };
 
-  config = mkIf config.modules.apps.bingwallpaper.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [ bingwallpaper ];
   };
 }

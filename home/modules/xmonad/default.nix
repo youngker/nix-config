@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.desktop.xmonad;
+in {
   options.modules.desktop.xmonad = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.desktop.xmonad.enable {
+  config = mkIf cfg.enable {
     xsession.enable = true;
     xsession.initExtra = ''
       export LIBGL_DRIVERS_PATH="${pkgs.mesa.drivers}/lib/dri"

@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.hardware.pulseaudio;
+in {
   options.modules.hardware.pulseaudio = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.hardware.pulseaudio.enable {
+  config = mkIf cfg.enable {
     hardware.pulseaudio = {
       enable = true;
       package = with pkgs; pulseaudio.override { jackaudioSupport = true; };

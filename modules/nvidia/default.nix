@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.hardware.nvidia;
+in {
   options.modules.hardware.nvidia = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.hardware.nvidia.enable {
+  config = mkIf cfg.enable {
     hardware.nvidia = {
       modesetting.enable = true;
     };

@@ -1,7 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
-{
+let cfg = config.modules.darwin.darwin-settings;
+in {
   options.modules.darwin.darwin-settings = {
     enable = mkOption {
       type = types.bool;
@@ -9,7 +10,7 @@ with lib;
     };
   };
 
-  config = mkIf config.modules.darwin.darwin-settings.enable {
+  config = mkIf cfg.enable {
     home.file.darwin-settings.target = ".darwin-settings";
     home.file.darwin-settings.onChange = ''
       ${pkgs.bash}/bin/bash "$HOME/.darwin-settings"

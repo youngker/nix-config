@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.services.dunst;
+in {
   options.modules.services.dunst = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.services.dunst.enable {
+  config = mkIf cfg.enable {
     services.dunst.enable = true;
     home.packages = with pkgs; [ libnotify ];
   };

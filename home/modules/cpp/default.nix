@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.dev.cpp;
+in {
   options.modules.dev.cpp = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.dev.cpp.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       clang_13
       clang-analyzer

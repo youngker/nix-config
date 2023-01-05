@@ -1,14 +1,16 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
-  options.modules.apps.firefox = {
+with lib;
+let cfg = config.modules.apps.webbrowser;
+in {
+  options.modules.apps.webbrowser = {
     enable = mkOption {
       type = types.bool;
       default = false;
     };
   };
 
-  config = mkIf config.modules.apps.firefox.enable {
-    home.packages = with pkgs; [ firefox google-chrome ];
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ brave firefox google-chrome ];
   };
 }

@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.hardware.video;
+in {
   options.modules.hardware.video = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.hardware.video.enable {
+  config = mkIf cfg.enable {
     hardware.video = {
       hidpi.enable = true;
     };

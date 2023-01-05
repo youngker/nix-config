@@ -1,6 +1,8 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.dev.rust;
+in {
   options.modules.dev.rust = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.dev.rust.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       rust-analyzer
       rustup

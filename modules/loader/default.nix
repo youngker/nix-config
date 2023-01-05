@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.boot.loader;
+in {
   options.modules.boot.loader = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.boot.loader.enable {
+  config = mkIf cfg.enable {
     boot.loader = {
       systemd-boot.enable = true;
     };

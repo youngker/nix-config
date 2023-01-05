@@ -1,9 +1,10 @@
-{ lib, pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 let
   inherit (lib) optionals optionalAttrs;
   inherit (pkgs.stdenv) isDarwin isLinux;
+  cfg = config.modules.apps.alacritty;
 in
 {
   options.modules.apps.alacritty = {
@@ -13,7 +14,7 @@ in
     };
   };
 
-  config = mkIf config.modules.apps.alacritty.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [ alacritty ];
 
     programs.alacritty = {

@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.services.openssh;
+in {
   options.modules.services.openssh = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.services.openssh.enable {
+  config = mkIf cfg.enable {
     services.openssh.enable = true;
     services.openssh.startWhenNeeded = true;
   };

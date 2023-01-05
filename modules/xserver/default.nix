@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ config, lib, pkgs, ... }:
 
-with lib; {
+with lib;
+let cfg = config.modules.services.xserver;
+in {
   options.modules.services.xserver = {
     enable = mkOption {
       type = types.bool;
@@ -8,7 +10,7 @@ with lib; {
     };
   };
 
-  config = mkIf config.modules.services.xserver.enable {
+  config = mkIf cfg.enable {
     services.xserver = {
       enable = true;
       desktopManager.xterm.enable = true;

@@ -10,7 +10,7 @@ in
     apps = {
       alacritty.enable = true;
       bingwallpaper.enable = true;
-      firefox.enable = isLinux;
+      webbrowser.enable = isLinux;
       fzf.enable = true;
       pandoc.enable = true;
       starship.enable = true;
