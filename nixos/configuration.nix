@@ -1,7 +1,7 @@
 { pkgs, config, lib, user, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./modules ];
+  imports = [ ./hardware-configuration.nix ];
 
   system.stateVersion = "22.11";
 

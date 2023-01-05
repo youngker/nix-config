@@ -26,57 +26,73 @@
         email = "youngker@gmail.com";
         timezone = "Asia/Seoul";
       };
+
+      mkModules = path: builtins.listToAttrs
+        (map
+          (name: {
+            inherit name;
+            value = import (path + "/${name}");
+          })
+          (builtins.attrNames (builtins.readDir path)));
+
+      mkPkgs = system: import nixpkgs {
+        inherit system;
+        overlays = [ self.overlays.default ];
+        config.allowUnfree = true;
+      };
     in
     {
       overlays.default = final: prev: (import ./overlays inputs) final prev;
 
-      nixosModules = builtins.listToAttrs (map
-        (name: {
-          inherit name;
-          value = import (./modules + "/${name}");
-        })
-        (builtins.attrNames (builtins.readDir ./modules)));
+      nixosModules = mkModules ./modules;
+      darwinModules = mkModules ./darwin/modules;
+      homeModules = mkModules ./home/modules;
 
-      darwinModules = builtins.listToAttrs (map
-        (name: {
-          inherit name;
-          value = import (./darwin/modules + "/${name}");
-        })
-        (builtins.attrNames (builtins.readDir ./darwin/modules)));
-
-      homeModules = builtins.listToAttrs (map
-        (name: {
-          inherit name;
-          value = import (./home/modules + "/${name}");
-        })
-        (builtins.attrNames (builtins.readDir ./home/modules)));
-
-      nixosConfigurations = import ./nixos {
-        inherit inputs nixpkgs home user;
-        pkgs = self.pkgs."x86_64-linux";
+      nixosConfigurations = {
+        ${user.host} = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          pkgs = mkPkgs system;
+          specialArgs = { inherit user; };
+          modules = builtins.attrValues self.nixosModules ++ [
+            ./nixos/configuration.nix
+            home.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit pkgs user; };
+              home-manager.users.${user.name} = self.homeConfigurations.fn;
+            }
+          ];
+        };
       };
 
       darwinConfigurations = {
-        ${user.host} = darwin.lib.darwinSystem {
+        ${user.host} = darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
-          pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-            overlays = [ self.overlays.default ];
-            config.allowUnfree = true;
-          };
+          pkgs = mkPkgs system;
           specialArgs = { inherit user inputs; };
-          modules = [
+          modules = builtins.attrValues self.darwinModules ++ [
             ./darwin/configuration.nix
-            { imports = builtins.attrValues self.homeModules; }
-            { imports = builtins.attrValues self.darwinModules; }
             home.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit user; };
-              home-manager.users.${user.name} = import ./home/home.nix;
+              home-manager.extraSpecialArgs = { inherit pkgs user; };
+              home-manager.users.${user.name} = self.homeConfigurations.fn;
             }
           ];
+        };
+      };
+
+      homeConfigurations = {
+        fn = { ... }: {
+          imports = builtins.attrValues self.homeModules ++ [ ./home/home.nix ];
+        };
+
+        ${user.name} = home.lib.homeManagerConfiguration {
+          pkgs = mkPkgs "x86_64-linux";
+          extraSpecialArgs = { inherit user; };
+          modules = builtins.attrValues self.homeModules ++ [ ./home/home.nix ];
         };
       };
 
@@ -87,24 +103,9 @@
     (utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ])
       (system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ self.overlays.default ];
-          config.allowUnfree = true;
-        };
+        pkgs = mkPkgs system;
       in
       {
-        homeConfigurations = {
-          ${user.name} = home.lib.homeManagerConfiguration {
-            inherit pkgs;
-            extraSpecialArgs = { inherit user; };
-            modules = [
-              ./home/home.nix
-              { imports = builtins.attrValues self.homeModules; }
-            ];
-          };
-        };
-
         packages = utils.lib.flattenTree {
           amethyst = pkgs.amethyst;
           bingwallpaper = pkgs.bingwallpaper;
