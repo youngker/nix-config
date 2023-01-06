@@ -11,6 +11,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ brave firefox google-chrome ];
+    home.packages = with pkgs;
+      [
+        brave
+        firefox
+        google-chrome
+      ];
   };
 }

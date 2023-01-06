@@ -10,7 +10,6 @@ in {
     };
   };
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ zsh ];
     programs.zsh = rec {
       enable = true;
       enableCompletion = false;

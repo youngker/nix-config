@@ -11,7 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ xmobar ];
     programs.xmobar = {
       enable = true;
       extraConfig = builtins.readFile ./xmobar.hs;
