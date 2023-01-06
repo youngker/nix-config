@@ -60,7 +60,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit pkgs user; };
-              home-manager.users.${user.name} = self.homeConfigurations.fn;
+              home-manager.users.${user.name} = self.homeConfigurations.nixos;
             }
           ];
         };
@@ -78,21 +78,31 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit pkgs user; };
-              home-manager.users.${user.name} = self.homeConfigurations.fn;
+              home-manager.users.${user.name} = self.homeConfigurations.darwin;
             }
           ];
         };
       };
 
       homeConfigurations = {
-        fn = { ... }: {
-          imports = builtins.attrValues self.homeModules ++ [ ./home/home.nix ];
+        nixos = { pkgs, user, ... }: {
+          imports = [
+            ./home/common.nix
+            ./home/linux.nix
+          ] ++ builtins.attrValues self.homeModules;
+        };
+
+        darwin = { pkgs, user, ... }: {
+          imports = [
+            ./home/common.nix
+            ./home/darwin.nix
+          ] ++ builtins.attrValues self.homeModules;
         };
 
         ${user.name} = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs "x86_64-linux";
           extraSpecialArgs = { inherit user; };
-          modules = builtins.attrValues self.homeModules ++ [ ./home/home.nix ];
+          modules = builtins.attrValues self.homeModules ++ [ ./home/common.nix ./home/linux.nix ];
         };
       };
 
@@ -114,11 +124,10 @@
         };
 
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs;
-            [
-              nixpkgs-fmt
-              rnix-lsp
-            ];
+          buildInputs = with pkgs; [
+            nixpkgs-fmt
+            rnix-lsp
+          ];
         };
 
         formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;

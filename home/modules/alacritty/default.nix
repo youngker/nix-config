@@ -3,7 +3,7 @@
 with lib;
 let
   inherit (lib) optionals optionalAttrs;
-  inherit (pkgs.stdenv) isDarwin isLinux;
+  inherit (pkgs.stdenv) isDarwin;
   cfg = config.modules.apps.alacritty;
 in
 {
