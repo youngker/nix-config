@@ -13,7 +13,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       rust-analyzer
-      rustup
+      rust-bin.stable.latest.default
     ];
   };
 }

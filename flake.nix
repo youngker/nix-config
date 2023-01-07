@@ -8,6 +8,7 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    rust-overlay.url = "github:oxalica/rust-overlay";
     utils.url = "github:numtide/flake-utils";
   };
 
@@ -41,6 +42,7 @@
         overlays = [
           self.overlays.default
           inputs.emacs-overlay.overlay
+          inputs.rust-overlay.overlays.default
         ];
         config.allowUnfree = true;
       };
