@@ -14,6 +14,7 @@ with epkgs; [
   codesearch
   company
   consult
+  consult-codesearch
   crm-custom
   default-text-scale
   diff-hl
@@ -37,10 +38,11 @@ with epkgs; [
   google-c-style
   google-translate
   haskell-mode
-  highlight-symbol
   helm-codesearch
+  highlight-symbol
   htmlize
   inf-clojure
+  ksp-mode
   log4e
   magit
   markdown-mode
@@ -67,7 +69,7 @@ with epkgs; [
   slime-company
   swift-mode
   swiper
-  toml-mode
+  tree-sitter
   typescript-mode
   undo-tree
   use-package

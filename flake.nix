@@ -7,6 +7,7 @@
     home.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     utils.url = "github:numtide/flake-utils";
   };
 
@@ -37,7 +38,10 @@
 
       mkPkgs = system: import nixpkgs {
         inherit system;
-        overlays = [ self.overlays.default ];
+        overlays = [
+          self.overlays.default
+          inputs.emacs-overlay.overlay
+        ];
         config.allowUnfree = true;
       };
     in
