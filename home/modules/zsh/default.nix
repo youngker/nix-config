@@ -36,6 +36,7 @@ in {
       };
 
       sessionVariables = {
+        EDITOR = "${pkgs.emacs}/bin/emacsclient -tc";
         ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
         LC_CTYPE = "en_US.UTF-8";
         LEDGER_COLOR = "true";
@@ -52,23 +53,19 @@ in {
       };
 
       shellAliases = {
-        vi = "${pkgs.vim}/bin/vim";
         b = "${pkgs.git}/bin/git b";
-        e = "${pkgs.emacs}/bin/emacsclient -tc";
-        l = "${pkgs.git}/bin/git l";
-        w = "${pkgs.git}/bin/git w";
-        g = "${pkgs.gitAndTools.hub}/bin/hub";
+        bad = "${pkgs.git}/bin/git bisect bad";
         cat = "${pkgs.bat}/bin/bat";
+        e = "${pkgs.emacs}/bin/emacsclient -tca 'emacs -nw'";
+        ek = "${pkgs.emacs}/bin/emacsclient --eval '(kill-emacs)'";
+        g = "${pkgs.gitAndTools.hub}/bin/hub";
         git = "${pkgs.gitAndTools.hub}/bin/hub";
         good = "${pkgs.git}/bin/git bisect good";
-        bad = "${pkgs.git}/bin/git bisect bad";
+        l = "${pkgs.git}/bin/git l";
         ls = "${pkgs.exa}/bin/exa --sort=Name";
-        nm = "${pkgs.findutils}/bin/find . -name";
         par = "${pkgs.parallel}/bin/parallel";
         rX = "${pkgs.coreutils}/bin/chmod -R ugo+rX";
-        scp = "${pkgs.rsync}/bin/rsync -aP --inplace";
-        wipe = "${pkgs.srm}/bin/srm -vfr";
-        rehash = "hash -r";
+        w = "${pkgs.git}/bin/git w";
       };
     };
   };

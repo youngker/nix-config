@@ -12,6 +12,11 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs;
-      [ babashka clojure clojure-lsp leiningen ];
+      [
+        babashka
+        clojure
+        clojure-lsp
+        leiningen
+      ];
   };
 }

@@ -13,7 +13,6 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       ardour
-      pulseaudio # only pactl
       calf
       carla
       fluidsynth
@@ -25,6 +24,7 @@ in {
       patchage
       patchage
       pavucontrol
+      pulseaudio # only pactl
       qsynth
       qtractor
       rosegarden

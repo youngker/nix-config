@@ -13,7 +13,6 @@ in {
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      # package = pkgs.gitFull;
       userName = user.full;
       userEmail = user.email;
       aliases = {

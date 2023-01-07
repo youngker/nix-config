@@ -1,9 +1,16 @@
-{ pkgs, config, lib, user, ... }:
+{ pkgs, config, lib, user, self, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
 
   system.stateVersion = "22.11";
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit pkgs user; };
+    users.${user.name} = self.homeConfigurations.nixos;
+  };
 
   users.users.${user.name} = {
     isNormalUser = true;

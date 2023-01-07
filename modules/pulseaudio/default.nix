@@ -13,7 +13,10 @@ in {
   config = mkIf cfg.enable {
     hardware.pulseaudio = {
       enable = true;
-      package = with pkgs; pulseaudio.override { jackaudioSupport = true; };
+      package = with pkgs;
+        pulseaudio.override {
+          jackaudioSupport = true;
+        };
     };
   };
 }

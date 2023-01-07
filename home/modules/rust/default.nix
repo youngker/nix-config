@@ -14,10 +14,6 @@ in {
     home.packages = with pkgs; [
       rust-analyzer
       rustup
-      # cargo
-      # clippy
-      # rustc
-      # rustfmt
     ];
   };
 }
