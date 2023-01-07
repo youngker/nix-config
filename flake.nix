@@ -87,14 +87,12 @@
       homeConfigurations = {
         nixos = { pkgs, user, ... }: {
           imports = [
-            ./home/common.nix
             ./home/linux.nix
           ] ++ builtins.attrValues self.homeModules;
         };
 
         darwin = { pkgs, user, ... }: {
           imports = [
-            ./home/common.nix
             ./home/darwin.nix
           ] ++ builtins.attrValues self.homeModules;
         };
@@ -102,7 +100,9 @@
         ${user.name} = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs "x86_64-linux";
           extraSpecialArgs = { inherit user; };
-          modules = builtins.attrValues self.homeModules ++ [ ./home/common.nix ./home/linux.nix ];
+          modules = [
+            ./home/linux.nix
+          ] ++ builtins.attrValues self.homeModules;
         };
       };
 

@@ -1,6 +1,8 @@
 { lib, pkgs, user, ... }:
 
 {
+  imports = [ ./common.nix ];
+
   home = {
     homeDirectory = "/home/${user.name}";
     sessionVariablesExtra =
