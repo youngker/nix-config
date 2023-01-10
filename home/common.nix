@@ -28,6 +28,7 @@
       git.enable = true;
       go.enable = true;
       haskell.enable = true;
+      java.enable = true;
       nix.enable = true;
       rust.enable = true;
     };

@@ -69,6 +69,7 @@ with epkgs; [
   slime-company
   swift-mode
   swiper
+  toml-mode
   tree-sitter
   typescript-mode
   undo-tree
