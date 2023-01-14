@@ -50,6 +50,7 @@ in {
       ripgrep
       stow
       tree
+      universal-ctags
       unrar
       unzip
       wget

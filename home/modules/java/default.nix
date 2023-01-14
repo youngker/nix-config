@@ -13,7 +13,9 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs;
       [
-        jdk17
+        jdk
+        jdt-language-server
+        (writeShellScriptBin "jdtls" "jdt-language-server")
       ];
   };
 }
