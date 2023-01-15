@@ -3,12 +3,12 @@
 with pkgs;
 stdenv.mkDerivation rec {
   pname = "Rectangle";
-  version = "0.49";
+  version = "0.64";
 
   src = fetchurl {
     url =
       "https://github.com/rxhanson/Rectangle/releases/download/v${version}/Rectangle${version}.dmg";
-    sha256 = "60699a4f1700de0edb30668a2342840b8d62257ced73e7d9e9812eb62f009389";
+    sha256 = "sha256-z4xji072hGUFnxwCmME3FxW+dZuzNKoMvMQ17oRZocc=";
   };
 
   buildInputs = [ undmg unzip ];

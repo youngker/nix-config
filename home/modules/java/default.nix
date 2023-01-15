@@ -14,8 +14,7 @@ in {
     home.packages = with pkgs;
       [
         jdk
-        jdt-language-server
-        (writeShellScriptBin "jdtls" "jdt-language-server")
+        my-jdt-language-server
       ];
   };
 }

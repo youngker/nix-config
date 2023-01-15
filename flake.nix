@@ -112,9 +112,6 @@
       in
       {
         packages = inputs.utils.lib.flattenTree {
-          amethyst = pkgs.amethyst;
-          bingwallpaper = pkgs.bingwallpaper;
-          rectangle = pkgs.rectangle;
           xterm-24bit = pkgs.xterm-24bit;
         };
 
