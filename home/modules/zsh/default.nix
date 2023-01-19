@@ -36,6 +36,7 @@ in {
       };
 
       sessionVariables = {
+        BROWSER = "google-chrome-stable";
         EDITOR = "${pkgs.emacs}/bin/emacsclient -tc";
         ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
         LC_CTYPE = "en_US.UTF-8";

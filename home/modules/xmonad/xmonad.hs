@@ -171,6 +171,7 @@ additionalKey =
     ("M-l", sendMessage Expand),
     ("M-z", sendMessage $ Toggle FULL),
     ("M-t", withFocused $ windows . W.sink),
+    ("M-C-<Return>", spawn "bingwallpaper"),
     ("M-S-<Return>", spawn myTerminalApp),
     ("M-S-b", spawn myBrowserApp),
     ("M-<Down>", spawn "pactl set-sink-volume 50 -5%"),

@@ -15,6 +15,7 @@ in {
       enable = true;
       skhdConfig = ''
         shift + alt - return : open -na ${pkgs.alacritty}/Applications/Alacritty.app
+        ctrl + alt - return : ${pkgs.bingwallpaper}/bin/bingwallpaper
       '';
     };
   };
