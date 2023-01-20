@@ -14,7 +14,6 @@ in {
     home.packages = with pkgs; [
       bat
       cachix
-      cmake
       codesearch
       curl
       du-dust

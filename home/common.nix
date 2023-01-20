@@ -23,6 +23,7 @@
 
     dev = {
       clojure.enable = true;
+      cmake.enable = true;
       cpp.enable = true;
       emacs.enable = true;
       git.enable = true;
