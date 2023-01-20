@@ -30,6 +30,7 @@
       haskell.enable = true;
       java.enable = true;
       nix.enable = true;
+      ocaml.enable = true;
       rust.enable = true;
     };
   };

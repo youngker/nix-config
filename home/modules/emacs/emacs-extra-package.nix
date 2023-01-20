@@ -72,6 +72,7 @@ with epkgs; [
   swiper
   toml-mode
   tree-sitter
+  tuareg
   typescript-mode
   undo-tree
   use-package
