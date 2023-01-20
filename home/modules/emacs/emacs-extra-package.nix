@@ -24,6 +24,7 @@ with epkgs; [
   eldoc
   elein
   elisp-slime-nav
+  elogcat
   embark
   embark-consult
   eopengrok
