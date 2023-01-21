@@ -45,6 +45,7 @@ in {
       parallel
       patch
       patchutils
+      plantuml
       procs
       pstree
       ripgrep
