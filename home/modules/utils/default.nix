@@ -31,6 +31,7 @@ in {
       gnuplot
       gnused
       gnutar
+      htop
       hub
       jq
       killall

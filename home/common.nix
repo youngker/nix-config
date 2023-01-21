@@ -33,6 +33,8 @@
       nix.enable = true;
       ocaml.enable = true;
       rust.enable = true;
+      sbcl.enable = true;
+      texlive.enable = true;
     };
   };
 

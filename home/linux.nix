@@ -31,6 +31,10 @@
       xorg.enable = true;
     };
 
+    dev = {
+      guile.enable = true;
+    };
+
     graphic = {
       apps.enable = true;
     };

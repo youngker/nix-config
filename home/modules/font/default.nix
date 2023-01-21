@@ -16,9 +16,8 @@ in {
     home.packages = with pkgs; [
       fira-code
       font-awesome_4
-      noto-fonts-cjk
-      xorg.fontbhlucidatypewriter75dpi
-      xorg.fontbhlucidatypewriter100dpi
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
     ];
   };
 }

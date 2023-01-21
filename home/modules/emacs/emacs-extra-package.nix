@@ -7,7 +7,6 @@ with epkgs; [
   bind-key
   cargo
   clang-format
-  cljsbuild-mode
   clojure-mode
   cmake-mode
   cmake-project
@@ -22,7 +21,6 @@ with epkgs; [
   dired-git-info
   eglot
   eldoc
-  elein
   elisp-slime-nav
   elogcat
   embark
