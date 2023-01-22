@@ -36,6 +36,7 @@
       openssh.enable = true;
       pipewire.enable = true;
       timesyncd.enable = true;
+      virtualbox.enable = true;
       xserver.enable = true;
     };
   };
