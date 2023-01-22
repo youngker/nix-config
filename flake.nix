@@ -102,8 +102,12 @@
       };
 
       defaultTemplate = self.templates.full;
-      templates.full.path = ./.;
-      templates.full.description = "default template";
+      templates = {
+        full = {
+          path = ./.;
+          description = "default template";
+        };
+      } // import ./templates;
     } //
     (inputs.utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ])
       (system:
