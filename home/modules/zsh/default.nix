@@ -39,6 +39,7 @@ in {
         BROWSER = "google-chrome-stable";
         EDITOR = "${pkgs.emacs}/bin/emacsclient -tc";
         ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
+        LANG = "en_US.UTF-8";
         LC_CTYPE = "en_US.UTF-8";
         LEDGER_COLOR = "true";
         LESS = "-FRSXM";

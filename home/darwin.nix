@@ -10,9 +10,7 @@
         fontDirectories = [
           "/System/Library/Fonts"
           "/Library/Fonts"
-          pkgs.noto-fonts
-          pkgs.noto-fonts-cjk-sans
-          pkgs.noto-fonts-cjk-serif
+          pkgs.noto-cjk
         ];
       }}";
     };

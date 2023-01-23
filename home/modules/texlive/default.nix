@@ -21,5 +21,8 @@ in {
           || pkg.pname == "latex2e-help-texinfo";
       };
     };
+    home.packages = with pkgs; [
+      noto-cjk
+    ];
   };
 }
