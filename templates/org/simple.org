@@ -1,7 +1,5 @@
 #+SETUPFILE: simple.theme
 #+TITLE: Unknown
-#+AUTHOR: Unknown
-#+EMAIL: Unknown
-#+OPTIONS: H:3 html-style:nil ^:nil
-
-* Test
+#+SUBTITLE: "Unknown"
+#+AUTHOR: YoungJoo Lee
+#+EMAIL: youngker@gmail.com

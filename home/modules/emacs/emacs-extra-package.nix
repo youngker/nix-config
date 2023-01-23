@@ -53,6 +53,7 @@ with epkgs; [
   org
   org-bullets
   org-journal
+  ox-pandoc
   ox-reveal
   page-break-lines
   paredit

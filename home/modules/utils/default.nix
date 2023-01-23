@@ -55,6 +55,7 @@ in {
       unrar
       unzip
       wget
+      zathura
     ];
   };
 }
