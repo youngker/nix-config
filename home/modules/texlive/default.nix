@@ -22,6 +22,8 @@ in {
       };
     };
     home.packages = with pkgs; [
+      inkscape.out
+      librsvg
       noto-cjk
     ];
   };

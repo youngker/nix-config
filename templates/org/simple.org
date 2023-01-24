@@ -1,5 +1,7 @@
 #+SETUPFILE: simple.theme
-#+TITLE: Unknown
-#+SUBTITLE: "Unknown"
-#+AUTHOR: YoungJoo Lee
-#+EMAIL: youngker@gmail.com
+#+TITLE:     Unknown
+#+SUBTITLE:  "Unknown"
+#+AUTHOR:    YoungJoo Lee
+#+EMAIL:     youngker@gmail.com
+#+VERSION:   0.1
+#+DATE:      2023-01-01

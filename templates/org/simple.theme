@@ -2,12 +2,25 @@
 #+OPTIONS:          H:3
 #+OPTIONS:          ^:nil
 #+PANDOC_VARIABLES: "CJKmainfont:Noto Sans CJK KR"
+#+PANDOC_VARIABLES: "mainfont:Lucida Grande"
+#+PANDOC_VARIABLES: "monofont:Monaco"
+#+PANDOC_VARIABLES: "sansfont:Lucida Grande"
 #+PANDOC_VARIABLES: caption-justification:centering
 #+PANDOC_VARIABLES: colorlinks:true
+#+PANDOC_VARIABLES: fontsize=14pt
+#+PANDOC_VARIABLES: footer-center:\leftmark
+#+PANDOC_VARIABLES: footer-left:\hspace{1cm}
+#+PANDOC_VARIABLES: "footer-right:Page \\thepage"
 #+PANDOC_VARIABLES: geometry:margin=1in
+#+PANDOC_VARIABLES: header-center:\leftmark
+#+PANDOC_VARIABLES: header-left:\thetitle
 #+PANDOC_VARIABLES: page-background-opacity:0.08
 #+PANDOC_VARIABLES: page-background:backgrounds/background1.pdf
 #+PANDOC_VARIABLES: papersize:a4
+#+PANDOC_VARIABLES: titlepage-background:backgrounds/background.pdf
+#+PANDOC_VARIABLES: titlepage-rule-color:360049
+#+PANDOC_VARIABLES: titlepage-rule-height:0
+#+PANDOC_VARIABLES: titlepage-text-color:FFFFFF
 #+PANDOC_VARIABLES: titlepage:t
 #+PANDOC_VARIABLES: toc-own-page:t
 #+PANDOC_OPTIONS:   listings:t
@@ -15,3 +28,25 @@
 #+PANDOC_OPTIONS:   standalone:t
 #+PANDOC_OPTIONS:   template:eisvogel.tex
 #+PANDOC_OPTIONS:   toc:t
+
+#+LATEX_CLASS_OPTIONS: [14pt,a4paper]
+#+LATEX_HEADER: \usepackage{svg}
+#+LATEX_HEADER: \usepackage{awesomebox}
+#+LATEX_HEADER: \usepackage{tcolorbox}
+#+LATEX_HEADER: \newtcolorbox{info-box}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
+#+LATEX_HEADER: \newtcolorbox{warning-box}{colback=orange!5!white,arc=0pt,outer arc=0pt,colframe=orange!80!black}
+#+LATEX_HEADER: \newtcolorbox{error-box}{colback=red!5!white,arc=0pt,outer arc=0pt,colframe=red!75!black}
+#+LATEX_HEADER: \usepackage{luatexja-fontspec}
+#+LATEX_HEADER: \setmainjfont{Noto Sans CJK KR}[WordSpace=1.2]
+#+LATEX_HEADER: \setmainfont{Lucida Grande}
+#+LATEX_HEADER: \setsansfont{Lucida Grande}
+#+LATEX_HEADER: \setmonofont{Monaco}
+#+LATEX_HEADER: \usepackage{lmodern}
+#+LATEX_HEADER: \hypersetup{hidelinks}
+#+LATEX_HEADER: \usepackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
+#+LATEX_HEADER: \definecolor{blockquote-border}{RGB}{221,221,221}
+#+LATEX_HEADER: \definecolor{blockquote-text}{RGB}{119,119,119}
+#+LATEX_HEADER: \usepackage{mdframed}
+#+LATEX_HEADER: \newmdenv[rightline=false,bottomline=false,topline=false,linewidth=3pt,linecolor=blockquote-border,skipabove=\parskip]{customblockquote}
+#+LATEX_HEADER: \renewenvironment{quote}{\begin{customblockquote}\list{}{\rightmargin=0em\leftmargin=0em}%
+#+LATEX_HEADER: \item\relax\color{blockquote-text}\ignorespaces}{\unskip\unskip\endlist\end{customblockquote}}
