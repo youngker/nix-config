@@ -2,6 +2,7 @@ pkgs: epkgs:
 with epkgs; [
   ace-window
   aggressive-indent
+  auctex
   auto-compile
   avy
   bind-key
@@ -25,6 +26,7 @@ with epkgs; [
   elogcat
   embark
   embark-consult
+  engrave-faces
   eopengrok
   exec-path-from-shell
   expand-region

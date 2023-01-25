@@ -5,3 +5,4 @@
 #+EMAIL:     youngker@gmail.com
 #+VERSION:   0.1
 #+DATE:      2023-01-01
+#+OPTIONS:   H:3 ^:nil html-style:nil
