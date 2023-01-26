@@ -11,7 +11,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ gnome.gnome-terminal gnome.gedit dconf flameshot ];
+    home.packages = with pkgs; [
+      dconf
+      evince
+      flameshot
+      gnome.gedit
+      gnome.gnome-terminal
+      meld
+    ];
     gtk = {
       enable = true;
       font.name = "Lucida Grande";
