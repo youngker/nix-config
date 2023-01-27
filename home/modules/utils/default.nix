@@ -14,6 +14,7 @@ in {
     home.packages = with pkgs; [
       bat
       cachix
+      clj-opengrok
       codesearch
       curl
       du-dust
