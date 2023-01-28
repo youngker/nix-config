@@ -14,5 +14,6 @@ in {
     boot.loader = {
       systemd-boot.enable = true;
     };
+    systemd.services.NetworkManager-wait-online.enable = false;
   };
 }
