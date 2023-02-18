@@ -15,6 +15,9 @@ in {
       blender
       gimp
       inkscape
+      vulkan-tools
+      vulkan-loader
+      vulkan-headers
     ];
   };
 }
