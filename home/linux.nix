@@ -32,6 +32,7 @@
     };
 
     dev = {
+      gdb.enable = true;
       guile.enable = true;
     };
 

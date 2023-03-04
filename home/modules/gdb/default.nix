@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.modules.dev.cpp;
+let cfg = config.modules.dev.gdb;
 in {
-  options.modules.dev.cpp = {
+  options.modules.dev.gdb = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -12,11 +12,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      bear
-      clang_13
-      clang-analyzer
-      clang-tools
-      lldb_13
+      gdb
     ];
   };
 }
