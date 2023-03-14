@@ -11,6 +11,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.emacs.enable = true;
+    services.emacs = {
+      enable = true;
+      package = pkgs.emacsGit;
+    };
   };
 }
