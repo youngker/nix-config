@@ -7,3 +7,8 @@ git clone https://github.com/youngker/nix-config
 ``` shell
 $ darwin-rebuild switch --flake .#nixos
 ```
+
+## NixOS
+``` shell
+$ sudo nixos-rebuild switch --flake .#nixos
+```
