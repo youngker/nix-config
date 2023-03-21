@@ -12,3 +12,9 @@ $ darwin-rebuild switch --flake .#nixos
 ``` shell
 $ sudo nixos-rebuild switch --flake .#nixos
 ```
+
+## Linux Distribution
+``` shell
+$ nix build .#homeConfigurations.youngker.activationPackage
+$ ./result/activate
+```
