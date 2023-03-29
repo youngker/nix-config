@@ -33,7 +33,7 @@ in
           family = "Monaco";
           style = "Regular";
         };
-        font.size = 14.0;
+        font.size = 18.0;
         colors = {
           primary = {
             background = "#2E3440";
