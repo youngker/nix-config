@@ -11,8 +11,5 @@ in {
   };
 
   config = mkIf cfg.enable {
-    hardware.video = {
-      hidpi.enable = true;
-    };
   };
 }

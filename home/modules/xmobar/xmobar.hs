@@ -1,9 +1,9 @@
 Config
-  { font = "Lucida Grande Bold 13, Noto Sans CJK KR Bold 13",
-    additionalFonts = ["Font Awesome 15"],
+  { font = "Lucida Grande Bold 25, Noto Sans CJK KR Bold 25",
+    additionalFonts = ["Font Awesome 28"],
     bgColor = "#2E3440",
     fgColor = "#ECEFF4",
-    position = BottomSize C 100 40,
+    position = BottomSize C 100 60,
     sepChar = "%",
     alignSep = "}{",
     template = " %StdinReader%  }{ %multicpu% %memory% %dynnetwork% %date% ",
