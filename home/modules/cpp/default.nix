@@ -13,10 +13,10 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       bear
-      clang_13
       clang-analyzer
-      clang-tools
-      lldb_13
+      clang-tools_16
+      clang_16
+      lldb_16
     ];
   };
 }
