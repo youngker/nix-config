@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.modules.services.emacs;
+let cfg = config.modules.dev.python;
 in {
-  options.modules.services.emacs = {
+  options.modules.dev.python = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -11,9 +11,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.emacs = {
-      enable = true;
-      package = pkgs.emacs-git;
-    };
+    home.packages = with pkgs;
+      [
+        pyright
+      ];
   };
 }

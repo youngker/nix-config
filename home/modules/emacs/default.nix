@@ -13,7 +13,7 @@ in {
   config = mkIf cfg.enable {
     programs.emacs = {
       enable = true;
-      package = pkgs.emacsGit;
+      package = pkgs.emacs-git;
       extraPackages = import ./emacs-extra-package.nix pkgs;
     };
   };
