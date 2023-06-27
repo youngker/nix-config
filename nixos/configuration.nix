@@ -32,6 +32,7 @@
     };
 
     services = {
+      docker.enable = true;
       jack.enable = false;
       openssh.enable = true;
       pipewire.enable = true;
