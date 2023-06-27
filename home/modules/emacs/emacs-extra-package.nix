@@ -62,6 +62,7 @@ with epkgs; [
   paredit-everywhere
   pdf-tools
   plantuml-mode
+  python-black
   qml-mode
   rainbow-delimiters
   rainbow-mode
