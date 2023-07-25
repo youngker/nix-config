@@ -3,7 +3,7 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
 
   home-manager = {
     useGlobalPkgs = true;
@@ -38,6 +38,7 @@
       pipewire.enable = true;
       timesyncd.enable = true;
       virtualbox.enable = true;
+      xrdp.enable = true;
       xserver.enable = true;
     };
   };
