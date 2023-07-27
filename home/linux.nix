@@ -13,6 +13,9 @@
 
   modules = {
     apps = {
+      android.enable = true;
+      vim.enable = true;
+      vscode.enable = true;
       webbrowser.enable = true;
     };
 
