@@ -17,6 +17,7 @@
       vim.enable = true;
       vscode.enable = true;
       webbrowser.enable = true;
+      zathura.enable = true;
     };
 
     audio = {
