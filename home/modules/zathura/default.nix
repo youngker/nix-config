@@ -19,58 +19,45 @@ in {
         "<A-v>" = "navigate previous";
       };
       options = {
-        font = "Monaco 15";
-
-        default-fg = "#CDD6F4";
-        default-bg = "rgba(30, 30, 46, 0.8)";
-
+        adjust-open = "best-fit";
         completion-bg = "#313244";
         completion-fg = "#CDD6F4";
-        completion-highlight-bg = "#575268";
-        completion-highlight-fg = "#CDD6F4";
         completion-group-bg = "#313244";
         completion-group-fg = "#89B4FA";
-
-        statusbar-fg = "#CDD6F4";
-        statusbar-bg = "#313244";
-        statusbar-h-padding = 10;
-        statusbar-v-padding = 10;
-
+        completion-highlight-bg = "#575268";
+        completion-highlight-fg = "#CDD6F4";
+        default-bg = "rgba(30, 30, 46, 0.8)";
+        default-fg = "#CDD6F4";
+        font = "Monaco 15";
+        guioptions = "none";
+        highlight-active-color = "#F5C2E7";
+        highlight-color = "#575268";
+        highlight-fg = "#F5C2E7";
+        index-active-bg = "#313244";
+        index-active-fg = "#CDD6F4";
+        index-bg = "rgba(30, 30, 46, 0.8)";
+        index-fg = "#CDD6F4";
+        inputbar-bg = "rgba(30, 30, 46, 0.8)";
+        inputbar-fg = "#CDD6F4";
         notification-bg = "#313244";
-        notification-fg = "#CDD6F4";
         notification-error-bg = "#313244";
         notification-error-fg = "#F38BA8";
+        notification-fg = "#CDD6F4";
         notification-warning-bg = "#313244";
         notification-warning-fg = "#FAE3B0";
-        selection-notification = true;
-
-        inputbar-fg = "#CDD6F4";
-        inputbar-bg = "rgba(30, 30, 46, 0.8)";
-
-        recolor = true;
-        recolor-lightcolor = "rgba(0,0,0,0)";
-        recolor-darkcolor = "#CDD6F4";
-
-        index-fg = "#CDD6F4";
-        index-bg = "rgba(30, 30, 46, 0.8)";
-        index-active-fg = "#CDD6F4";
-        index-active-bg = "#313244";
-
+        pages-per-row = "1";
         render-loading-bg = "rgba(30, 30, 46, 0.8)";
         render-loading-fg = "#CDD6F4";
-
-        highlight-color = "#575268";
-        highlight-active-color = "#F5C2E7";
-        highlight-fg = "#F5C2E7";
-
-        selection-clipboard = "clipboard";
-        adjust-open = "best-fit";
-        pages-per-row = "1";
-        scroll-page-aware = "true";
         scroll-full-overlap = "0.01";
+        scroll-page-aware = "true";
         scroll-step = "100";
+        selection-clipboard = "clipboard";
+        selection-notification = true;
+        statusbar-bg = "#313244";
+        statusbar-fg = "#CDD6F4";
+        statusbar-h-padding = 10;
+        statusbar-v-padding = 10;
         zoom-min = "10";
-        guioptions = "none";
       };
     };
   };
