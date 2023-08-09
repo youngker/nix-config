@@ -11,6 +11,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      git-repo
+    ];
     programs.git = {
       enable = true;
       userName = user.full;
