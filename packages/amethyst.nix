@@ -3,11 +3,11 @@
 with pkgs;
 stdenv.mkDerivation rec {
   pname = "Amethyst";
-  version = "0.19.0";
+  version = "0.20.0";
   src = fetchurl {
     url =
       "https://github.com/ianyh/Amethyst/releases/download/v${version}/Amethyst.zip";
-    sha256 = "sha256-LdMfySoPpY4fPcDyGFP5xv5/s4a1XoleA7kHKhykZpA=";
+    sha256 = "sha256-GYorvoCDLOd/xYStIGkSBqF5QjVR3PHL30b/Hm+CnAk=";
   };
   buildInputs = [ unzip ];
   sourceRoot = "Amethyst.app";
