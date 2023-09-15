@@ -23,6 +23,12 @@ $ sudo nixos-rebuild switch --flake .#nixos
 
 ## Linux Distribution
 ``` shell
-$ nix build .#homeConfigurations.youngker.activationPackage
+$ nix build .#homeConfigurations.linux.activationPackage
+$ ./result/activate
+```
+
+## WSL
+``` shell
+$ nix build .#homeConfigurations.wsl.activationPackage
 $ ./result/activate
 ```

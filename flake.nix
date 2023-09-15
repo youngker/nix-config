@@ -92,11 +92,19 @@
           ] ++ attrValues self.homeModules;
         };
 
-        ${user.name} = home.lib.homeManagerConfiguration {
+        linux = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs "x86_64-linux";
           extraSpecialArgs = { inherit user; };
           modules = [
             ./home/linux.nix
+          ] ++ attrValues self.homeModules;
+        };
+
+        wsl = home.lib.homeManagerConfiguration {
+          pkgs = mkPkgs "x86_64-linux";
+          extraSpecialArgs = { inherit user; };
+          modules = [
+            ./home/wsl.nix
           ] ++ attrValues self.homeModules;
         };
       };
