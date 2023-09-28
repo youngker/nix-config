@@ -18,7 +18,7 @@ in {
       codesearch
       curl
       du-dust
-      exa
+      eza
       fd
       feh
       file

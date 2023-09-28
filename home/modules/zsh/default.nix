@@ -64,7 +64,7 @@ in {
         git = "${pkgs.gitAndTools.hub}/bin/hub";
         good = "${pkgs.git}/bin/git bisect good";
         l = "${pkgs.git}/bin/git l";
-        ls = "${pkgs.exa}/bin/exa --sort=Name";
+        ls = "${pkgs.eza}/bin/eza --sort=Name";
         par = "${pkgs.parallel}/bin/parallel";
         rX = "${pkgs.coreutils}/bin/chmod -R ugo+rX";
         w = "${pkgs.git}/bin/git w";
