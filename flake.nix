@@ -45,6 +45,7 @@
           inputs.rust-overlay.overlays.default
         ];
         config.allowUnfree = true;
+        config.allowBroken = true;
       };
     in
     with builtins;
