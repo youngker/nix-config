@@ -18,7 +18,6 @@ in {
       gnome.gedit
       gnome.gnome-terminal
       meld
-      teams
     ];
     gtk = {
       enable = true;
