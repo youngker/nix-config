@@ -26,6 +26,8 @@ in {
         precmd_functions+=(set_win_title)
       '';
 
+      envExtra = "set -o emacs";
+
       history = {
         size = 50000;
         save = 500000;
