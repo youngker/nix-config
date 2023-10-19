@@ -69,7 +69,7 @@
       };
 
       darwinConfigurations = {
-        ${user.host} = darwin.lib.darwinSystem rec {
+        macos = darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
           pkgs = mkPkgs system;
           specialArgs = { inherit user self; };

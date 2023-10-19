@@ -1,4 +1,4 @@
-{ pkgs, lib, buildGoModule, fetchFromGitHub, darwin }:
+{ pkgs, lib, buildGoModule, fetchFromGitHub, darwin, ... }:
 
 buildGoModule rec {
   pname = "ollama";
@@ -16,13 +16,14 @@ buildGoModule rec {
     ./no-submodule-ollama.patch
   ];
 
-  buildInputs = lib.optionals pkgs.stdenv.isDarwin (with darwin.apple_sdk_11_0.frameworks; [
-    Accelerate
-    MetalPerformanceShaders
-    MetalKit
-  ]);
-
   nativeBuildInputs = with pkgs; [ cmake git ];
+
+  buildInputs = lib.optionals pkgs.stdenv.isDarwin
+    (with darwin.apple_sdk_11_0.frameworks; [
+      Accelerate
+      MetalPerformanceShaders
+      MetalKit
+    ]);
 
   preBuild = ''
     go generate ./...

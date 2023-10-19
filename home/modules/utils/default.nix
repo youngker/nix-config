@@ -12,7 +12,6 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      apparmor-parser
       bat
       cachix
       clj-opengrok

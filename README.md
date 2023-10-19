@@ -6,14 +6,18 @@ git clone https://github.com/youngker/nix-config
 ## MacOS
 
 ### 1st
+
 ``` shell
-$ nix --extra-experimental-features nix-command --extra-experimental-features flakes build .#darwinConfigurations.nixos.system
-$ ./result/sw/bin/darwin-rebuild switch --flake .#nixos
+$ nix --extra-experimental-features nix-command --extra-experimental-features flakes build .#darwinConfigurations.macos.system
+```
+
+``` shell
+$ ./result/sw/bin/darwin-rebuild switch --flake .#macos
 ```
 
 ### 2nd
 ``` shell
-$ darwin-rebuild switch --flake .#nixos
+$ darwin-rebuild switch --flake .#macos
 ```
 
 ## NixOS
