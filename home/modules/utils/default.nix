@@ -12,6 +12,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      apparmor-parser
       bat
       cachix
       clj-opengrok
@@ -32,6 +33,7 @@ in {
       gnuplot
       gnused
       gnutar
+      graphviz
       htop
       hub
       jq
@@ -42,6 +44,7 @@ in {
       ncurses
       nixfmt
       nixpkgs-fmt
+      ollama
       p7zip
       parallel
       patch
@@ -51,6 +54,8 @@ in {
       pstree
       ripgrep
       stow
+      termshark
+      tio
       tree
       universal-ctags
       unrar
