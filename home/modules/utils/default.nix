@@ -38,6 +38,7 @@ in {
       jq
       killall
       less
+      llama-cpp
       lsof
       more
       ncurses
