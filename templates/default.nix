@@ -7,4 +7,8 @@
     path = ./cpp;
     description = "cpp template";
   };
+  rust = {
+    path = ./rust;
+    description = "rust template";
+  };
 }
