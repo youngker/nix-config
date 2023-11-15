@@ -20,7 +20,6 @@ with epkgs; [
   diff-hl
   diminish
   dired-git-info
-  eglot
   eldoc
   elisp-slime-nav
   elogcat
@@ -73,11 +72,10 @@ with epkgs; [
   swift-mode
   swiper
   toml-mode
-  tree-sitter
+  treesit-auto
   tuareg
   typescript-mode
   undo-tree
-  use-package
   vertico
   visual-regexp
   volatile-highlights
