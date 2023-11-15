@@ -71,6 +71,8 @@ with epkgs; [
   slime-company
   swift-mode
   swiper
+  tempel
+  tempel-collection
   toml-mode
   treesit-auto
   tuareg

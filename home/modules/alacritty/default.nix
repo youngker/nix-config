@@ -398,6 +398,11 @@ in
             mods = "Alt|Shift";
             chars = "\\x1b)";
           }
+          {
+            key = "Tab";
+            mods = "Control";
+            chars = "\\x1b[27;5;9~";
+          }
         ];
       };
     };
