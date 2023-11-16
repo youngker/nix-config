@@ -82,6 +82,11 @@ in
             mods = "Control";
             action = "resetFontSize";
           }
+          {
+            key = "Tab";
+            mods = "Control";
+            chars = "\\x1b[27;5;9~";
+          }
         ] ++ optionals isDarwin [
           {
             key = "A";
@@ -397,11 +402,6 @@ in
             key = "Key0";
             mods = "Alt|Shift";
             chars = "\\x1b)";
-          }
-          {
-            key = "Tab";
-            mods = "Control";
-            chars = "\\x1b[27;5;9~";
           }
         ];
       };
