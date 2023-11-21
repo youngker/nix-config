@@ -25,6 +25,7 @@ in
             y = 10;
           };
           decorations = "none";
+          startup_mode = "Maximized";
           opacity = 0.98;
           option_as_alt = "Both";
         };
