@@ -8,6 +8,7 @@
   modules = {
     apps = {
       alacritty.enable = true;
+      bash.enable = true;
       bingwallpaper.enable = true;
       fzf.enable = true;
       pandoc.enable = true;

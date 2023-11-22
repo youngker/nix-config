@@ -13,13 +13,19 @@ in {
   config = mkIf cfg.enable {
     programs.starship = {
       enable = true;
-      enableBashIntegration = false;
       settings = {
         scan_timeout = 30;
         command_timeout = 5000;
         format = ''
           $username $hostname $directory $git_branch $git_status
-          \$ '';
+          $shell '';
+        shell = {
+          disabled = false;
+          format = "[$indicator]($style)\\$";
+          style = "bold blue";
+          zsh_indicator = "";
+          bash_indicator = "<bash>";
+        };
         username = {
           format = "[$user]($style)";
           style_user = "bold bright-red";
