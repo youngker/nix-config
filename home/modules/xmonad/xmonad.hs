@@ -169,6 +169,8 @@ additionalKey =
     ("M-i", sendMessage (IncMasterN (-1))),
     ("M-h", sendMessage Shrink),
     ("M-l", sendMessage Expand),
+    ("M-S-h", sendMessage MirrorShrink),
+    ("M-S-l", sendMessage MirrorExpand),
     ("M-z", sendMessage $ Toggle FULL),
     ("M-t", withFocused $ windows . W.sink),
     ("M-C-<Return>", spawn "bingwallpaper"),

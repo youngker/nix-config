@@ -29,6 +29,7 @@ in {
       global
       gnugrep
       gnumake
+      gnupg
       gnuplot
       gnused
       gnutar
@@ -38,8 +39,8 @@ in {
       jq
       killall
       less
-      llama-cpp
       lsof
+      m4
       more
       ncurses
       nixfmt
@@ -61,6 +62,7 @@ in {
       unrar
       unzip
       wget
+      xclip
     ];
   };
 }
