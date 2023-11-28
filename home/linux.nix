@@ -14,6 +14,7 @@
   modules = {
     apps = {
       android.enable = true;
+      qemu.enable = true;
       vim.enable = true;
       vscode.enable = true;
       webbrowser.enable = true;
