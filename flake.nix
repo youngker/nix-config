@@ -101,6 +101,14 @@
           ] ++ attrValues self.homeModules;
         };
 
+        asahi = home.lib.homeManagerConfiguration {
+          pkgs = mkPkgs "aarch64-linux";
+          extraSpecialArgs = { inherit user; };
+          modules = [
+            ./home/asahi.nix
+          ] ++ attrValues self.homeModules;
+        };
+
         wsl = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs "x86_64-linux";
           extraSpecialArgs = { inherit user; };
@@ -118,7 +126,7 @@
         };
       } // import ./templates;
     } //
-    (inputs.utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" ])
+    (inputs.utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ])
       (system:
       let
         pkgs = mkPkgs system;

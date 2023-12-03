@@ -55,6 +55,7 @@ in {
       pstree
       ripgrep
       stow
+      strace
       termshark
       tio
       tree

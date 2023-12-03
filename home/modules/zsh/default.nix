@@ -17,6 +17,8 @@ in {
 
       initExtra = ''
         bindkey '^J' end-of-line
+        export LIBGL_DRIVERS_PATH="${pkgs.mesa.drivers}/lib/dri"
+        export LD_LIBRARY_PATH="${pkgs.mesa.drivers}/lib/":$LD_LIBRARY_PATH
         if [[ -r "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
            source "$HOME/.nix-profile/etc/profile.d/nix.sh"
         fi
