@@ -84,6 +84,7 @@ with epkgs; [
   vterm
   which-key
   whitespace-cleanup-mode
+  xclip
   xref
   yasnippet
   yasnippet-snippets

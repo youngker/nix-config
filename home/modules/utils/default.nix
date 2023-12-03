@@ -59,7 +59,6 @@ in {
       tio
       tree
       universal-ctags
-      unrar
       unzip
       wget
       xclip
