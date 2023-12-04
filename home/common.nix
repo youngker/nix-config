@@ -42,7 +42,7 @@
 
   home = {
     username = "${user.name}";
-    stateVersion = "23.05";
+    stateVersion = "23.11";
   };
 
   xdg.configFile."nix/nix.conf".text = ''

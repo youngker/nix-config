@@ -52,7 +52,7 @@
     {
       overlays.default = final: prev: (import ./overlays inputs) final prev;
 
-      nixosModules = mkModules ./modules;
+      nixosModules = mkModules ./nixos/modules;
       darwinModules = mkModules ./darwin/modules;
       homeModules = mkModules ./home/modules;
 
@@ -126,7 +126,7 @@
         };
       } // import ./templates;
     } //
-    (inputs.utils.lib.eachSystem [ "x86_64-linux" "aarch64-darwin" "aarch64-linux" ])
+    (inputs.utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ])
       (system:
       let
         pkgs = mkPkgs system;
