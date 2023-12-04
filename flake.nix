@@ -9,35 +9,15 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , home
-    , darwin
-    , ...
-    } @ inputs:
+  outputs = { self, nixpkgs, home, darwin, ... } @inputs:
     let
-      user = {
-        host = "nixos";
-        name = "youngker";
-        full = "YoungJoo Lee";
-        email = "youngker@gmail.com";
-        timezone = "Asia/Seoul";
-      };
-
-      mkModules = path: with builtins;
-        listToAttrs
-          (map
-            (name: {
-              inherit name;
-              value = import (path + "/${name}");
-            })
-            (attrNames (readDir path)));
-
-      mkPkgs = system: import nixpkgs {
+      user = import ./config.nix;
+      lib = nixpkgs.lib // home.lib;
+      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      eachSystem = f: lib.genAttrs systems (system: f mkPkgs.${system});
+      mkPkgs = lib.genAttrs systems (system: import nixpkgs {
         inherit system;
         overlays = [
           self.overlays.default
@@ -46,20 +26,30 @@
         ];
         config.allowUnfree = true;
         config.allowBroken = true;
-      };
+      });
+      mkModules = path: with builtins;
+        listToAttrs
+          (map
+            (name: {
+              inherit name;
+              value = import (path + "/${name}");
+            })
+            (attrNames (readDir path)));
     in
     with builtins;
     {
+      nixosModules = mkModules ./modules/nixos;
+      darwinModules = mkModules ./modules/darwin;
+      homeModules = mkModules ./modules/home;
+
       overlays.default = final: prev: (import ./overlays inputs) final prev;
 
-      nixosModules = mkModules ./nixos/modules;
-      darwinModules = mkModules ./darwin/modules;
-      homeModules = mkModules ./home/modules;
+      devShells = eachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
 
       nixosConfigurations = {
         ${user.host} = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          pkgs = mkPkgs system;
+          pkgs = mkPkgs.x86_64-linux;
           specialArgs = { inherit user self; };
           modules = attrValues self.nixosModules ++ [
             ./nixos/configuration.nix
@@ -70,8 +60,7 @@
 
       darwinConfigurations = {
         macos = darwin.lib.darwinSystem rec {
-          system = "aarch64-darwin";
-          pkgs = mkPkgs system;
+          pkgs = mkPkgs.aarch64-darwin;
           specialArgs = { inherit user self; };
           modules = attrValues self.darwinModules ++ [
             ./darwin/configuration.nix
@@ -94,7 +83,7 @@
         };
 
         linux = home.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "x86_64-linux";
+          pkgs = mkPkgs.x86_64-linux;
           extraSpecialArgs = { inherit user; };
           modules = [
             ./home/linux.nix
@@ -102,7 +91,7 @@
         };
 
         asahi = home.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "aarch64-linux";
+          pkgs = mkPkgs.aarch64-linux;
           extraSpecialArgs = { inherit user; };
           modules = [
             ./home/asahi.nix
@@ -110,7 +99,7 @@
         };
 
         wsl = home.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "x86_64-linux";
+          pkgs = mkPkgs.x86_64-linux;
           extraSpecialArgs = { inherit user; };
           modules = [
             ./home/wsl.nix
@@ -125,24 +114,5 @@
           description = "default template";
         };
       } // import ./templates;
-    } //
-    (inputs.utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" ])
-      (system:
-      let
-        pkgs = mkPkgs system;
-      in
-      {
-        packages = inputs.utils.lib.flattenTree {
-          xterm-24bit = pkgs.xterm-24bit;
-        };
-
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nixpkgs-fmt
-            rnix-lsp
-          ];
-        };
-
-        formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-      });
+    };
 }
