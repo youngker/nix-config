@@ -20,7 +20,8 @@
       mkPkgs = lib.genAttrs systems (system: import nixpkgs {
         inherit system;
         overlays = [
-          self.overlays.default
+          self.overlays.additions
+          self.overlays.modifications
           inputs.emacs-overlay.overlay
           inputs.rust-overlay.overlays.default
         ];
@@ -42,8 +43,9 @@
       darwinModules = mkModules ./modules/darwin;
       homeModules = mkModules ./modules/home;
 
-      overlays.default = final: prev: (import ./overlays inputs) final prev;
+      overlays = import ./overlays { inherit inputs; };
 
+      packages = eachSystem (pkgs: import ./packages { inherit pkgs; });
       devShells = eachSystem (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
 
