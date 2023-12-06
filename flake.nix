@@ -15,7 +15,7 @@
     let
       user = import ./config.nix;
       lib = nixpkgs.lib // home.lib;
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       eachSystem = f: lib.genAttrs systems (system: f mkPkgs.${system});
       mkPkgs = lib.genAttrs systems (system: import nixpkgs {
         inherit system;
