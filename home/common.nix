@@ -48,4 +48,9 @@
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
   '';
+
+  xdg.configFile."environment.d/nixGL.conf".text = ''
+    export LIBGL_DRIVERS_PATH="${pkgs.mesa.drivers}/lib/dri"
+    export LD_LIBRARY_PATH="${pkgs.mesa.drivers}/lib/":$LD_LIBRARY_PATH
+  '';
 }
