@@ -13,7 +13,7 @@
 
   outputs = { self, nixpkgs, home, darwin, ... } @inputs:
     let
-      user = import ./config.nix;
+      inherit (self) outputs;
       lib = nixpkgs.lib // home.lib;
       systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       eachSystem = f: lib.genAttrs systems (system: f mkPkgs.${system});
@@ -39,6 +39,7 @@
     in
     with builtins;
     {
+      user = import ./user.nix;
       nixosModules = mkModules ./modules/nixos;
       darwinModules = mkModules ./modules/darwin;
       homeModules = mkModules ./modules/home;
@@ -50,9 +51,9 @@
       formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
 
       nixosConfigurations = {
-        ${user.host} = nixpkgs.lib.nixosSystem rec {
+        ${outputs.user.host} = nixpkgs.lib.nixosSystem rec {
           pkgs = mkPkgs.x86_64-linux;
-          specialArgs = { inherit user self; };
+          specialArgs = { inherit inputs outputs; };
           modules = attrValues self.nixosModules ++ [
             ./nixos/configuration.nix
             home.nixosModules.home-manager
@@ -63,7 +64,7 @@
       darwinConfigurations = {
         macos = darwin.lib.darwinSystem rec {
           pkgs = mkPkgs.aarch64-darwin;
-          specialArgs = { inherit user self; };
+          specialArgs = { inherit inputs outputs; };
           modules = attrValues self.darwinModules ++ [
             ./darwin/configuration.nix
             home.darwinModules.home-manager
@@ -72,13 +73,13 @@
       };
 
       homeConfigurations = {
-        nixos = { pkgs, user, ... }: {
+        nixos = { inputs, outputs, pkgs, ... }: {
           imports = [
             ./home/linux.nix
           ] ++ attrValues self.homeModules;
         };
 
-        darwin = { pkgs, user, ... }: {
+        darwin = { inputs, outputs, pkgs, ... }: {
           imports = [
             ./home/darwin.nix
           ] ++ attrValues self.homeModules;
@@ -86,7 +87,7 @@
 
         linux = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs.x86_64-linux;
-          extraSpecialArgs = { inherit user; };
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/linux.nix
           ] ++ attrValues self.homeModules;
@@ -94,7 +95,7 @@
 
         asahi = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs.aarch64-linux;
-          extraSpecialArgs = { inherit user; };
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/asahi.nix
           ] ++ attrValues self.homeModules;
@@ -102,7 +103,7 @@
 
         wsl = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs.x86_64-linux;
-          extraSpecialArgs = { inherit user; };
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/wsl.nix
           ] ++ attrValues self.homeModules;

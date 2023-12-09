@@ -1,10 +1,10 @@
-{ lib, pkgs, user, ... }:
+{ inputs, outputs, pkgs, ... }:
 
 {
   imports = [ ./common.nix ];
 
   home = {
-    homeDirectory = "/Users/${user.name}";
+    homeDirectory = "/Users/${outputs.user.name}";
     sessionVariables = {
       FONTCONFIG_FILE = "${pkgs.makeFontsConf {
         fontDirectories = [

@@ -1,4 +1,4 @@
-{ lib, pkgs, user, ... }:
+{ inputs, outputs, config, ... }:
 
 {
   programs.home-manager.enable = true;
@@ -41,7 +41,7 @@
   };
 
   home = {
-    username = "${user.name}";
+    username = "${outputs.user.name}";
     stateVersion = "23.11";
   };
 
@@ -49,8 +49,8 @@
     experimental-features = nix-command flakes
   '';
 
-  xdg.configFile."environment.d/nixGL.conf".text = ''
-    export LIBGL_DRIVERS_PATH="${pkgs.mesa.drivers}/lib/dri"
-    export LD_LIBRARY_PATH="${pkgs.mesa.drivers}/lib/":$LD_LIBRARY_PATH
+  xdg.configFile."environment.d/99-nix-path.conf".text = ''
+    PATH=${config.home.homeDirectory}/.nix-profile/bin:$PATH
+    XDG_DATA_DIRS=${config.home.homeDirectory}/.local/share:$XDG_DATA_DIRS
   '';
 }

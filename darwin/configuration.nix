@@ -1,15 +1,15 @@
-{ pkgs, user, self, ... }:
+{ inputs, outputs, pkgs, ... }:
 
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit pkgs user; };
-    users.${user.name} = self.homeConfigurations.darwin;
+    extraSpecialArgs = { inherit inputs outputs pkgs; };
+    users.${outputs.user.name} = outputs.homeConfigurations.darwin;
   };
 
-  users.users.${user.name} = {
-    home = "/Users/${user.name}";
+  users.users.${outputs.user.name} = {
+    home = "/Users/${outputs.user.name}";
     shell = pkgs.zsh;
   };
 

@@ -1,10 +1,10 @@
-{ lib, pkgs, user, ... }:
+{ inputs, outputs, pkgs, ... }:
 
 {
   imports = [ ./common.nix ];
 
   home = {
-    homeDirectory = "/home/${user.name}";
+    homeDirectory = "/home/${outputs.user.name}";
     sessionVariablesExtra =
       ''
         . "${pkgs.nix}/etc/profile.d/nix.sh"

@@ -1,10 +1,10 @@
-{ lib, pkgs, user, ... }:
+{ inputs, outputs, pkgs, ... }:
 
 {
   imports = [ ./common.nix ];
 
   home = {
-    homeDirectory = "/home/${user.name}";
+    homeDirectory = "/home/${outputs.user.name}";
     sessionVariablesExtra = ''
       . "${pkgs.nix}/etc/profile.d/nix.sh"
     '';
@@ -26,6 +26,7 @@
       qt.enable = true;
       rofi.enable = true;
       hyprland.enable = true;
+      waybar.enable = true;
     };
 
     dev = {
@@ -36,7 +37,8 @@
     services = {
       dunst.enable = true;
       emacs.enable = true;
-      picom.enable = true;
+      mpd.enable = true;
+      picom.enable = false;
     };
 
     i18n.inputMethod = {

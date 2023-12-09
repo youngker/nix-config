@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, outputs, ... }:
 
 with lib;
 let cfg = config.modules.services.docker;
@@ -16,6 +16,6 @@ in {
       rootless.enable = true;
       rootless.setSocketVariable = true;
     };
-    users.extraGroups.docker.members = [ "${user.name}" ];
+    users.extraGroups.docker.members = [ "${outputs.user.name}" ];
   };
 }

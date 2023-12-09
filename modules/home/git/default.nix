@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, outputs, ... }:
 
 with lib;
 let cfg = config.modules.dev.git;
@@ -16,8 +16,8 @@ in {
     ];
     programs.git = {
       enable = true;
-      userName = user.full;
-      userEmail = user.email;
+      userName = outputs.user.full;
+      userEmail = outputs.user.email;
       aliases = {
         amend = "commit --amend -C HEAD";
         authors = ''!"${pkgs.git}/bin/git log --pretty=format:%aN''

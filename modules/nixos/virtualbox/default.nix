@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, outputs, ... }:
 
 with lib;
 let cfg = config.modules.services.virtualbox;
@@ -17,6 +17,6 @@ in {
         host.enableExtensionPack = true;
       };
     };
-    users.extraGroups.vboxusers.members = [ "${user.name}" ];
+    users.extraGroups.vboxusers.members = [ "${outputs.user.name}" ];
   };
 }

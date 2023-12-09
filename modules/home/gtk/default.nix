@@ -26,6 +26,10 @@ in {
         name = "Nordic";
         package = pkgs.nordic;
       };
+      cursorTheme = {
+        name = "Vanilla-DMZ";
+        size = 18;
+      };
     };
   };
 }

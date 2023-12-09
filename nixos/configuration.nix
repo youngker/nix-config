@@ -1,4 +1,4 @@
-{ pkgs, config, lib, user, self, ... }:
+{ inputs, outputs, pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -8,13 +8,13 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit pkgs user; };
-    users.${user.name} = self.homeConfigurations.nixos;
+    extraSpecialArgs = { inherit inputs outpus pkgs; };
+    users.${outputs.user.name} = outputs.homeConfigurations.nixos;
   };
 
-  users.users.${user.name} = {
+  users.users.${outputs.user.name} = {
     isNormalUser = true;
-    home = "/home/${user.name}";
+    home = "/home/${outputs.user.name}";
     extraGroups = [ "wheel" "audio" "jackaudio" "docker" ];
     shell = pkgs.zsh;
   };

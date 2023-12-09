@@ -1,4 +1,4 @@
-{ config, lib, pkgs, user, ... }:
+{ config, lib, pkgs, outputs, ... }:
 
 with lib;
 let cfg = config.modules.services.timesyncd;
@@ -11,7 +11,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    time.timeZone = user.timezone;
+    time.timeZone = outputs.user.timezone;
     services.timesyncd.enable = true;
   };
 }

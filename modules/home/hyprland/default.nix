@@ -16,5 +16,6 @@ in {
       systemd.enable = true;
       extraConfig = builtins.readFile ./hyprland.conf;
     };
+    home.file.".local/share/wayland-sessions/hyprland.desktop".source = ./hyprland.desktop;
   };
 }
