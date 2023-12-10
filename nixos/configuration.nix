@@ -8,7 +8,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outpus pkgs; };
+    extraSpecialArgs = { inherit inputs outputs pkgs; };
     users.${outputs.user.name} = outputs.homeConfigurations.nixos;
   };
 
