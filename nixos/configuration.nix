@@ -39,7 +39,8 @@
       timesyncd.enable = true;
       virtualbox.enable = true;
       xrdp.enable = true;
-      xserver.enable = true;
+      wayland.enable = true;
+      xserver.enable = false;
     };
   };
 

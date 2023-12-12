@@ -13,9 +13,19 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      enableNvidiaPatches = true;
       systemd.enable = true;
       extraConfig = builtins.readFile ./hyprland.conf;
     };
-    home.file.".local/share/wayland-sessions/hyprland.desktop".source = ./hyprland.desktop;
+    home = {
+      packages = with pkgs; [
+        grim
+        swaybg
+        wl-clipboard
+        wlr-randr
+        wofi
+      ];
+      file.".local/share/wayland-sessions/hyprland.desktop".source = ./hyprland.desktop;
+    };
   };
 }
