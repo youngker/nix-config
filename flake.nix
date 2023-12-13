@@ -9,6 +9,8 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    hyprland.url = "github:hyprwm/hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home, darwin, ... } @inputs:
@@ -22,6 +24,7 @@
         overlays = [
           self.overlays.additions
           self.overlays.modifications
+          self.overlays.flake-inputs
           inputs.emacs-overlay.overlay
           inputs.rust-overlay.overlays.default
         ];

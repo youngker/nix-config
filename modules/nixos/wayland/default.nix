@@ -11,6 +11,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-
+    xdg.portal = {
+      extraPortals = [ pkgs.inputs.hyprland.xdg-desktop-portal-hyprland ];
+      configPackages = [ pkgs.inputs.hyprland.hyprland ];
+    };
+    services.xserver.videoDrivers = [ "nvidia" ];
+    environment.sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
+      # NIXOS_OZONE_WL = "1";
+    };
   };
 }

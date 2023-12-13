@@ -31,9 +31,13 @@
       gtk.enable = true;
       qt.enable = true;
       rofi.enable = true;
-      xmobar.enable = true;
-      xmonad.enable = true;
-      xorg.enable = true;
+
+      hyprland.enable = true;
+      waybar.enable = true;
+
+      xmobar.enable = false;
+      xmonad.enable = false;
+      xorg.enable = false;
     };
 
     dev = {
@@ -48,7 +52,7 @@
     services = {
       dunst.enable = true;
       emacs.enable = true;
-      picom.enable = true;
+      picom.enable = false;
     };
 
     i18n.inputMethod = {
