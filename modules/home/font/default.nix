@@ -15,7 +15,7 @@ in {
       if builtins.pathExists /etc/NIXOS then false else true;
     home.packages = with pkgs; [
       fira-code
-      font-awesome_4
+      font-awesome
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
     ];
