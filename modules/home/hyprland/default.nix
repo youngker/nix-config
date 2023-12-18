@@ -20,11 +20,11 @@ in {
     services.swayidle = {
       enable = true;
       events = [
-        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f -c #000000"; }
-        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -f -c #000000"; }
+        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f -c \"#000000\""; }
+        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -f -c \"#000000\""; }
       ];
       timeouts = [
-        { timeout = 360; command = "${pkgs.swaylock}/bin/swaylock -f -c #000000"; }
+        { timeout = 360; command = "${pkgs.swaylock}/bin/swaylock -f  -c \"#000000\""; }
       ];
     };
     home = {
