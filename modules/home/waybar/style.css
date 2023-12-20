@@ -1,8 +1,7 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: "Lucida Grande";
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 window#waybar {
@@ -15,24 +14,6 @@ window#waybar {
 
 window#waybar.hidden {
     opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
 }
 
 button {
@@ -87,11 +68,9 @@ button:hover {
 #network,
 #pulseaudio,
 #wireplumber,
-#custom-media,
 #tray,
 #mode,
 #idle_inhibitor,
-#scratchpad,
 #window,
 #workspaces {
     margin: 0 4px;
@@ -108,7 +87,7 @@ button:hover {
 }
 
 #clock {
-    color: #b48ead;
+    color: #d8dee9
 }
 
 #battery {
@@ -140,17 +119,14 @@ label:focus {
 }
 
 #cpu {
-    /* background-color: #2ecc71; */
     color: #bf616a;
 }
 
 #memory {
     color: #d08770;
-    /* background-color: #9b59b6; */
 }
 
 #disk {
-    /* background-color: #964B00; */
 }
 
 #backlight {
@@ -180,17 +156,6 @@ label:focus {
 #wireplumber.muted {
 }
 
-#custom-media {
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-}
-
-#custom-media.custom-vlc {
-}
-
 #temperature {
     color: #a3be8c;
 }
@@ -212,36 +177,9 @@ label:focus {
 }
 
 #idle_inhibitor {
+    color: #b48ead;
 }
 
 #idle_inhibitor.activated {
-    color: #2d3436;
-}
-
-#language {
-    color: #FFFFFF;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-        background-color: transparent;
+    color: #b48ead;
 }

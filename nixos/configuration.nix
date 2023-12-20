@@ -38,8 +38,10 @@
       pipewire.enable = true;
       timesyncd.enable = true;
       virtualbox.enable = true;
-      xrdp.enable = true;
+      # wayland
       wayland.enable = true;
+      # x11
+      xrdp.enable = false;
       xserver.enable = false;
     };
   };

@@ -28,7 +28,7 @@ in {
       };
       cursorTheme = {
         name = "Vanilla-DMZ";
-        size = 18;
+        size = 24;
       };
     };
   };

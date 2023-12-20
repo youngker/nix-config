@@ -20,12 +20,22 @@ in {
     services.swayidle = {
       enable = true;
       events = [
-        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f -c \"#000000\""; }
-        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -f -c \"#000000\""; }
+        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
       ];
       timeouts = [
-        { timeout = 360; command = "${pkgs.swaylock}/bin/swaylock -f  -c \"#000000\""; }
+        { timeout = 360; command = "${pkgs.swaylock}/bin/swaylock -f"; }
       ];
+    };
+    programs.swaylock = {
+      enable = true;
+      settings = {
+        ignore-empty-password = true;
+        show-failed-attempts = true;
+        indicator-caps-lock = true;
+        color = "000000";
+        font = "Monaco";
+      };
     };
     home = {
       packages = with pkgs; [
@@ -34,7 +44,6 @@ in {
         wl-clipboard
         wlr-randr
         wofi
-        swaylock
       ];
       file.".local/share/wayland-sessions/hyprland.desktop".source = ./hyprland.desktop;
     };

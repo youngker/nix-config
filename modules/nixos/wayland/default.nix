@@ -16,9 +16,8 @@ in {
       extraPortals = [ pkgs.inputs.hyprland.xdg-desktop-portal-hyprland ];
       configPackages = [ pkgs.inputs.hyprland.hyprland ];
     };
-    services.xserver.displayManager.gdm.enable = true;
     services.xserver.videoDrivers = [ "nvidia" ];
-    security.pam.services.swaylock = {};
+    security.pam.services.swaylock = { };
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
