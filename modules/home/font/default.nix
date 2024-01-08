@@ -16,6 +16,7 @@ in {
     home.packages = with pkgs; [
       fira-code
       font-awesome
+      noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
     ];

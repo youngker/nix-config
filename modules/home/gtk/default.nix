@@ -15,7 +15,7 @@ in {
       dconf
       evince
       flameshot
-      gnome.gedit
+      gedit
       gnome.gnome-terminal
       meld
     ];
