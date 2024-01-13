@@ -27,6 +27,7 @@ in
           decorations = "none";
           startup_mode = "Maximized";
           opacity = 0.98;
+          # macos option_as_alt = "Both";
         };
         scrolling.history = 10000;
         font.normal = {
@@ -82,16 +83,21 @@ in
             mods = "Control";
             action = "resetFontSize";
           }
+          {
+            key = "Tab";
+            mods = "Control";
+            chars = "\\u001b[27;5;9~";
+          }
         ] ++ optionals isDarwin [
           {
             key = "Slash";
             mods = "Control";
-            chars = "\\x1f";
+            chars = "\\u001F";
           }
           {
             key = "Space";
             mods = "Control";
-            chars = "\\x00";
+            chars = "\\u0000";
           }
         ];
       };
