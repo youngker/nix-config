@@ -27,7 +27,6 @@ in
           decorations = "none";
           startup_mode = "Maximized";
           opacity = 0.98;
-          option_as_alt = "Both";
         };
         scrolling.history = 10000;
         font.normal = {
@@ -67,7 +66,7 @@ in
         };
         shell = { program = "${pkgs.zsh}/bin/zsh"; };
 
-        key_bindings = [
+        keyboard.bindings = [
           {
             key = "Equals";
             mods = "Control";
@@ -82,11 +81,6 @@ in
             key = "Key0";
             mods = "Control";
             action = "resetFontSize";
-          }
-          {
-            key = "Tab";
-            mods = "Control";
-            chars = "\\x1b[27;5;9~";
           }
         ] ++ optionals isDarwin [
           {
