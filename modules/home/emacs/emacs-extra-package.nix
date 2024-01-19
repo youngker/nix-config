@@ -32,7 +32,7 @@ with epkgs; [
   flx-ido
   flymake
   flymake-diagnostic-at-point
-  geiser
+  # geiser
   go-eldoc
   go-mode
   google-c-style
