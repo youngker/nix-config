@@ -27,7 +27,7 @@ in
           decorations = "none";
           startup_mode = "Maximized";
           opacity = 0.98;
-          # macos option_as_alt = "Both";
+          option_as_alt = "Both";
         };
         scrolling.history = 10000;
         font.normal = {
