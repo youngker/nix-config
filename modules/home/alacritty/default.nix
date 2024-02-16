@@ -27,7 +27,7 @@ in
           decorations = "none";
           startup_mode = "Maximized";
           opacity = 0.98;
-          option_as_alt = "Both";
+          option_as_alt = mkIf isDarwin "Both";
         };
         scrolling.history = 10000;
         font.normal = {
