@@ -44,7 +44,7 @@ in {
       m4
       more
       ncurses
-      nixfmt
+      nixfmt-rfc-style
       nixpkgs-fmt
       ollama
       p7zip

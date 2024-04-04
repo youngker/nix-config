@@ -14,10 +14,6 @@
         ];
       }}";
     };
-    sessionVariablesExtra =
-      ''
-        . "${pkgs.nix}/etc/profile.d/nix-daemon.sh"
-      '';
   };
 
   modules = {

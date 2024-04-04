@@ -13,7 +13,7 @@ in {
     programs.zsh = rec {
       enable = true;
       enableCompletion = false;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
 
       initExtra = ''
         bindkey '^J' end-of-line
