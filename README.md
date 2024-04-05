@@ -3,26 +3,19 @@
 ## Clone
 git clone https://github.com/youngker/nix-config
 
-## MacOS
-
-### 1st
-
+## install nix
 ``` shell
-nix --extra-experimental-features "nix-command flakes" build .#darwinConfigurations.macos.system
+$ make setup
 ```
 
+## build
 ``` shell
-./result/sw/bin/darwin-rebuild switch --flake .#macos
+$ make build
 ```
 
-### 2nd
+## switch
 ``` shell
-darwin-rebuild switch --flake .#macos
-```
-
-## NixOS
-``` shell
-sudo nixos-rebuild switch --flake .#nixos
+$ make switch
 ```
 
 ## Linux Distribution
