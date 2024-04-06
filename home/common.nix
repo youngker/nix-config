@@ -1,13 +1,6 @@
 { inputs, outputs, config, pkgs, lib, ... }:
 
 {
-  nix = lib.mkForce {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
   programs.home-manager.enable = true;
 
   manual.manpages.enable = true;
@@ -49,7 +42,7 @@
 
   home = {
     username = "${outputs.user.name}";
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
 
   xdg.configFile."nix/nix.conf".text = ''

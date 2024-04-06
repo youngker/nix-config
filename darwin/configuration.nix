@@ -8,6 +8,16 @@
     users.${outputs.user.name} = outputs.homeConfigurations.darwin;
   };
 
+  nix = {
+    package = pkgs.nixUnstable;
+    settings = {
+      extra-experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+  };
+
   users.users.${outputs.user.name} = {
     home = "/Users/${outputs.user.name}";
     shell = pkgs.zsh;

@@ -3,7 +3,7 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 
   home-manager = {
     useGlobalPkgs = true;
