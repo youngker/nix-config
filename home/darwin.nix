@@ -19,8 +19,9 @@
   modules = {
     darwin = {
       amethyst.enable = true;
-      rectangle.enable = true;
       darwin-settings.enable = true;
+      firefox.enable = true;
+      rectangle.enable = true;
     };
   };
 }

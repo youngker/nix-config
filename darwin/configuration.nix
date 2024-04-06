@@ -15,6 +15,8 @@
 
   programs.zsh.enable = true;
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   modules = {
     services = {
       skhd.enable = true;
