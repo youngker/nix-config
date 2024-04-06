@@ -112,12 +112,7 @@
           ] ++ attrValues self.homeModules;
         };
       };
-      nix = {
-        package = nixpkgs.nixUnstable;
-        extraOptions = ''
-          experimental-features = nix-command flakes
-        '';
-      };
+
       defaultTemplate = self.templates.full;
       templates = {
         full = {

@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := build
+
 OS := $(shell uname | tr '[:upper:]' '[:lower:]')
 NIXOPTS := --extra-experimental-features "nix-command flakes"
 
@@ -22,16 +24,23 @@ else
 	sudo nixos-rebuild switch --flake ".#nixos"
 endif
 
+linux-switch:
+	@nix ${NIXOPTS} build ".#homeConfigurations.linux.activationPackage" --show-trace
+	@./result/activate
+
+wsl-switch:
+	@nix ${NIXOPTS} build ".#homeConfigurations.wsl.activationPackage" --show-trace
+	@./result/activate
+
+asahi-switch:
+	@nix ${NIXOPTS} build ".#homeConfigurations.asahi.activationPackage" --show-trace
+	@./result/activate
+
 update:
 	@nix ${NIXOPTS} flake update
 
 repair:
 	sudo nix-store --repair --verify --check-contents
-
-channels:
-	sudo nix-channel --add https://nixos.org/channels/nixos-unstable
-	sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-	sudo nix-channel --update
 
 clean:
 	nix-collect-garbage --delete-older-than 5d

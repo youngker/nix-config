@@ -1,6 +1,13 @@
-{ inputs, outputs, config, ... }:
+{ inputs, outputs, config, pkgs, lib, ... }:
 
 {
+  nix = lib.mkForce {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   programs.home-manager.enable = true;
 
   manual.manpages.enable = true;

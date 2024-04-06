@@ -20,18 +20,10 @@ $ make switch
 
 ## Linux Distribution
 ``` shell
-nix --extra-experimental-features "nix-command flakes" build .#homeConfigurations.linux.activationPackage
-```
-
-``` shell
-./result/activate
+$ make linux-switch
 ```
 
 ## WSL
 ``` shell
-nix --extra-experimental-features "nix-command flakes" build .#homeConfigurations.wsl.activationPackage
-```
-
-``` shell
-./result/activate
+$ make wsl-switch
 ```
