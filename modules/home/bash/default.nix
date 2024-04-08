@@ -19,7 +19,7 @@ in {
       '';
 
       sessionVariables = {
-        BROWSER = "google-chrome-stable";
+        BROWSER = "firefox";
         EDITOR = "${pkgs.emacs29}/bin/emacsclient -tc";
         ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
         LANG = "en_US.UTF-8";

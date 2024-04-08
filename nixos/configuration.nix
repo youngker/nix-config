@@ -12,6 +12,16 @@
     users.${outputs.user.name} = outputs.homeConfigurations.nixos;
   };
 
+  nix = {
+    package = pkgs.nixUnstable;
+    settings = {
+      extra-experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+  };
+
   users.users.${outputs.user.name} = {
     isNormalUser = true;
     home = "/home/${outputs.user.name}";
