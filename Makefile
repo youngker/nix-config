@@ -4,7 +4,7 @@ OS := $(shell uname | tr '[:upper:]' '[:lower:]')
 NIXOPTS := --extra-experimental-features "nix-command flakes"
 
 setup:
-ifeq ($(OS), darwin)
+ifeq (, $(shell which nix))
 	@echo "Installing Determinate Nix Installer..."
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 endif

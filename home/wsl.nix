@@ -5,6 +5,9 @@
 
   home = {
     homeDirectory = "/home/${outputs.user.name}";
+    sessionVariables = {
+      TERM="xterm-24bits";
+    };
   };
 
   modules = {
