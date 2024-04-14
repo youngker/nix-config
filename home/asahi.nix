@@ -5,9 +5,6 @@
 
   home = {
     homeDirectory = "/home/${outputs.user.name}";
-    sessionVariablesExtra = ''
-      . "${pkgs.nix}/etc/profile.d/nix.sh"
-    '';
   };
 
   modules = {

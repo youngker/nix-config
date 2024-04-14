@@ -1,9 +1,10 @@
-{ inputs, outputs, config, pkgs, lib, ... }:
+{ inputs, outputs, pkgs, ... }:
 
 {
-  programs.home-manager.enable = true;
-
-  manual.manpages.enable = true;
+  home = {
+    username = "${outputs.user.name}";
+    stateVersion = "24.05";
+  };
 
   modules = {
     apps = {
@@ -39,18 +40,4 @@
       texlive.enable = true;
     };
   };
-
-  home = {
-    username = "${outputs.user.name}";
-    stateVersion = "24.05";
-  };
-
-  xdg.configFile."nix/nix.conf".text = ''
-    experimental-features = nix-command flakes
-  '';
-
-  xdg.configFile."environment.d/99-nix-path.conf".text = ''
-    PATH=${config.home.homeDirectory}/.nix-profile/bin:$PATH
-    XDG_DATA_DIRS=${config.home.homeDirectory}/.local/share:$XDG_DATA_DIRS
-  '';
 }
