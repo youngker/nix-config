@@ -13,11 +13,12 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       blender
+      freerdp
       gimp
       inkscape
-      vulkan-tools
-      vulkan-loader
       vulkan-headers
+      vulkan-loader
+      vulkan-tools
     ];
   };
 }
