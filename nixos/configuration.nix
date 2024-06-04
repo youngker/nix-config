@@ -13,7 +13,7 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixFlakes;
     settings = {
       extra-experimental-features = [
         "nix-command"
@@ -58,6 +58,7 @@
 
   programs.zsh.enable = true;
   programs.ssh.startAgent = true;
+  programs.xwayland.enable = true;
 
   networking.networkmanager.enable = true;
   networking.useDHCP = false;

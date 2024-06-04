@@ -6,7 +6,7 @@
   home = {
     homeDirectory = "/home/${outputs.user.name}";
     sessionVariables = {
-      TERM="xterm-24bits";
+      TERM = "xterm-24bits";
     };
   };
 

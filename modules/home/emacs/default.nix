@@ -13,7 +13,7 @@ in {
   config = mkIf cfg.enable {
     programs.emacs = {
       enable = true;
-      package = pkgs.emacs29;
+      package = pkgs.emacs29-pgtk;
       extraPackages = import ./emacs-extra-package.nix pkgs;
     };
   };
