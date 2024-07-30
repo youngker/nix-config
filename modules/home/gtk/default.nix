@@ -16,7 +16,7 @@ in {
       evince
       flameshot
       gedit
-      gnome.gnome-terminal
+      gnome-terminal
       meld
     ];
     gtk = {
