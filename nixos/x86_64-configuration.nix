@@ -1,4 +1,4 @@
-{ inputs, outputs, pkgs, ... }:
+{ inputs, outputs, pkgs, lib, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -12,15 +12,22 @@
     users.${outputs.user.name} = outputs.homeConfigurations.nixos;
   };
 
-  nix = {
-    package = pkgs.nixFlakes;
-    settings = {
-      extra-experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      channel.enable = false;
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+      package = pkgs.nixFlakes;
+      settings = {
+        extra-experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
     };
-  };
 
   users.users.${outputs.user.name} = {
     isNormalUser = true;
@@ -56,10 +63,16 @@
     };
   };
 
-  programs.zsh.enable = true;
-  programs.ssh.startAgent = true;
-  programs.xwayland.enable = true;
+  programs = {
+    zsh.enable = true;
+    ssh.startAgent = true;
+    xwayland.enable = true;
+  };
 
-  networking.networkmanager.enable = true;
-  networking.useDHCP = false;
+  networking = {
+    hostName = "${outputs.user.host}";
+    networkmanager.enable = true;
+    useDHCP = false;
+  };
+
 }

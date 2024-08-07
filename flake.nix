@@ -54,18 +54,27 @@
       formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
 
       nixosConfigurations = {
-        ${outputs.user.host} = nixpkgs.lib.nixosSystem rec {
+        nixos-x86_64 = nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs.x86_64-linux;
           specialArgs = { inherit inputs outputs; };
           modules = attrValues self.nixosModules ++ [
-            ./nixos/configuration.nix
+            ./nixos/x86_64-configuration.nix
+            home.nixosModules.home-manager
+          ];
+        };
+
+        nixos-aarch64 = nixpkgs.lib.nixosSystem {
+          pkgs = mkPkgs.aarch64-linux;
+          specialArgs = { inherit inputs outputs; };
+          modules = attrValues self.nixosModules ++ [
+            ./nixos/aarch64-configuration.nix
             home.nixosModules.home-manager
           ];
         };
       };
 
       darwinConfigurations = {
-        macos = darwin.lib.darwinSystem rec {
+        macos = darwin.lib.darwinSystem {
           pkgs = mkPkgs.aarch64-darwin;
           specialArgs = { inherit inputs outputs; };
           modules = attrValues self.darwinModules ++ [

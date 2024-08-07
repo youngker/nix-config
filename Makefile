@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := build
 
 OS := $(shell uname | tr '[:upper:]' '[:lower:]')
+MACHINE := $(shell uname -m | tr '[:upper:]' '[:lower:]')
 NIXOPTS := --extra-experimental-features "nix-command flakes"
 
 setup:
@@ -13,7 +14,11 @@ build:
 ifeq ($(OS), darwin)
 	@nix ${NIXOPTS} build ".#darwinConfigurations.macos.system" --show-trace
 else
-	sudo nixos-rebuild build --flake ".#nixos"
+    ifeq ($(MACHINE), aarch64)
+	sudo nixos-rebuild build --flake ".#nixos-aarch64"
+    else
+	sudo nixos-rebuild build --flake ".#nixos-x86_64"
+    endif
 endif
 
 switch:
@@ -21,7 +26,11 @@ ifeq ($(OS), darwin)
 	@nix ${NIXOPTS} build ".#darwinConfigurations.macos.system" --show-trace
 	@./result/sw/bin/darwin-rebuild switch --flake ".#macos"
 else
-	sudo nixos-rebuild switch --flake ".#nixos"
+    ifeq ($(MACHINE), aarch64)
+	sudo nixos-rebuild switch --flake ".#nixos-aarch64"
+    else
+	sudo nixos-rebuild switch --flake ".#nixos-x86_64"
+    endif
 endif
 
 linux-switch:
