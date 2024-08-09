@@ -12,13 +12,13 @@
   default = pkgs.mkShell {
     NIX_CONFIG = "extra-experimental-features = nix-command flakes repl-flake";
     nativeBuildInputs = with pkgs; [
-      nixUnstable
-      home-manager
+      age
       git
+      gnupg
+      home-manager
+      nixStable
       sops
       ssh-to-age
-      gnupg
-      age
     ];
   };
 }

@@ -48,6 +48,9 @@ asahi-switch:
 update:
 	@nix ${NIXOPTS} flake update
 
+shell:
+	@nix ${NIXOPTS} develop
+
 repair:
 	sudo nix-store --repair --verify --check-contents
 
