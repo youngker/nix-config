@@ -15,8 +15,7 @@ in {
       enable = true;
       desktopManager.xterm.enable = true;
       displayManager.gdm.enable = true;
-      layout = "us";
-      videoDrivers = [ "nvidia" ];
+      xkb.layout = "us";
     };
   };
 }

@@ -1,7 +1,12 @@
 { inputs, outputs, pkgs, lib, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-gpu-nvidia
+    inputs.hardware.nixosModules.common-pc-ssd
+    ./hardware-configuration.nix
+  ];
 
   system.stateVersion = "24.05";
 

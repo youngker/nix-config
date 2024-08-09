@@ -2,15 +2,16 @@
   description = "youngker's nix-config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home.url = "github:nix-community/home-manager";
-    home.inputs.nixpkgs.follows = "nixpkgs";
-    darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = "github:lnl7/nix-darwin/master";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hardware.url = "github:nixos/nixos-hardware";
+    home.inputs.nixpkgs.follows = "nixpkgs";
+    home.url = "github:nix-community/home-manager";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = { self, nixpkgs, home, darwin, ... } @inputs:

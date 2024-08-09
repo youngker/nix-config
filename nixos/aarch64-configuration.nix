@@ -1,7 +1,10 @@
 { inputs, outputs, pkgs, lib, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    inputs.hardware.nixosModules.common-hidpi
+    ./hardware-configuration.nix
+  ];
 
   system.stateVersion = "24.05";
 
@@ -43,7 +46,7 @@
 
     hardware = {
       nvidia.enable = false;
-      opengl.enable = true;
+      opengl.enable = false;
       pulseaudio.enable = false;
       video.enable = true;
     };
