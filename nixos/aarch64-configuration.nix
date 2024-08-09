@@ -3,7 +3,7 @@
 {
   imports = [
     inputs.hardware.nixosModules.common-hidpi
-    ./hardware-configuration.nix
+    ./aarch64-hardware-configuration.nix
   ];
 
   system.stateVersion = "24.05";
