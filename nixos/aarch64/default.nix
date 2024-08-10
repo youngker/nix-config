@@ -3,7 +3,7 @@
 {
   imports = [
     inputs.hardware.nixosModules.common-hidpi
-    ./aarch64-hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   system.stateVersion = "24.05";
@@ -12,7 +12,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs outputs pkgs; };
-    users.${outputs.user.name} = outputs.homeConfigurations.nixos;
+    users.${outputs.user.name} = outputs.homeConfigurations.aarch64;
   };
 
   nix =

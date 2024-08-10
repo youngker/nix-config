@@ -59,7 +59,7 @@
           pkgs = mkPkgs.x86_64-linux;
           specialArgs = { inherit inputs outputs; };
           modules = attrValues self.nixosModules ++ [
-            ./nixos/x86_64-configuration.nix
+            ./nixos/x86_64
             home.nixosModules.home-manager
           ];
         };
@@ -68,7 +68,7 @@
           pkgs = mkPkgs.aarch64-linux;
           specialArgs = { inherit inputs outputs; };
           modules = attrValues self.nixosModules ++ [
-            ./nixos/aarch64-configuration.nix
+            ./nixos/aarch64
             home.nixosModules.home-manager
           ];
         };
@@ -95,6 +95,12 @@
         darwin = { inputs, outputs, pkgs, ... }: {
           imports = [
             ./home/darwin.nix
+          ] ++ attrValues self.homeModules;
+        };
+
+        aarch64 = { inputs, outputs, pkgs, ... }: {
+          imports = [
+            ./home/aarch64.nix
           ] ++ attrValues self.homeModules;
         };
 

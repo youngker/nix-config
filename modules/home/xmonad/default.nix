@@ -23,6 +23,6 @@ in {
       config = ./xmonad.hs;
     };
 
-    xresources.properties."Xft.dpi" = 160;
+    xresources.properties."Xft.dpi" = 120;
   };
 }
