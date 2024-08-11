@@ -17,5 +17,7 @@ in {
       displayManager.gdm.enable = true;
       xkb.layout = "us";
     };
+    services.xrdp.enable = true;
+    networking.firewall.allowedTCPPorts = [ 3389 ];
   };
 }

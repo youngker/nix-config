@@ -43,7 +43,7 @@
 
   modules = {
     boot = {
-      loader.enable = true;
+      systemd.enable = true;
     };
 
     hardware = {
@@ -60,10 +60,8 @@
       pipewire.enable = true;
       timesyncd.enable = true;
       virtualbox.enable = true;
-      # wayland
+      # x11/wayland
       wayland.enable = true;
-      # x11
-      xrdp.enable = false;
       xserver.enable = false;
     };
   };
@@ -71,7 +69,6 @@
   programs = {
     zsh.enable = true;
     ssh.startAgent = true;
-    xwayland.enable = true;
   };
 
   networking = {

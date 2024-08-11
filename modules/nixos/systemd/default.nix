@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-let cfg = config.modules.boot.loader;
+let cfg = config.modules.boot.systemd;
 in {
-  options.modules.boot.loader = {
+  options.modules.boot.systemd = {
     enable = mkOption {
       type = types.bool;
       default = false;
