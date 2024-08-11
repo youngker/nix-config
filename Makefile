@@ -33,15 +33,24 @@ else
     endif
 endif
 
-linux-switch:
+linux/build:
+	@nix ${NIXOPTS} build ".#homeConfigurations.linux.activationPackage" --show-trace
+
+linux/switch:
 	@nix ${NIXOPTS} build ".#homeConfigurations.linux.activationPackage" --show-trace
 	@./result/activate
 
-wsl-switch:
+wsl/build:
+	@nix ${NIXOPTS} build ".#homeConfigurations.wsl.activationPackage" --show-trace
+
+wsl/switch:
 	@nix ${NIXOPTS} build ".#homeConfigurations.wsl.activationPackage" --show-trace
 	@./result/activate
 
-asahi-switch:
+asahi/build:
+	@nix ${NIXOPTS} build ".#homeConfigurations.asahi.activationPackage" --show-trace
+
+asahi/switch:
 	@nix ${NIXOPTS} build ".#homeConfigurations.asahi.activationPackage" --show-trace
 	@./result/activate
 
@@ -57,5 +66,5 @@ repair:
 clean:
 	nix-collect-garbage --delete-older-than 5d
 
-fmt:
+format:
 	@nix fmt
