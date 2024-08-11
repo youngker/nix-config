@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.apps.bash;
-in {
+let
+  cfg = config.modules.apps.bash;
+in
+{
   options.modules.apps.bash = {
     enable = mkOption {
       type = types.bool;

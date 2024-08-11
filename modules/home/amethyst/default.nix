@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.darwin.amethyst;
-in {
+let
+  cfg = config.modules.darwin.amethyst;
+in
+{
   options.modules.darwin.amethyst = {
     enable = mkOption {
       type = types.bool;

@@ -1,8 +1,15 @@
-{ config, lib, outputs, ... }:
+{
+  config,
+  lib,
+  outputs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.virtualbox;
-in {
+let
+  cfg = config.modules.services.virtualbox;
+in
+{
   options.modules.services.virtualbox = {
     enable = mkOption {
       type = types.bool;

@@ -1,5 +1,4 @@
-pkgs: epkgs:
-with epkgs; [
+pkgs: epkgs: with epkgs; [
   ace-window
   aggressive-indent
   auctex

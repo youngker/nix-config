@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.go;
-in {
+let
+  cfg = config.modules.dev.go;
+in
+{
   options.modules.dev.go = {
     enable = mkOption {
       type = types.bool;

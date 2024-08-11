@@ -1,4 +1,7 @@
-{ pkgs ? import <nixpkgs> { } }: rec {
+{
+  pkgs ? import <nixpkgs> { },
+}:
+rec {
   amethyst = pkgs.callPackage ./amethyst.nix { };
   bingwallpaper = pkgs.callPackage ./bingwallpaper.nix { };
   noto-cjk = pkgs.callPackage ./noto-cjk.nix { };

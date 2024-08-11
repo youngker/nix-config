@@ -1,8 +1,16 @@
-{ config, lib, pkgs, outputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  outputs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.docker;
-in {
+let
+  cfg = config.modules.services.docker;
+in
+{
   options.modules.services.docker = {
     enable = mkOption {
       type = types.bool;

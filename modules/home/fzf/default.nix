@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.apps.fzf;
-in {
+let
+  cfg = config.modules.apps.fzf;
+in
+{
   options.modules.apps.fzf = {
     enable = mkOption {
       type = types.bool;

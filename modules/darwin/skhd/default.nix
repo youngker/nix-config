@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.skhd;
-in {
+let
+  cfg = config.modules.services.skhd;
+in
+{
   options.modules.services.skhd = {
     enable = mkOption {
       type = types.bool;

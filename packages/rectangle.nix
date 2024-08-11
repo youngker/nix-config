@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 with pkgs;
 stdenv.mkDerivation rec {
@@ -6,12 +11,14 @@ stdenv.mkDerivation rec {
   version = "0.81";
 
   src = fetchurl {
-    url =
-      "https://github.com/rxhanson/Rectangle/releases/download/v${version}/Rectangle${version}.dmg";
+    url = "https://github.com/rxhanson/Rectangle/releases/download/v${version}/Rectangle${version}.dmg";
     sha256 = "sha256-oZZz6bsgG+4leQNq2C+nLaAO/Yk+OkS6BnlMQHjlK9E=";
   };
 
-  buildInputs = [ undmg unzip ];
+  buildInputs = [
+    undmg
+    unzip
+  ];
 
   sourceRoot = "Rectangle.app";
 

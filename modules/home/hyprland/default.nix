@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.hyprland;
-in {
+let
+  cfg = config.modules.desktop.hyprland;
+in
+{
   options.modules.desktop.hyprland = {
     enable = mkOption {
       type = types.bool;
@@ -20,11 +27,20 @@ in {
     services.swayidle = {
       enable = true;
       events = [
-        { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-        { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+        {
+          event = "before-sleep";
+          command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
+        {
+          event = "lock";
+          command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
       ];
       timeouts = [
-        { timeout = 360; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+        {
+          timeout = 360;
+          command = "${pkgs.swaylock}/bin/swaylock -f";
+        }
       ];
     };
     programs.swaylock = {

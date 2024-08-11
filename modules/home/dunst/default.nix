@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.dunst;
-in {
+let
+  cfg = config.modules.services.dunst;
+in
+{
   options.modules.services.dunst = {
     enable = mkOption {
       type = types.bool;

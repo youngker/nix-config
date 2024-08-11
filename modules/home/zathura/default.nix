@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.apps.zathura;
-in {
+let
+  cfg = config.modules.apps.zathura;
+in
+{
   options.modules.apps.zathura = {
     enable = mkOption {
       type = types.bool;

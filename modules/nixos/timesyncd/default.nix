@@ -1,8 +1,16 @@
-{ config, lib, pkgs, outputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  outputs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.timesyncd;
-in {
+let
+  cfg = config.modules.services.timesyncd;
+in
+{
   options.modules.services.timesyncd = {
     enable = mkOption {
       type = types.bool;

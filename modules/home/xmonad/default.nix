@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.xmonad;
-in {
+let
+  cfg = config.modules.desktop.xmonad;
+in
+{
   options.modules.desktop.xmonad = {
     enable = mkOption {
       type = types.bool;

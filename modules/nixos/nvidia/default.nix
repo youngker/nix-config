@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.hardware.nvidia;
-in {
+let
+  cfg = config.modules.hardware.nvidia;
+in
+{
   options.modules.hardware.nvidia = {
     enable = mkOption {
       type = types.bool;

@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.boot.systemd;
-in {
+let
+  cfg = config.modules.boot.systemd;
+in
+{
   options.modules.boot.systemd = {
     enable = mkOption {
       type = types.bool;

@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.darwin.firefox;
-in {
+let
+  cfg = config.modules.darwin.firefox;
+in
+{
   options.modules.darwin.firefox = {
     enable = mkOption {
       type = types.bool;
@@ -10,7 +17,5 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [ firefox-darwin ];
-  };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ firefox-darwin ]; };
 }

@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.darwin.darwin-settings;
-in {
+let
+  cfg = config.modules.darwin.darwin-settings;
+in
+{
   options.modules.darwin.darwin-settings = {
     enable = mkOption {
       type = types.bool;

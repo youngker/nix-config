@@ -1,10 +1,17 @@
-{ inputs, outputs, pkgs, ... }:
+{
+  inputs,
+  outputs,
+  pkgs,
+  ...
+}:
 
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs pkgs; };
+    extraSpecialArgs = {
+      inherit inputs outputs pkgs;
+    };
     users.${outputs.user.name} = outputs.homeConfigurations.darwin;
   };
 
@@ -34,9 +41,7 @@
     };
   };
 
-  environment.systemPath = [
-    "/run/current-system/sw/bin"
-  ];
+  environment.systemPath = [ "/run/current-system/sw/bin" ];
 
   services = {
     nix-daemon.enable = true;

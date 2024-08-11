@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.base.utils;
-in {
+let
+  cfg = config.modules.base.utils;
+in
+{
   options.modules.base.utils = {
     enable = mkOption {
       type = types.bool;

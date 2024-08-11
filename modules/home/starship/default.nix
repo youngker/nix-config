@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.apps.starship;
-in {
+let
+  cfg = config.modules.apps.starship;
+in
+{
   options.modules.apps.starship = {
     enable = mkOption {
       type = types.bool;
@@ -48,7 +55,9 @@ in {
           format = "on [$branch]($style)";
           style = "bold purple";
         };
-        git_status = { style = "bold blue"; };
+        git_status = {
+          style = "bold blue";
+        };
       };
     };
   };

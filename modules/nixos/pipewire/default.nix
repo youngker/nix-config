@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.pipewire;
-in {
+let
+  cfg = config.modules.services.pipewire;
+in
+{
   options.modules.services.pipewire = {
     enable = mkOption {
       type = types.bool;

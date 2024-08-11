@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.gtk;
-in {
+let
+  cfg = config.modules.desktop.gtk;
+in
+{
   options.modules.desktop.gtk = {
     enable = mkOption {
       type = types.bool;

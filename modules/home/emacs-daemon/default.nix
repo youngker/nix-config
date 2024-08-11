@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.emacs;
-in {
+let
+  cfg = config.modules.services.emacs;
+in
+{
   options.modules.services.emacs = {
     enable = mkOption {
       type = types.bool;

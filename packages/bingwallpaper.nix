@@ -1,4 +1,13 @@
-{ lib, pkgs, rustPlatform, fetchFromGitHub, pkg-config, openssl, darwin, ... }:
+{
+  lib,
+  pkgs,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
+  openssl,
+  darwin,
+  ...
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "bingwallpaper";
@@ -13,8 +22,9 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ openssl ] ++ (lib.optionals pkgs.stdenv.isDarwin
-    [ darwin.apple_sdk.frameworks.Security ]);
+  buildInputs = [
+    openssl
+  ] ++ (lib.optionals pkgs.stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ]);
 
   cargoHash = "sha256-7kecJbDHbw/lfXEs4Rg1ffCzP8kC9A/P2K3yvp5Oxyg=";
 }

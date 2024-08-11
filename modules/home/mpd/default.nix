@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.services.mpd;
-in {
+let
+  cfg = config.modules.services.mpd;
+in
+{
   options.modules.services.mpd = {
     enable = mkOption {
       type = types.bool;

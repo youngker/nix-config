@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.java;
-in {
+let
+  cfg = config.modules.dev.java;
+in
+{
   options.modules.dev.java = {
     enable = mkOption {
       type = types.bool;
@@ -11,10 +18,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs;
-      [
-        jdk
-        my-jdt-language-server
-      ];
+    home.packages = with pkgs; [
+      jdk
+      my-jdt-language-server
+    ];
   };
 }

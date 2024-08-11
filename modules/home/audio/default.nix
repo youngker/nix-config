@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.audio.apps;
-in {
+let
+  cfg = config.modules.audio.apps;
+in
+{
   options.modules.audio.apps = {
     enable = mkOption {
       type = types.bool;

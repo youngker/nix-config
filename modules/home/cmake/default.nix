@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.cmake;
-in {
+let
+  cfg = config.modules.dev.cmake;
+in
+{
   options.modules.dev.cmake = {
     enable = mkOption {
       type = types.bool;

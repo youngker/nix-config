@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -65,41 +70,45 @@ in
           semantic_escape_chars = '',│`|:"' ()[]{}<>	'';
           save_to_clipboard = true;
         };
-        shell = { program = "${pkgs.zsh}/bin/zsh"; };
+        shell = {
+          program = "${pkgs.zsh}/bin/zsh";
+        };
 
-        keyboard.bindings = [
-          {
-            key = "Equals";
-            mods = "Control";
-            action = "IncreaseFontSize";
-          }
-          {
-            key = "Minus";
-            mods = "Control";
-            action = "DecreaseFontSize";
-          }
-          {
-            key = "Key0";
-            mods = "Control";
-            action = "resetFontSize";
-          }
-          {
-            key = "Tab";
-            mods = "Control";
-            chars = "\\u001b[27;5;9~";
-          }
-        ] ++ optionals isDarwin [
-          {
-            key = "Slash";
-            mods = "Control";
-            chars = "\\u001F";
-          }
-          {
-            key = "Space";
-            mods = "Control";
-            chars = "\\u0000";
-          }
-        ];
+        keyboard.bindings =
+          [
+            {
+              key = "Equals";
+              mods = "Control";
+              action = "IncreaseFontSize";
+            }
+            {
+              key = "Minus";
+              mods = "Control";
+              action = "DecreaseFontSize";
+            }
+            {
+              key = "Key0";
+              mods = "Control";
+              action = "resetFontSize";
+            }
+            {
+              key = "Tab";
+              mods = "Control";
+              chars = "\\u001b[27;5;9~";
+            }
+          ]
+          ++ optionals isDarwin [
+            {
+              key = "Slash";
+              mods = "Control";
+              chars = "\\u001F";
+            }
+            {
+              key = "Space";
+              mods = "Control";
+              chars = "\\u0000";
+            }
+          ];
       };
     };
   };

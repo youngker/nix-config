@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.darwin.rectangle;
-in {
+let
+  cfg = config.modules.darwin.rectangle;
+in
+{
   options.modules.darwin.rectangle = {
     enable = mkOption {
       type = types.bool;
@@ -10,7 +17,5 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [ rectangle ];
-  };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ rectangle ]; };
 }

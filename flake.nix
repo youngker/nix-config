@@ -15,32 +15,48 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs = { self, nixpkgs, home, darwin, ... } @inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home,
+      darwin,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home.lib;
-      systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
       eachSystem = f: lib.genAttrs systems (system: f mkPkgs.${system});
-      mkPkgs = lib.genAttrs systems (system: import nixpkgs {
-        inherit system;
-        overlays = [
-          self.overlays.additions
-          self.overlays.modifications
-          self.overlays.flake-inputs
-          inputs.emacs-overlay.overlay
-          inputs.rust-overlay.overlays.default
-        ];
-        config.allowUnfree = true;
-        config.allowBroken = true;
-      });
-      mkModules = path: with builtins;
-        listToAttrs
-          (map
-            (name: {
-              inherit name;
-              value = import (path + "/${name}");
-            })
-            (attrNames (readDir path)));
+      mkPkgs = lib.genAttrs systems (
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = [
+            self.overlays.additions
+            self.overlays.modifications
+            self.overlays.flake-inputs
+            inputs.emacs-overlay.overlay
+            inputs.rust-overlay.overlays.default
+          ];
+          config.allowUnfree = true;
+          config.allowBroken = true;
+        }
+      );
+      mkModules =
+        path:
+        with builtins;
+        listToAttrs (
+          map (name: {
+            inherit name;
+            value = import (path + "/${name}");
+          }) (attrNames (readDir path))
+        );
     in
     with builtins;
     {
@@ -53,12 +69,14 @@
 
       packages = eachSystem (pkgs: import ./packages { inherit pkgs; });
       devShells = eachSystem (pkgs: import ./shell.nix { inherit pkgs; });
-      formatter = eachSystem (pkgs: pkgs.nixpkgs-fmt);
+      formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
 
       nixosConfigurations = {
         nixos-x86_64 = nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs.x86_64-linux;
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+          };
           modules = attrValues self.nixosModules ++ [
             ./nixos/x86_64
             home.nixosModules.home-manager
@@ -67,7 +85,9 @@
 
         nixos-aarch64 = nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs.aarch64-linux;
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+          };
           modules = attrValues self.nixosModules ++ [
             ./nixos/aarch64
             home.nixosModules.home-manager
@@ -78,7 +98,9 @@
       darwinConfigurations = {
         macos = darwin.lib.darwinSystem {
           pkgs = mkPkgs.aarch64-darwin;
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = {
+            inherit inputs outputs;
+          };
           modules = attrValues self.darwinModules ++ [
             ./darwin/configuration.nix
             home.darwinModules.home-manager
@@ -87,46 +109,61 @@
       };
 
       homeConfigurations = {
-        nixos = { inputs, outputs, pkgs, ... }: {
-          imports = [
-            ./home/linux.nix
-          ] ++ attrValues self.homeModules;
-        };
+        nixos =
+          {
+            inputs,
+            outputs,
+            pkgs,
+            ...
+          }:
+          {
+            imports = [ ./home/linux.nix ] ++ attrValues self.homeModules;
+          };
 
-        darwin = { inputs, outputs, pkgs, ... }: {
-          imports = [
-            ./home/darwin.nix
-          ] ++ attrValues self.homeModules;
-        };
+        darwin =
+          {
+            inputs,
+            outputs,
+            pkgs,
+            ...
+          }:
+          {
+            imports = [ ./home/darwin.nix ] ++ attrValues self.homeModules;
+          };
 
-        aarch64 = { inputs, outputs, pkgs, ... }: {
-          imports = [
-            ./home/aarch64.nix
-          ] ++ attrValues self.homeModules;
-        };
+        aarch64 =
+          {
+            inputs,
+            outputs,
+            pkgs,
+            ...
+          }:
+          {
+            imports = [ ./home/aarch64.nix ] ++ attrValues self.homeModules;
+          };
 
         linux = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/linux.nix
-          ] ++ attrValues self.homeModules;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home/linux.nix ] ++ attrValues self.homeModules;
         };
 
         asahi = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs.aarch64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/asahi.nix
-          ] ++ attrValues self.homeModules;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home/asahi.nix ] ++ attrValues self.homeModules;
         };
 
         wsl = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/wsl.nix
-          ] ++ attrValues self.homeModules;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./home/wsl.nix ] ++ attrValues self.homeModules;
         };
       };
 

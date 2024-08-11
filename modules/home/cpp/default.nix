@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.cpp;
-in {
+let
+  cfg = config.modules.dev.cpp;
+in
+{
   options.modules.dev.cpp = {
     enable = mkOption {
       type = types.bool;

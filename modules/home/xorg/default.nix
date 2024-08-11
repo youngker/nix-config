@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.xorg;
-in {
+let
+  cfg = config.modules.desktop.xorg;
+in
+{
   options.modules.desktop.xorg = {
     enable = mkOption {
       type = types.bool;

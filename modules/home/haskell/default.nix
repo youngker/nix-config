@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.haskell;
-in {
+let
+  cfg = config.modules.dev.haskell;
+in
+{
   options.modules.dev.haskell = {
     enable = mkOption {
       type = types.bool;

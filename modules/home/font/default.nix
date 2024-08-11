@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.font;
-in {
+let
+  cfg = config.modules.desktop.font;
+in
+{
   options.modules.desktop.font = {
     enable = mkOption {
       type = types.bool;
@@ -11,8 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    fonts.fontconfig.enable =
-      if builtins.pathExists /etc/NIXOS then false else true;
+    fonts.fontconfig.enable = if builtins.pathExists /etc/NIXOS then false else true;
     home.packages = with pkgs; [
       fira-code
       font-awesome

@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.rust;
-in {
+let
+  cfg = config.modules.dev.rust;
+in
+{
   options.modules.dev.rust = {
     enable = mkOption {
       type = types.bool;

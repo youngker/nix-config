@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.qt;
-in {
+let
+  cfg = config.modules.desktop.qt;
+in
+{
   options.modules.desktop.qt = {
     enable = mkOption {
       type = types.bool;
@@ -10,7 +17,5 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [ qt5ct ];
-  };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ qt5ct ]; };
 }

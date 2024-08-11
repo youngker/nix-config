@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.apps.vscode;
-in {
+let
+  cfg = config.modules.apps.vscode;
+in
+{
   options.modules.apps.vscode = {
     enable = mkOption {
       type = types.bool;
@@ -10,7 +17,5 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [ vscode ];
-  };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ vscode ]; };
 }

@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.nix;
-in {
+let
+  cfg = config.modules.dev.nix;
+in
+{
   options.modules.dev.nix = {
     enable = mkOption {
       type = types.bool;

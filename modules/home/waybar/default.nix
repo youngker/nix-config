@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.waybar;
-in {
+let
+  cfg = config.modules.desktop.waybar;
+in
+{
   options.modules.desktop.waybar = {
     enable = mkOption {
       type = types.bool;

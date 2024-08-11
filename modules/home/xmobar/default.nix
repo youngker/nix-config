@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.desktop.xmobar;
-in {
+let
+  cfg = config.modules.desktop.xmobar;
+in
+{
   options.modules.desktop.xmobar = {
     enable = mkOption {
       type = types.bool;

@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.apps.zsh;
-in {
+let
+  cfg = config.modules.apps.zsh;
+in
+{
   options.modules.apps.zsh = {
     enable = mkOption {
       type = types.bool;

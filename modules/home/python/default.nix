@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.dev.python;
-in {
+let
+  cfg = config.modules.dev.python;
+in
+{
   options.modules.dev.python = {
     enable = mkOption {
       type = types.bool;
@@ -11,11 +18,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs;
-      [
-        python311
-        pyright
-        black
-      ];
+    home.packages = with pkgs; [
+      python311
+      pyright
+      black
+    ];
   };
 }

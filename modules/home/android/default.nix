@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.apps.android;
-in {
+let
+  cfg = config.modules.apps.android;
+in
+{
   options.modules.apps.android = {
     enable = mkOption {
       type = types.bool;
