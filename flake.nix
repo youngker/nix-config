@@ -7,10 +7,11 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     hardware.url = "github:nixos/nixos-hardware";
     home.inputs.nixpkgs.follows = "nixpkgs";
-    home.url = "github:nix-community/home-manager";
+    home.url = "github:nix-community/home-manager/release-24.05";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
