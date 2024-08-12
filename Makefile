@@ -4,13 +4,16 @@ OS := $(shell uname | tr '[:upper:]' '[:lower:]')
 MACHINE := $(shell uname -m | tr '[:upper:]' '[:lower:]')
 NIXOPTS := --extra-experimental-features "nix-command flakes"
 
-setup:
+echo/system:
+	@echo "os: $(OS), machine: $(MACHINE)"
+
+setup: echo/system
 ifeq (, $(shell which nix))
 	@echo "Installing Determinate Nix Installer..."
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 endif
 
-build:
+build: echo/system
 ifeq ($(OS), darwin)
 	@nix ${NIXOPTS} build ".#darwinConfigurations.macos.system" --show-trace
 else
@@ -21,7 +24,7 @@ else
     endif
 endif
 
-switch:
+switch: echo/system
 ifeq ($(OS), darwin)
 	@nix ${NIXOPTS} build ".#darwinConfigurations.macos.system" --show-trace
 	@./result/sw/bin/darwin-rebuild switch --flake ".#macos"
@@ -33,24 +36,24 @@ else
     endif
 endif
 
-linux/build:
+linux/build: echo/system
 	@nix ${NIXOPTS} build ".#homeConfigurations.linux.activationPackage" --show-trace
 
-linux/switch:
+linux/switch: echo/system
 	@nix ${NIXOPTS} build ".#homeConfigurations.linux.activationPackage" --show-trace
 	@./result/activate
 
-wsl/build:
+wsl/build: echo/system
 	@nix ${NIXOPTS} build ".#homeConfigurations.wsl.activationPackage" --show-trace
 
-wsl/switch:
+wsl/switch: echo/system
 	@nix ${NIXOPTS} build ".#homeConfigurations.wsl.activationPackage" --show-trace
 	@./result/activate
 
-asahi/build:
+asahi/build: echo/system
 	@nix ${NIXOPTS} build ".#homeConfigurations.asahi.activationPackage" --show-trace
 
-asahi/switch:
+asahi/switch: echo/system
 	@nix ${NIXOPTS} build ".#homeConfigurations.asahi.activationPackage" --show-trace
 	@./result/activate
 
