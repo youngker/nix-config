@@ -18,9 +18,9 @@ ifeq ($(OS), darwin)
 	@nix ${NIXOPTS} build ".#darwinConfigurations.macos.system" --show-trace
 else
     ifeq ($(MACHINE), aarch64)
-	sudo nixos-rebuild build --flake ".#nixos-aarch64"
+	@sudo nixos-rebuild build --flake ".#nixos-aarch64"
     else
-	sudo nixos-rebuild build --flake ".#nixos-x86_64"
+	@sudo nixos-rebuild build --flake ".#nixos-x86_64"
     endif
 endif
 
@@ -30,9 +30,9 @@ ifeq ($(OS), darwin)
 	@./result/sw/bin/darwin-rebuild switch --flake ".#macos"
 else
     ifeq ($(MACHINE), aarch64)
-	sudo nixos-rebuild switch --flake ".#nixos-aarch64"
+	@sudo nixos-rebuild switch --flake ".#nixos-aarch64"
     else
-	sudo nixos-rebuild switch --flake ".#nixos-x86_64"
+	@sudo nixos-rebuild switch --flake ".#nixos-x86_64"
     endif
 endif
 
