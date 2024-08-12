@@ -26,6 +26,7 @@ in
       '';
 
       sessionVariables = {
+        PATH = "$HOME/.nix-profile/bin:$PATH";
         BROWSER = "firefox";
         EDITOR = "${pkgs.emacs29-pgtk}/bin/emacsclient -tc";
         ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
