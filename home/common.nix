@@ -41,7 +41,6 @@
       ocaml.enable = true;
       python.enable = true;
       rust.enable = true;
-      sbcl.enable = true;
       texlive.enable = true;
     };
   };

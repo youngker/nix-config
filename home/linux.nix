@@ -44,6 +44,7 @@
     dev = {
       gdb.enable = true;
       guile.enable = true;
+      sbcl.enable = true;
     };
 
     graphic = {

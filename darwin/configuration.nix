@@ -2,6 +2,7 @@
   inputs,
   outputs,
   pkgs,
+  lib,
   ...
 }:
 
@@ -15,16 +16,21 @@
     users.${outputs.user.name} = outputs.homeConfigurations.darwin;
   };
 
-  nix = {
-    package = pkgs.nixStable;
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    settings = {
-      extra-experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+      package = pkgs.nixFlakes;
+      settings = {
+        extra-experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
     };
-  };
 
   users.users.${outputs.user.name} = {
     home = "/Users/${outputs.user.name}";

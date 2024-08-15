@@ -18,7 +18,7 @@ endef
 
 setup:
 ifeq (, $(shell which nix))
-	@echo "Installing Determinate Nix Installer..."
+	$(call announce,Installing Determinate Nix Installer...)
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 endif
 
