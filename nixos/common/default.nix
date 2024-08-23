@@ -15,7 +15,6 @@
     extraSpecialArgs = {
       inherit inputs outputs pkgs;
     };
-    users.${outputs.user.name} = outputs.homeConfigurations.aarch64;
   };
 
   users.users.${outputs.user.name} = {

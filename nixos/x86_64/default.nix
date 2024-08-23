@@ -1,5 +1,6 @@
 {
   inputs,
+  outputs,
   pkgs,
   lib,
   ...
@@ -14,9 +15,14 @@
     ./hardware-configuration.nix
   ];
 
+  home-manager.users.${outputs.user.name} = outputs.homeConfigurations.nixos-x86_64;
+
+  hardware.nvidia.prime.offload.enable = false;
+  hardware.nvidia.modesetting.enable = true;
+
   modules = {
     hardware = {
-      nvidia.enable = true;
+      nvidia.enable = false;
       pulseaudio.enable = false;
     };
 
@@ -24,8 +30,8 @@
       docker.enable = true;
       jack.enable = false;
       virtualbox.enable = true;
-      wayland.enable = true;
-      xserver.enable = false;
+      wayland.enable = false;
+      xserver.enable = true;
     };
   };
 }

@@ -1,5 +1,6 @@
 {
   inputs,
+  outputs,
   pkgs,
   lib,
   ...
@@ -11,6 +12,8 @@
     ../common
     ./hardware-configuration.nix
   ];
+
+  home-manager.users.${outputs.user.name} = outputs.homeConfigurations.nixos-aarch64;
 
   modules = {
     hardware = {

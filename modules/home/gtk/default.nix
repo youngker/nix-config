@@ -23,7 +23,6 @@ in
       evince
       flameshot
       gedit
-      gnome-terminal
       meld
     ];
     gtk = {

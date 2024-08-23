@@ -109,7 +109,7 @@
       };
 
       homeConfigurations = {
-        nixos =
+        nixos-x86_64 =
           {
             inputs,
             outputs,
@@ -131,7 +131,7 @@
             imports = [ ./home/darwin.nix ] ++ attrValues self.homeModules;
           };
 
-        aarch64 =
+        nixos-aarch64 =
           {
             inputs,
             outputs,

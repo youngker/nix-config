@@ -33,12 +33,12 @@
       qt.enable = true;
       rofi.enable = true;
 
-      hyprland.enable = true;
-      waybar.enable = true;
+      hyprland.enable = false;
+      waybar.enable = false;
 
-      xmobar.enable = false;
-      xmonad.enable = false;
-      xorg.enable = false;
+      xmobar.enable = true;
+      xmonad.enable = true;
+      xorg.enable = true;
     };
 
     dev = {
@@ -54,7 +54,7 @@
     services = {
       dunst.enable = true;
       emacs.enable = true;
-      picom.enable = false;
+      picom.enable = true;
     };
 
     i18n.inputMethod = {
