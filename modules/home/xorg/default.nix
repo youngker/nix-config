@@ -27,5 +27,7 @@ in
       xdotool
       xorg.xmessage
     ];
+    xresources.properties."Xft.dpi" = 179;
+    xresources.properties."Xcursor.size" = 128;
   };
 }

@@ -23,6 +23,8 @@ in
       desktopManager.xterm.enable = true;
       displayManager.gdm.enable = true;
       xkb.layout = "us";
+      dpi = 179;
+      upscaleDefaultCursor = true;
     };
     services.xrdp.enable = true;
     networking.firewall.allowedTCPPorts = [ 3389 ];

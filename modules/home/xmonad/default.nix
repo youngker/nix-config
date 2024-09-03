@@ -29,7 +29,5 @@ in
       enableContribAndExtras = true;
       config = ./xmonad.hs;
     };
-
-    xresources.properties."Xft.dpi" = 120;
   };
 }
