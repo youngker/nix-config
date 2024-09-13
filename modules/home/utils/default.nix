@@ -53,7 +53,7 @@ in
       ncurses
       nixfmt-rfc-style
       nixpkgs-fmt
-      ollama
+      inputs.nixpkgs-unstable.ollama
       p7zip
       parallel
       patch
