@@ -19,7 +19,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      qemu
+      qemu_kvm
       OVMF
       (pkgs.writeShellScriptBin "qemu-system-x86_64-uefi" ''
         qemu-system-x86_64 \
@@ -27,6 +27,5 @@ in
         "$@"
       '')
     ];
-
   };
 }
