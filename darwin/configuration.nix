@@ -21,7 +21,8 @@
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
     in
     {
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      channel.enable = false;
+      # registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
       package = pkgs.nixFlakes;
       settings = {
