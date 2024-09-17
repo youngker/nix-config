@@ -8,11 +8,11 @@
 with pkgs;
 stdenv.mkDerivation rec {
   pname = "Firefox";
-  version = "128.0.3";
+  version = "130.0";
   src = fetchurl {
     name = "Firefox-${version}.dmg";
     url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/en-US/Firefox%20${version}.dmg";
-    sha256 = "sha256-vZt6AGuGmimtCZSKAY2a9q6F1NovxmNiTRQ2iS8NNzE=";
+    sha256 = "sha256-yJ7pq896NVSVmn0tsKWnSL464sMNfBcLh53hDkYSdgI=";
   };
   buildInputs = [
     undmg
