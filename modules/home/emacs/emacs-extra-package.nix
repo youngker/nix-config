@@ -36,6 +36,7 @@ pkgs: epkgs: with epkgs; [
   go-mode
   google-c-style
   google-translate
+  gptel
   haskell-mode
   helm-codesearch
   highlight-symbol
