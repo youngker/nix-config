@@ -66,7 +66,8 @@ in
         bad = "${pkgs.git}/bin/git bisect bad";
         cat = "${pkgs.bat}/bin/bat";
         e = "${pkgs.emacs29-pgtk}/bin/emacsclient -tca 'emacs -nw'";
-        ek = "${pkgs.emacs29-pgtk}/bin/emacsclient --eval '(kill-emacs)'";
+        eg = "${pkgs.emacs29-pgtk}/bin/emacsclient -nce '(select-frame-set-input-focus (selected-frame))' > /dev/null";
+        ek = "${pkgs.emacs29-pgtk}/bin/emacsclient -e '(kill-emacs)'";
         g = "${pkgs.gitAndTools.hub}/bin/hub";
         git = "${pkgs.gitAndTools.hub}/bin/hub";
         good = "${pkgs.git}/bin/git bisect good";
