@@ -23,7 +23,6 @@ in
       autosuggestion.enable = true;
 
       initExtra = ''
-        bindkey '^J' end-of-line
         function set_win_title(){
           echo -ne "\033]0; $HOST: $PWD \007"
         }
