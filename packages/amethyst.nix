@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
   version = "0.21.2";
   src = fetchurl {
     url = "https://github.com/ianyh/Amethyst/releases/download/v${version}/Amethyst.zip";
-    sha256 = "sha256-TGSCrv6eeXaBJ1b2P6mZuFXfTQQ/7CjTiyA1VOYHCCg=";
+    sha256 = "sha256-pqUzcNUP8v3ls68BIzWXggXgUVe1wc/bN5BtXqKHXM4=";
   };
   buildInputs = [ unzip ];
   sourceRoot = "Amethyst.app";
