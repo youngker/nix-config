@@ -18,12 +18,13 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.go = {
-      enable = true;
-      goPath = ".go";
-      goBin = ".go/bin";
-    };
+    # programs.go = {
+    #   enable = true;
+    #   goPath = ".go";
+    #   goBin = ".go/bin";
+    # };
     home.packages = with pkgs; [
+      inputs.nixpkgs-unstable.go_1_23
       godef
       gopls
     ];

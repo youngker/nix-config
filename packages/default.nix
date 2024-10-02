@@ -10,4 +10,5 @@ rec {
   my-jdt-language-server = pkgs.callPackage ./jdt-language-server.nix { };
   clj-opengrok = pkgs.callPackage ./clj-opengrok.nix { };
   firefox-darwin = pkgs.callPackage ./firefox.nix { };
+  new-codesearch = pkgs.callPackage ./codesearch.nix { };
 }

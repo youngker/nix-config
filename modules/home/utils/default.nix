@@ -23,7 +23,7 @@ in
       bat
       cachix
       clj-opengrok
-      codesearch
+      new-codesearch
       curl
       du-dust
       eza
