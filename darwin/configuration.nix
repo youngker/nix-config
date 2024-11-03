@@ -44,6 +44,7 @@
 
   modules = {
     services = {
+      yabai.enable = true;
       skhd.enable = true;
     };
   };
