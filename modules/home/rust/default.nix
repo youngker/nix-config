@@ -17,10 +17,5 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      rust-analyzer
-      rust-bin.stable.latest.default
-    ];
-  };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ rustup ]; };
 }

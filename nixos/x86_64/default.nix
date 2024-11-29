@@ -19,6 +19,7 @@
 
   hardware.nvidia.prime.offload.enable = false;
   hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.nvidiaPersistenced = true;
 
   modules = {
     hardware = {

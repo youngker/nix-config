@@ -21,9 +21,10 @@ in
     home.packages = with pkgs; [
       bear
       clang-analyzer
-      clang-tools_16
-      clang_16
-      lldb_16
+      clang-tools
+      clang
+      lldb
+      inputs.nixpkgs-unstable.seer
     ];
   };
 }

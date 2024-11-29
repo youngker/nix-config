@@ -19,11 +19,12 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      apparmor-parser
       ast-grep
       bat
       cachix
+      checksec
       clj-opengrok
-      new-codesearch
       curl
       du-dust
       eza
@@ -44,16 +45,19 @@ in
       graphviz
       htop
       hub
+      inputs.nixpkgs-unstable.ollama
       jq
       killall
       less
       lsof
       m4
+      mdbook
       more
+      ncftp
       ncurses
+      new-codesearch
       nixfmt-rfc-style
       nixpkgs-fmt
-      inputs.nixpkgs-unstable.ollama
       p7zip
       parallel
       patch
@@ -67,7 +71,9 @@ in
       tio
       tree
       universal-ctags
+      unrar
       unzip
+      usbutils
       wget
       xclip
     ];
