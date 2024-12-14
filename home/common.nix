@@ -8,7 +8,7 @@
 {
   home = {
     username = "${outputs.user.name}";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
   };
 
   modules = {

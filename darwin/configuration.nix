@@ -24,7 +24,7 @@
       channel.enable = false;
       # registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
       settings = {
         extra-experimental-features = [
           "nix-command"
@@ -53,7 +53,6 @@
 
   services = {
     nix-daemon.enable = true;
-    activate-system.enable = true;
   };
 
   system = {

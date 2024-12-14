@@ -7,7 +7,7 @@
 }:
 
 {
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   home-manager = {
     useGlobalPkgs = true;
@@ -37,7 +37,7 @@
       channel.enable = false;
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
       settings = {
         extra-experimental-features = [
           "nix-command"

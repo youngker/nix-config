@@ -70,7 +70,7 @@ in
           semantic_escape_chars = '',│`|:"' ()[]{}<>	'';
           save_to_clipboard = true;
         };
-        shell = {
+        terminal.shell = {
           program = "${pkgs.zsh}/bin/zsh";
         };
 

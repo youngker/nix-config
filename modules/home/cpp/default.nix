@@ -24,7 +24,6 @@ in
       clang-tools
       clang
       lldb
-      inputs.nixpkgs-unstable.seer
     ];
   };
 }

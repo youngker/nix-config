@@ -19,11 +19,9 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      apparmor-parser
       ast-grep
       bat
       cachix
-      checksec
       clj-opengrok
       curl
       du-dust
@@ -73,7 +71,6 @@ in
       universal-ctags
       unrar
       unzip
-      usbutils
       wget
       xclip
     ];
