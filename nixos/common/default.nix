@@ -10,6 +10,7 @@
   system.stateVersion = "24.11";
 
   home-manager = {
+    backupFileExtension = "hm-backup";
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {

@@ -17,5 +17,5 @@ in
     };
   };
 
-  config = mkIf cfg.enable { home.packages = with pkgs; [ qt5ct ]; };
+  config = mkIf cfg.enable { home.packages = with pkgs; [ libsForQt5.qt5ct ]; };
 }

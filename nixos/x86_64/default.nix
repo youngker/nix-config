@@ -17,6 +17,7 @@
 
   home-manager.users.${outputs.user.name} = outputs.homeConfigurations.nixos-x86_64;
 
+  hardware.nvidia.open = false;
   hardware.nvidia.prime.offload.enable = false;
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.nvidiaPersistenced = true;

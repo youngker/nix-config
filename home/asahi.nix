@@ -44,7 +44,8 @@
     };
 
     i18n.inputMethod = {
-      kime.enable = true;
+      kime.enable = false;
+      fcitx5.enable = true;
     };
   };
 }
