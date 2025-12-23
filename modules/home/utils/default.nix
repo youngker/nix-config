@@ -19,12 +19,13 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      inputs.nixpkgs-unstable.gemini-cli
       ast-grep
       bat
       cachix
       clj-opengrok
       curl
-      du-dust
+      dust
       eza
       fd
       feh

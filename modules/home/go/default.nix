@@ -24,7 +24,7 @@ in
     #   goBin = ".go/bin";
     # };
     home.packages = with pkgs; [
-      inputs.nixpkgs-unstable.go_1_23
+      go
       godef
       gopls
     ];

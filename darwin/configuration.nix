@@ -21,6 +21,7 @@
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
     in
     {
+      enable = false;
       channel.enable = false;
       # registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
@@ -40,8 +41,6 @@
 
   programs.zsh.enable = true;
 
-  security.pam.enableSudoTouchIdAuth = true;
-
   modules = {
     services = {
       yabai.enable = true;
@@ -51,11 +50,9 @@
 
   environment.systemPath = [ "/run/current-system/sw/bin" ];
 
-  services = {
-    nix-daemon.enable = true;
-  };
-
   system = {
+    primaryUser = "${outputs.user.name}";
+
     defaults = {
       NSGlobalDomain = {
         KeyRepeat = 1;

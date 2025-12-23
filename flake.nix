@@ -3,15 +3,15 @@
 
   inputs = {
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.11";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     hardware.url = "github:nixos/nixos-hardware";
     home.inputs.nixpkgs.follows = "nixpkgs";
-    home.url = "github:nix-community/home-manager/release-24.11";
+    home.url = "github:nix-community/home-manager/release-25.11";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
@@ -173,6 +173,7 @@
           path = ./.;
           description = "default template";
         };
-      } // import ./templates;
+      }
+      // import ./templates;
     };
 }

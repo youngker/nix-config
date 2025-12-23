@@ -37,19 +37,18 @@
         devShell =
           with pkgs;
           mkShell {
-            buildInputs =
+            buildInputs = [
+              (rustVersion.override { extensions = [ "rust-src" ]; })
+              libiconv
+            ]
+            ++ lib.optionals pkgs.stdenv.isDarwin (
+              with darwin.apple_sdk.frameworks;
               [
-                (rustVersion.override { extensions = [ "rust-src" ]; })
-                libiconv
+                darwin.libobjc
+                QuartzCore
+                AppKit
               ]
-              ++ lib.optionals pkgs.stdenv.isDarwin (
-                with darwin.apple_sdk.frameworks;
-                [
-                  darwin.libobjc
-                  QuartzCore
-                  AppKit
-                ]
-              );
+            );
             shellHook = ''
               alias ls=eza
               alias find=fd

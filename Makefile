@@ -40,7 +40,7 @@ switch:
 ifeq ($(OS), darwin)
 	$(call announce,darwin-rebuild switch --flake .#macos)
 	@nix ${NIXOPTS} build .#darwinConfigurations.macos.system --show-trace
-	@./result/sw/bin/darwin-rebuild switch --flake .#macos
+	@sudo ./result/sw/bin/darwin-rebuild switch --flake .#macos
 else
     ifeq ($(MACHINE), aarch64)
 	$(call announce,sudo nixos-rebuild switch --flake .#nixos-aarch64)
@@ -100,4 +100,4 @@ clean:
 
 format:
 	$(call announce,nix fmt)
-	@nix fmt
+	@nix fmt *.nix
