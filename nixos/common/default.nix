@@ -59,13 +59,16 @@
   };
 
   modules = {
-    boot = {
-      systemd.enable = true;
-    };
     services = {
       openssh.enable = true;
       pipewire.enable = true;
       timesyncd.enable = true;
     };
+  };
+
+  wsl = {
+    enable = true;
+    defaultUser = outputs.user.name;
+    startMenuLaunchers = true;
   };
 }

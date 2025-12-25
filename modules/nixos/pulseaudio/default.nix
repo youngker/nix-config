@@ -18,7 +18,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.pulseaudio = {
+    services.pulseaudio = {
       enable = true;
       package = with pkgs; pulseaudio.override { jackaudioSupport = true; };
     };

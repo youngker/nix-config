@@ -18,7 +18,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    i18n.inputMethod.enabled = "kime";
+    i18n.inputMethod.enable = true;
+    i18n.inputMethod.type = "kime";
     xdg.configFile."kime".source = ./kime;
   };
 }

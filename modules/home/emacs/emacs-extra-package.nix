@@ -10,7 +10,6 @@ pkgs: epkgs: with epkgs; [
   clojure-mode
   cmake-mode
   cmake-project
-  codesearch
   company
   consult
   consult-codesearch

@@ -60,15 +60,6 @@ linux/switch:
 	@nix ${NIXOPTS} build .#homeConfigurations.linux.activationPackage --show-trace
 	@./result/activate
 
-wsl/build:
-	$(call announce,nix build .#homeConfigurations.wsl.activationPackage)
-	@nix ${NIXOPTS} build .#homeConfigurations.wsl.activationPackage --show-trace
-
-wsl/switch:
-	$(call announce,./result/activate)
-	@nix ${NIXOPTS} build .#homeConfigurations.wsl.activationPackage --show-trace
-	@./result/activate
-
 asahi/build:
 	$(call announce,nix build .#homeConfigurations.asahi.activationPackage)
 	@nix ${NIXOPTS} build .#homeConfigurations.asahi.activationPackage --show-trace

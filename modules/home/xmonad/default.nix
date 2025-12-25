@@ -20,8 +20,8 @@ in
   config = mkIf cfg.enable {
     xsession.enable = true;
     xsession.initExtra = ''
-      export LIBGL_DRIVERS_PATH="${pkgs.mesa.drivers}/lib/dri"
-      export LD_LIBRARY_PATH="${pkgs.mesa.drivers}/lib/":$LD_LIBRARY_PATH
+      export LIBGL_DRIVERS_PATH="${pkgs.mesa}/lib/dri"
+      export LD_LIBRARY_PATH="${pkgs.mesa}/lib/":$LD_LIBRARY_PATH
       export XDG_CURRENT_DESKTOP="xmonad"
     '';
     xsession.windowManager.xmonad = {

@@ -13,6 +13,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -93,6 +95,18 @@
             home.nixosModules.home-manager
           ];
         };
+
+        wsl = nixpkgs.lib.nixosSystem {
+          pkgs = mkPkgs.x86_64-linux;
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = attrValues self.nixosModules ++ [
+            ./nixos/x86_64
+            inputs.nixos-wsl.nixosModules.wsl
+            home.nixosModules.home-manager
+          ];
+        };
       };
 
       darwinConfigurations = {
@@ -156,14 +170,6 @@
             inherit inputs outputs;
           };
           modules = [ ./home/asahi.nix ] ++ attrValues self.homeModules;
-        };
-
-        wsl = home.lib.homeManagerConfiguration {
-          pkgs = mkPkgs.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [ ./home/wsl.nix ] ++ attrValues self.homeModules;
         };
       };
 
