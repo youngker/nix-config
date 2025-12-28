@@ -96,14 +96,13 @@
           ];
         };
 
-        wsl = nixpkgs.lib.nixosSystem {
+        nixos-wsl = nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs.x86_64-linux;
           specialArgs = {
             inherit inputs outputs;
           };
           modules = attrValues self.nixosModules ++ [
-            ./nixos/x86_64
-            inputs.nixos-wsl.nixosModules.wsl
+            ./nixos/wsl
             home.nixosModules.home-manager
           ];
         };

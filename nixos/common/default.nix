@@ -7,7 +7,7 @@
 }:
 
 {
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 
   home-manager = {
     backupFileExtension = "hm-backup";
@@ -59,16 +59,13 @@
   };
 
   modules = {
+    boot = {
+      systemd.enable = true;
+    };
     services = {
       openssh.enable = true;
       pipewire.enable = true;
       timesyncd.enable = true;
     };
-  };
-
-  wsl = {
-    enable = true;
-    defaultUser = outputs.user.name;
-    startMenuLaunchers = true;
   };
 }

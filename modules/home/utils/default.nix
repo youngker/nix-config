@@ -20,6 +20,7 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       inputs.nixpkgs-unstable.gemini-cli
+      spotify
       ast-grep
       bat
       cachix

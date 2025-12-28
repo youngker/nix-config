@@ -24,6 +24,12 @@ in
       xkb.layout = "us";
       dpi = 179;
       upscaleDefaultCursor = true;
+      serverFlagsSection = ''
+        Option "BlankTime" "5"
+        Option "StandbyTime" "5"
+        Option "SuspendTime" "5"
+        Option "OffTime" "5"
+      '';
     };
     services.xrdp.enable = true;
     services.displayManager.gdm.enable = true;

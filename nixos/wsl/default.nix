@@ -8,6 +8,7 @@
 
 {
   imports = [
+    inputs.nixos-wsl.nixosModules.wsl
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-nvidia
     inputs.hardware.nixosModules.common-pc-ssd
@@ -22,12 +23,17 @@
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.nvidiaPersistenced = true;
 
+  wsl = {
+    enable = true;
+    defaultUser = outputs.user.name;
+    startMenuLaunchers = true;
+  };
+
   modules = {
     hardware = {
       nvidia.enable = false;
       pulseaudio.enable = false;
     };
-
     services = {
       docker.enable = true;
       jack.enable = false;

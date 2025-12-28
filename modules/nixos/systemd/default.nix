@@ -18,9 +18,13 @@ in
   };
 
   config = mkIf cfg.enable {
-    boot.loader = {
-      systemd-boot.enable = true;
-    };
+    boot.loader.systemd-boot.enable = true;
     systemd.services.NetworkManager-wait-online.enable = false;
+    services.logind.settings = {
+      Login = {
+        IdleAction="suspend";
+        IdleActionSec="10min";
+      };
+    };
   };
 }
