@@ -19,7 +19,8 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      python311
+      python313
+      python313Packages.cryptography
       pyright
       black
     ];

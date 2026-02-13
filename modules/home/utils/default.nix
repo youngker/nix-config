@@ -19,6 +19,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
+      zoekt
       inputs.nixpkgs-unstable.gemini-cli
       spotify
       ast-grep
