@@ -3,15 +3,15 @@
 
   inputs = {
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     hardware.url = "github:nixos/nixos-hardware";
     home.inputs.nixpkgs.follows = "nixpkgs";
-    home.url = "github:nix-community/home-manager/release-25.11";
+    home.url = "github:nix-community/home-manager/release-26.05";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     rust-overlay.url = "github:oxalica/rust-overlay";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
@@ -71,7 +71,7 @@
 
       packages = eachSystem (pkgs: import ./packages { inherit pkgs; });
       devShells = eachSystem (pkgs: import ./shell.nix { inherit pkgs; });
-      formatter = eachSystem (pkgs: pkgs.nixfmt-rfc-style);
+      formatter = eachSystem (pkgs: pkgs.nixfmt);
 
       nixosConfigurations = {
         nixos-x86_64 = nixpkgs.lib.nixosSystem {

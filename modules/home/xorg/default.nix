@@ -21,11 +21,11 @@ in
     home.packages = with pkgs; [
       arandr
       brightnessctl
-      xorg.xev
-      xorg.xfd
-      xorg.fontmiscmisc
+      xev
+      xfd
+      font-misc-misc
       xdotool
-      xorg.xmessage
+      xmessage
     ];
     xresources.properties."Xft.dpi" = 179;
     xresources.properties."Xcursor.size" = 128;

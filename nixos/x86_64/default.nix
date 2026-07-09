@@ -3,6 +3,7 @@
   outputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 
@@ -21,6 +22,7 @@
   hardware.nvidia.prime.offload.enable = false;
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.nvidiaPersistenced = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 
   modules = {
     hardware = {

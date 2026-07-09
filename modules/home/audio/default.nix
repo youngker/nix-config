@@ -24,7 +24,7 @@ in
       carla
       fluidsynth
       guitarix
-      helvum
+      crosspipe
       hydrogen
       lmms
       musescore

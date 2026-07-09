@@ -57,7 +57,7 @@ in
       ncftp
       ncurses
       new-codesearch
-      nixfmt-rfc-style
+      nixfmt
       nixpkgs-fmt
       p7zip
       parallel

@@ -32,7 +32,7 @@ in
       '';
     };
     services.xrdp.enable = true;
-    services.displayManager.gdm.enable = true;
+    services.displayManager.sddm.enable = true;
     networking.firewall.allowedTCPPorts = [ 3389 ];
   };
 }
