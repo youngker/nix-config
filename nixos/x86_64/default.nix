@@ -26,7 +26,6 @@
 
   modules = {
     hardware = {
-      nvidia.enable = false;
       pulseaudio.enable = false;
     };
 
