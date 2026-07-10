@@ -28,7 +28,7 @@ in
       sessionVariables = {
         PATH = "$HOME/.nix-profile/bin:$PATH";
         BROWSER = "firefox";
-        EDITOR = "${pkgs.emacs30-pgtk}/bin/emacsclient -tc";
+        EDITOR = "${config.programs.emacs.finalPackage}/bin/emacsclient -tc";
         ALTERNATE_EDITOR = "${pkgs.vim}/bin/vi";
         LANG = "en_US.UTF-8";
         LC_CTYPE = "en_US.UTF-8";
@@ -49,9 +49,9 @@ in
         b = "${pkgs.git}/bin/git b";
         bad = "${pkgs.git}/bin/git bisect bad";
         cat = "${pkgs.bat}/bin/bat";
-        e = "${pkgs.emacs30-pgtk}/bin/emacsclient -tca 'emacs -nw'";
-        eg = "${pkgs.emacs30-pgtk}/bin/emacsclient -nce '(select-frame-set-input-focus (selected-frame))' > /dev/null";
-        ek = "${pkgs.emacs30-pgtk}/bin/emacsclient -e '(kill-emacs)'";
+        e = "${config.programs.emacs.finalPackage}/bin/emacsclient -tca 'emacs -nw'";
+        eg = "${config.programs.emacs.finalPackage}/bin/emacsclient -nce '(select-frame-set-input-focus (selected-frame))' > /dev/null";
+        ek = "${config.programs.emacs.finalPackage}/bin/emacsclient -e '(kill-emacs)'";
         good = "${pkgs.git}/bin/git bisect good";
         l = "${pkgs.git}/bin/git l";
         ls = "${pkgs.eza}/bin/eza --sort=Name";

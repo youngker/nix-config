@@ -20,7 +20,7 @@ in
   config = mkIf cfg.enable {
     programs.emacs = {
       enable = true;
-      package = pkgs.emacs30-pgtk;
+      package = pkgs.emacs-unstable-pgtk;
       extraPackages = import ./emacs-extra-package.nix pkgs;
     };
   };

@@ -44,6 +44,7 @@
           "nix-command"
           "flakes"
         ];
+        trusted-users = [ "root" "${outputs.user.name}" ];
       };
     };
 

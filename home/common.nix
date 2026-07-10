@@ -33,6 +33,7 @@
       cmake.enable = true;
       cpp.enable = true;
       emacs.enable = true;
+      erlang.enable = true;
       git.enable = true;
       go.enable = true;
       haskell.enable = true;

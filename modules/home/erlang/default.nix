@@ -7,10 +7,10 @@
 
 with lib;
 let
-  cfg = config.modules.dev.cpp;
+  cfg = config.modules.dev.erlang;
 in
 {
-  options.modules.dev.cpp = {
+  options.modules.dev.erlang = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -19,10 +19,9 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      bear
-      clang-tools
-      clang
-      lldb
+      erlang
+      rebar3
+      erlang-language-platform
     ];
   };
 }
