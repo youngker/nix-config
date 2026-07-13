@@ -33,12 +33,13 @@
       qt.enable = true;
       rofi.enable = true;
 
+      niri.enable = true;
       hyprland.enable = false;
-      waybar.enable = false;
+      waybar.enable = true;
 
-      xmobar.enable = true;
-      xmonad.enable = true;
-      xorg.enable = true;
+      xmobar.enable = false;
+      xmonad.enable = false;
+      xorg.enable = false;
     };
 
     dev = {

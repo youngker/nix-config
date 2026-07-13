@@ -33,8 +33,8 @@
       docker.enable = true;
       jack.enable = false;
       virtualbox.enable = false;
-      wayland.enable = false;
-      xserver.enable = true;
+      wayland.enable = true;
+      xserver.enable = false;
     };
   };
 }

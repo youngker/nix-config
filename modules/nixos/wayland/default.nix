@@ -20,8 +20,11 @@ in
   config = mkIf cfg.enable {
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.inputs.hyprland.xdg-desktop-portal-hyprland ];
-      configPackages = [ pkgs.inputs.hyprland.hyprland ];
+      config = {
+        niri = {
+          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        };
+      };
     };
     security.pam.services.swaylock = { };
     environment.sessionVariables = {
@@ -29,5 +32,7 @@ in
       NIXOS_OZONE_WL = "1";
     };
     programs.xwayland.enable = true;
+    programs.niri.enable = true;
+    services.gnome.gcr-ssh-agent.enable = false;
   };
 }
