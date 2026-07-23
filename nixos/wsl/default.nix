@@ -16,7 +16,7 @@
     ./hardware-configuration.nix
   ];
 
-  home-manager.users.${outputs.user.name} = outputs.homeConfigurations.nixos-x86_64;
+  home-manager.users.${outputs.user.name} = outputs.lib.homeConfigurations.nixos-x86_64;
 
   hardware.nvidia.open = false;
   hardware.nvidia.prime.offload.enable = false;

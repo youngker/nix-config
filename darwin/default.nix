@@ -13,7 +13,7 @@
     extraSpecialArgs = {
       inherit inputs outputs pkgs;
     };
-    users.${outputs.user.name} = outputs.homeConfigurations.darwin;
+    users.${outputs.user.name} = outputs.lib.homeConfigurations.darwin;
   };
 
   nix =
@@ -50,6 +50,8 @@
   };
 
   environment.systemPath = [ "/run/current-system/sw/bin" ];
+
+  documentation.enable = false;
 
   system = {
     primaryUser = "${outputs.user.name}";

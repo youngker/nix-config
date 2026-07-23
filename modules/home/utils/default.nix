@@ -21,6 +21,8 @@ in
     home.packages = with pkgs; [
       zoekt
       inputs.nixpkgs-unstable.gemini-cli
+      claude-code
+      claude-agent-acp
       spotify
       ast-grep
       bat

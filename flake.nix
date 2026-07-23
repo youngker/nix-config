@@ -126,13 +126,13 @@
             inherit inputs outputs;
           };
           modules = attrValues self.darwinModules ++ [
-            ./darwin/configuration.nix
+            ./darwin
             home.darwinModules.home-manager
           ];
         };
       };
 
-      homeConfigurations = {
+      lib.homeConfigurations = {
         nixos-x86_64 =
           {
             inputs,
@@ -165,7 +165,9 @@
           {
             imports = [ ./home/aarch64.nix ] ++ attrValues self.homeModules;
           };
+      };
 
+      homeConfigurations = {
         linux = home.lib.homeManagerConfiguration {
           pkgs = mkPkgs.x86_64-linux;
           extraSpecialArgs = {

@@ -1,5 +1,7 @@
 pkgs: epkgs: with epkgs; [
+  # geiser
   ace-window
+  agent-shell
   aggressive-indent
   auctex
   auto-compile
@@ -7,6 +9,7 @@ pkgs: epkgs: with epkgs; [
   bind-key
   cargo
   clang-format
+  clipetty
   clojure-mode
   cmake-mode
   cmake-project
@@ -30,7 +33,6 @@ pkgs: epkgs: with epkgs; [
   flx-ido
   flymake
   flymake-diagnostic-at-point
-  # geiser
   go-eldoc
   go-mode
   google-c-style

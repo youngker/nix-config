@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
   ];
 
-  home-manager.users.${outputs.user.name} = outputs.homeConfigurations.nixos-aarch64;
+  home-manager.users.${outputs.user.name} = outputs.lib.homeConfigurations.nixos-aarch64;
 
   modules = {
     hardware = {
