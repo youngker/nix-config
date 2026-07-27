@@ -34,5 +34,9 @@ in
     programs.xwayland.enable = true;
     programs.niri.enable = true;
     services.gnome.gcr-ssh-agent.enable = false;
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
   };
 }
