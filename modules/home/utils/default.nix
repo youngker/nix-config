@@ -23,7 +23,6 @@ in
       inputs.nixpkgs-unstable.gemini-cli
       claude-code
       claude-agent-acp
-      spotify
       ast-grep
       bat
       cachix
@@ -78,6 +77,8 @@ in
       unzip
       wget
       xclip
+    ] ++ pkgs.lib.optionals (!pkgs.stdenv.isAarch64) [
+      spotify
     ];
   };
 }

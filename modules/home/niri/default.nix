@@ -21,6 +21,7 @@ in
     home = {
       packages = with pkgs; [
         xwayland-satellite
+        swaybg
       ];
     };
     xdg.configFile."niri/config.kdl".text = ''
@@ -294,6 +295,8 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
+
+spawn-at-startup "bingwallpaper"
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"

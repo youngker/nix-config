@@ -3,6 +3,7 @@
   outputs,
   pkgs,
   lib,
+  isWsl ? false,
   ...
 }:
 
@@ -61,12 +62,12 @@
 
   modules = {
     boot = {
-      systemd.enable = true;
+      systemd.enable = !isWsl;
     };
     services = {
       openssh.enable = true;
       pipewire.enable = true;
-      timesyncd.enable = true;
+      timesyncd.enable = !isWsl;
     };
   };
 }

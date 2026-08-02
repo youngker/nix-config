@@ -78,11 +78,12 @@ shell:
 	@nix ${NIXOPTS} develop
 
 check:
-	$(call announce,nix store verify --no-trust --repair --all)
-	@nix store verify --no-trust --repair --all
+	$(call announce,nix flake check)
+	@nix flake check
 
 repair:
-	sudo nix-store --repair --verify --check-contents
+	$(call announce,nix store verify --no-trust --repair --all)
+	@nix store verify --no-trust --repair --all
 
 clean:
 	$(call announce,nix-collect-garbage --delete-older-than 5d)

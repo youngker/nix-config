@@ -19,8 +19,6 @@
     hardware.url = "github:nixos/nixos-hardware";
     home.inputs.nixpkgs.follows = "nixpkgs";
     home.url = "github:nix-community/home-manager/release-26.05";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     rust-overlay.url = "github:oxalica/rust-overlay";
@@ -88,6 +86,7 @@
         nixos-x86_64 = nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs.x86_64-linux;
           specialArgs = {
+            isWsl = false;
             inherit inputs outputs;
           };
           modules = attrValues self.nixosModules ++ [
@@ -99,6 +98,7 @@
         nixos-aarch64 = nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs.aarch64-linux;
           specialArgs = {
+            isWsl = false;
             inherit inputs outputs;
           };
           modules = attrValues self.nixosModules ++ [
@@ -110,6 +110,7 @@
         nixos-wsl = nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs.x86_64-linux;
           specialArgs = {
+            isWsl = true;
             inherit inputs outputs;
           };
           modules = attrValues self.nixosModules ++ [
@@ -185,8 +186,8 @@
         };
       };
 
-      defaultTemplate = self.templates.full;
       templates = {
+        default = self.templates.full;
         full = {
           path = ./.;
           description = "default template";

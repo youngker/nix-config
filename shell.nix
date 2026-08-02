@@ -18,7 +18,7 @@
       git
       gnupg
       home-manager
-      nixStable
+      nixVersions.stable
       sops
       ssh-to-age
     ];

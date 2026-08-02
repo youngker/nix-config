@@ -3,6 +3,7 @@
   outputs,
   pkgs,
   lib,
+  isWsl ? false,
   ...
 }:
 
@@ -15,7 +16,7 @@
     ../common
     ./hardware-configuration.nix
   ];
-
+  home-manager.extraSpecialArgs = { inherit inputs outputs; };
   home-manager.users.${outputs.user.name} = outputs.lib.homeConfigurations.nixos-x86_64;
 
   hardware.nvidia.open = false;
