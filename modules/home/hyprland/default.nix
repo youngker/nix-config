@@ -20,7 +20,6 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = pkgs.inputs.hyprland.hyprland;
       systemd.enable = true;
       extraConfig = builtins.readFile ./hyprland.conf;
     };
