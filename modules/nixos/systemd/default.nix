@@ -22,8 +22,8 @@ in
     systemd.services.NetworkManager-wait-online.enable = false;
     services.logind.settings = {
       Login = {
-        IdleAction="suspend";
-        IdleActionSec="10min";
+        IdleAction = "suspend";
+        IdleActionSec = "10min";
       };
     };
   };

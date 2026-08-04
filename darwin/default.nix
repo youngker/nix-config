@@ -31,7 +31,10 @@
           "nix-command"
           "flakes"
         ];
-        trusted-users = [ "root" "${outputs.user.name}" ];
+        trusted-users = [
+          "root"
+          "${outputs.user.name}"
+        ];
       };
     };
 
@@ -86,7 +89,7 @@
       remapCapsLockToControl = true;
     };
 
-    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh'';
+    activationScripts.postActivation.text = "sudo chsh -s ${pkgs.zsh}/bin/zsh";
     stateVersion = 4;
   };
 }

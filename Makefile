@@ -98,4 +98,4 @@ clean:
 
 format:
 	$(call announce,nix fmt)
-	@nix fmt *.nix
+	@nix fmt

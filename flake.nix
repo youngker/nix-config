@@ -80,7 +80,7 @@
 
       packages = eachSystem (pkgs: import ./packages { inherit pkgs; });
       devShells = eachSystem (pkgs: import ./shell.nix { inherit pkgs; });
-      formatter = eachSystem (pkgs: pkgs.nixfmt);
+      formatter = eachSystem (pkgs: pkgs.nixfmt-tree);
 
       nixosConfigurations = {
         nixos-x86_64 = nixpkgs.lib.nixosSystem {
