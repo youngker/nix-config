@@ -56,7 +56,7 @@
 
   networking = {
     hostName = "${outputs.user.host}";
-    networkmanager.enable = true;
+    networkmanager.enable = !isWsl;
     useDHCP = false;
   };
 

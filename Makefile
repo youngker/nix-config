@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := build
 
-OS := $(shell uname | tr '[:upper:]' '[:lower:]')
+OS      := $(shell uname -r | grep -qi wsl && echo wsl || uname | tr '[:upper:]' '[:lower:]')
 MACHINE := $(shell uname -m | tr '[:upper:]' '[:lower:]')
 NIXOPTS := --extra-experimental-features "nix-command flakes"
 
@@ -26,6 +26,9 @@ build:
 ifeq ($(OS), darwin)
 	$(call announce,nix build .#darwinConfigurations.macos.system)
 	@nix ${NIXOPTS} build .#darwinConfigurations.macos.system --show-trace
+else ifeq ($(OS), wsl)
+	$(call announce,sudo nixos-rebuild build --flake .#nixos-wsl)
+	@sudo nixos-rebuild build --flake .#nixos-wsl
 else
     ifeq ($(MACHINE), aarch64)
 	$(call announce,sudo nixos-rebuild build --flake .#nixos-aarch64)
@@ -41,6 +44,9 @@ ifeq ($(OS), darwin)
 	$(call announce,darwin-rebuild switch --flake .#macos)
 	@nix ${NIXOPTS} build .#darwinConfigurations.macos.system --show-trace
 	@sudo ./result/sw/bin/darwin-rebuild switch --flake .#macos
+else ifeq ($(OS), wsl)
+	$(call announce,sudo nixos-rebuild switch --flake .#nixos-wsl)
+	@sudo nixos-rebuild build --flake .#nixos-wsl
 else
     ifeq ($(MACHINE), aarch64)
 	$(call announce,sudo nixos-rebuild switch --flake .#nixos-aarch64)

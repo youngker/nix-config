@@ -134,17 +134,6 @@
       };
 
       lib.homeConfigurations = {
-        nixos-x86_64 =
-          {
-            inputs,
-            outputs,
-            pkgs,
-            ...
-          }:
-          {
-            imports = [ ./home/linux.nix ] ++ attrValues self.homeModules;
-          };
-
         darwin =
           {
             inputs,
@@ -156,6 +145,17 @@
             imports = [ ./home/darwin.nix ] ++ attrValues self.homeModules;
           };
 
+        nixos-x86_64 =
+          {
+            inputs,
+            outputs,
+            pkgs,
+            ...
+          }:
+          {
+            imports = [ ./home/linux.nix ] ++ attrValues self.homeModules;
+          };
+
         nixos-aarch64 =
           {
             inputs,
@@ -165,6 +165,17 @@
           }:
           {
             imports = [ ./home/aarch64.nix ] ++ attrValues self.homeModules;
+          };
+
+        nixos-wsl =
+          {
+            inputs,
+            outputs,
+            pkgs,
+            ...
+          }:
+          {
+            imports = [ ./home/wsl.nix ] ++ attrValues self.homeModules;
           };
       };
 

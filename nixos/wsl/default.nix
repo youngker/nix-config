@@ -17,12 +17,12 @@
     ./hardware-configuration.nix
   ];
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
-  home-manager.users.${outputs.user.name} = outputs.lib.homeConfigurations.nixos-x86_64;
+  home-manager.users.${outputs.user.name} = outputs.lib.homeConfigurations.nixos-wsl;
 
   hardware.nvidia.open = false;
   hardware.nvidia.prime.offload.enable = false;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.nvidiaPersistenced = true;
+  hardware.nvidia.modesetting.enable = false;
+  hardware.nvidia.nvidiaPersistenced = false;
 
   wsl = {
     enable = true;
@@ -35,11 +35,11 @@
       pulseaudio.enable = false;
     };
     services = {
-      docker.enable = true;
+      docker.enable = false;
       jack.enable = false;
       virtualbox.enable = false;
       wayland.enable = false;
-      xserver.enable = true;
+      xserver.enable = false;
     };
   };
 }
