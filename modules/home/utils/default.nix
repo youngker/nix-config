@@ -21,6 +21,7 @@ in
     home.packages =
       with pkgs;
       [
+        sddm-astronaut
         zoekt
         inputs.nixpkgs-unstable.gemini-cli
         claude-code

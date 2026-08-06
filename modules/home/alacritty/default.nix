@@ -30,7 +30,7 @@ in
             y = 10;
           };
           decorations = "none";
-          startup_mode = "Maximized";
+          startup_mode = "Windowed";
           opacity = 0.98;
           option_as_alt = mkIf isDarwin "Both";
         };

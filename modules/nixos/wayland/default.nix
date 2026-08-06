@@ -37,6 +37,8 @@ in
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      theme = "${pkgs.sddm-astronaut}/share/sddm/themes/sddm-astronaut-theme";
+      extraPackages = [ pkgs.sddm-astronaut ];
     };
   };
 }
