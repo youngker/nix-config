@@ -21,11 +21,6 @@ in
     home.packages =
       with pkgs;
       [
-        sddm-astronaut
-        zoekt
-        inputs.nixpkgs-unstable.gemini-cli
-        claude-code
-        claude-agent-acp
         ast-grep
         bat
         cachix
@@ -50,7 +45,6 @@ in
         graphviz
         htop
         hub
-        inputs.nixpkgs-unstable.ollama
         jq
         killall
         less
@@ -80,6 +74,7 @@ in
         unzip
         wget
         xclip
+        zoekt
       ]
       ++ pkgs.lib.optionals (!pkgs.stdenv.isAarch64) [
         spotify

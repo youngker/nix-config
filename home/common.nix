@@ -19,8 +19,8 @@
       fzf.enable = true;
       pandoc.enable = true;
       starship.enable = true;
-      zsh.enable = true;
       xterm-24bit.enable = true;
+      zsh.enable = true;
     };
 
     base = {
@@ -29,6 +29,7 @@
     };
 
     dev = {
+      ai.enable = true;
       clojure.enable = true;
       cmake.enable = true;
       cpp.enable = true;

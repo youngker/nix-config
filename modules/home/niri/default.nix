@@ -20,8 +20,9 @@ in
   config = mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        xwayland-satellite
+        sddm-astronaut
         swaybg
+        xwayland-satellite
       ];
     };
     xdg.configFile."niri/config.kdl".text = ''
