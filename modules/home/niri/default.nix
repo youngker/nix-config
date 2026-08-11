@@ -424,21 +424,23 @@ in
 
           Mod+Q repeat=false { close-window; }
 
-          Mod+J          { focus-column-right; }
-          Mod+K          { focus-column-left; }
-          Mod+Shift+J    { focus-window-down-or-top; }
-          Mod+Shift+K    { focus-window-up-or-bottom; }
+          Mod+Left  { focus-column-left; }
+          Mod+Down  { focus-window-down; }
+          Mod+Up    { focus-window-up; }
+          Mod+Right { focus-column-right; }
+          Mod+H     { focus-column-left; }
+          Mod+J     { focus-window-down; }
+          Mod+K     { focus-window-up; }
+          Mod+L     { focus-column-right; }
 
-          // Mod+Ctrl+Left  { move-column-left; }
-          // Mod+Ctrl+Down  { move-window-down; }
-          // Mod+Ctrl+Up    { move-window-up; }
-          // Mod+Ctrl+Right { move-column-right; }
-          // Mod+Ctrl+H     { move-column-left; }
-          Mod+Ctrl+J       { move-column-right; }
-          Mod+Ctrl+K       { move-column-left; }
-          Mod+Shift+Ctrl+J { move-window-down; }
-          Mod+Shift+Ctrl+K { move-window-up; }
-          // Mod+Ctrl+L     { move-column-right; }
+          Mod+Ctrl+Left  { move-column-left; }
+          Mod+Ctrl+Down  { move-window-down; }
+          Mod+Ctrl+Up    { move-window-up; }
+          Mod+Ctrl+Right { move-column-right; }
+          Mod+Ctrl+H     { move-column-left; }
+          Mod+Ctrl+J     { move-window-down; }
+          Mod+Ctrl+K     { move-window-up; }
+          Mod+Ctrl+L     { move-column-right; }
 
           // Alternative commands that move across workspaces when reaching
           // the first or last window in a column.
@@ -457,18 +459,18 @@ in
           Mod+Shift+Up    { focus-monitor-up; }
           Mod+Shift+Right { focus-monitor-right; }
           Mod+Shift+H     { focus-monitor-left; }
-          // Mod+Shift+J     { focus-monitor-down; }
-          // Mod+Shift+K     { focus-monitor-up; }
+          Mod+Shift+J     { focus-monitor-down; }
+          Mod+Shift+K     { focus-monitor-up; }
           Mod+Shift+L     { focus-monitor-right; }
 
           Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
           Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
           Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
           Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-          // Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-          // Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-          // Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-          // Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+          Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+          Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+          Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+          Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
           // Alternatively, there are commands to move just a single window:
           // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
@@ -480,8 +482,8 @@ in
 
           Mod+Page_Down      { focus-workspace-down; }
           Mod+Page_Up        { focus-workspace-up; }
-          Mod+U              { focus-workspace-down; }
-          Mod+I              { focus-workspace-up; }
+          // Mod+U              { focus-workspace-down; }
+          // Mod+I              { focus-workspace-up; }
           Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
           Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
           Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -568,9 +570,9 @@ in
           Mod+BracketRight { consume-or-expel-window-right; }
 
           // Consume one window from the right to the bottom of the focused column.
-          Mod+Comma  { consume-window-into-column; }
+          Mod+U  { consume-window-into-column; }
           // Expel the bottom window from the focused column to the right.
-          Mod+Period { expel-window-from-column; }
+          Mod+I { expel-window-from-column; }
 
           Mod+R { switch-preset-column-width; }
           // Cycling through the presets in reverse order is also possible.
