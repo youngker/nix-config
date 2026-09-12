@@ -19,10 +19,10 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      claude-agent-acp
-      claude-code
-      inputs.nixpkgs-unstable.gemini-cli
-      inputs.nixpkgs-unstable.ollama
+      unstable.antigravity-cli
+      unstable.claude-agent-acp
+      unstable.claude-code
+      unstable.ollama
     ];
   };
 }

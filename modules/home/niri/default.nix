@@ -574,11 +574,11 @@ in
           // Expel the bottom window from the focused column to the right.
           Mod+I { expel-window-from-column; }
 
-          Mod+R { switch-preset-column-width; }
+          Mod+Space { switch-preset-column-width; }
           // Cycling through the presets in reverse order is also possible.
           // Mod+R { switch-preset-column-width-back; }
-          Mod+Shift+R { switch-preset-window-height; }
-          Mod+Ctrl+R { reset-window-height; }
+          Mod+Shift+Space { switch-preset-window-height; }
+          Mod+Ctrl+Space { reset-window-height; }
           Mod+Shift+Z { maximize-column; }
           Mod+Z { fullscreen-window; }
 

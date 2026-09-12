@@ -52,6 +52,7 @@
             self.overlays.additions
             self.overlays.modifications
             self.overlays.flake-inputs
+            self.overlays.unstable-packages
             inputs.emacs-overlay.overlay
             inputs.rust-overlay.overlays.default
           ];

@@ -75,6 +75,7 @@ in
         wget
         xclip
         zoekt
+        unstable.tgrep
       ]
       ++ pkgs.lib.optionals (!pkgs.stdenv.isAarch64) [
         spotify
